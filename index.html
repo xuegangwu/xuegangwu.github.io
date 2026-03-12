@@ -6,10 +6,10 @@
     <meta name="description" content="Terry Wu - Software-Defined Hardware, AI-Reimagined Solar-Storage">
     <meta name="keywords" content="Terry Wu, Solar, Energy Storage, Investment, GitHub, Developer">
     <meta name="author" content="Terry Wu">
-    <meta name="theme-color" content="#0077b5">
+    <meta name="theme-color" content="#000000">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Terry Wu - Software-Defined Hardware, AI-Reimagined Solar-Storage</title>
+    <title>Terry Wu</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,173 +22,150 @@
         }
         
         :root {
-            --linkedin-blue: #0077b5;
-            --linkedin-dark: #004182;
-            --linkedin-light: #0a66c2;
-            --text-primary: #191919;
-            --text-secondary: #666666;
-            --text-light: #888888;
-            --bg-primary: #f3f2ef;
-            --bg-white: #ffffff;
-            --border-light: #e0e0e0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 2px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 4px 12px rgba(0,0,0,0.12);
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
+            --apple-black: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-blue: #0071e3;
+            --apple-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
+            line-height: 1.5;
+            color: var(--apple-black);
+            background: var(--apple-white);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Header - LinkedIn 风格 */
-        .header {
-            background: var(--bg-white);
-            border-bottom: 1px solid var(--border-light);
-            position: sticky;
+        /* Navigation - Apple 风格 */
+        .nav {
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: all 0.3s;
         }
         
-        .header-content {
-            max-width: 1128px;
+        .nav-content {
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        .header-top {
+            padding: 0 22px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            height: 48px;
         }
         
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--linkedin-blue);
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--apple-black);
             text-decoration: none;
+            letter-spacing: -0.5px;
         }
         
         .language-switcher {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
         
         .lang-btn {
-            padding: 8px 16px;
+            padding: 6px 14px;
             background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: 24px;
+            color: var(--apple-black);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 980px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 12px;
+            font-weight: 400;
             transition: all 0.2s;
         }
         
         .lang-btn:hover {
-            background: var(--bg-primary);
-            border-color: var(--linkedin-blue);
+            background: var(--apple-light-gray);
         }
         
         .lang-btn.active {
-            background: var(--linkedin-blue);
-            color: white;
-            border-color: var(--linkedin-blue);
+            background: var(--apple-black);
+            color: var(--apple-white);
+            border-color: var(--apple-black);
         }
         
-        /* Profile Banner */
-        .profile-banner {
-            background: linear-gradient(135deg, var(--linkedin-blue), var(--linkedin-dark));
-            height: 200px;
-            position: relative;
-        }
-        
-        /* Profile Section */
-        .profile-section {
-            max-width: 1128px;
+        /* Hero Section */
+        .hero {
+            padding: 120px 22px 80px;
+            text-align: center;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        .profile-card {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            margin-top: -80px;
-            padding: 24px;
-            position: relative;
-        }
-        
-        .profile-header {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 32px;
-            margin-bottom: 32px;
         }
         
         .avatar {
-            width: 200px;
-            height: 200px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, #da251d, #ffcd3c);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 72px;
-            font-weight: bold;
+            font-size: 48px;
+            font-weight: 600;
             color: white;
-            box-shadow: var(--shadow-lg);
+            margin: 0 auto 32px;
+            box-shadow: var(--shadow-md);
             cursor: pointer;
             transition: all 0.3s;
-            border: 4px solid white;
         }
         
         .avatar:hover {
             transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
         }
         
-        .profile-info h1 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: var(--apple-black);
         }
         
-        .profile-title {
-            font-size: 20px;
-            color: var(--text-primary);
-            margin-bottom: 16px;
+        .hero-title {
+            font-size: 24px;
             font-weight: 400;
+            color: var(--apple-gray);
+            margin-bottom: 40px;
+            line-height: 1.4;
         }
         
-        .profile-location {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-        
-        .profile-actions {
+        .hero-actions {
             display: flex;
             gap: 12px;
-            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
         
         .btn-primary {
-            padding: 10px 24px;
-            background: var(--linkedin-blue);
+            padding: 12px 24px;
+            background: var(--apple-blue);
             color: white;
             border: none;
-            border-radius: 24px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
             text-decoration: none;
@@ -198,18 +175,18 @@
         }
         
         .btn-primary:hover {
-            background: var(--linkedin-dark);
-            transform: translateY(-1px);
+            background: #0077ed;
+            transform: scale(1.02);
         }
         
         .btn-secondary {
-            padding: 10px 24px;
-            background: white;
-            color: var(--linkedin-blue);
-            border: 1px solid var(--linkedin-blue);
-            border-radius: 24px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--apple-blue);
+            border: 1px solid var(--apple-blue);
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.2s;
             text-decoration: none;
@@ -219,48 +196,52 @@
         }
         
         .btn-secondary:hover {
-            background: #ebf4fb;
+            background: rgba(0,113,227,0.05);
         }
         
-        /* About Section */
-        .about-section {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 24px;
-            margin: 24px 0;
+        /* Sections */
+        .section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 80px 22px;
         }
         
         .section-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-light);
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        
+        /* About */
+        .about {
+            background: var(--apple-light-gray);
+            border-radius: var(--radius-xl);
+            padding: 60px;
+            margin: 40px 22px;
         }
         
         .about-text {
-            font-size: 15px;
-            line-height: 1.7;
-            color: var(--text-secondary);
+            font-size: 21px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--apple-black);
+            text-align: center;
         }
         
-        /* Experience & Education */
-        .timeline-section {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 24px;
-            margin: 24px 0;
+        /* Timeline */
+        .timeline {
+            display: grid;
+            gap: 32px;
         }
         
         .timeline-item {
             display: grid;
-            grid-template-columns: 80px 1fr;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border-light);
+            grid-template-columns: 120px 1fr;
+            gap: 32px;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
         
         .timeline-item:last-child {
@@ -269,182 +250,175 @@
         
         .timeline-period {
             font-size: 14px;
-            color: var(--text-secondary);
             font-weight: 500;
+            color: var(--apple-gray);
+            padding-top: 4px;
         }
         
         .timeline-content h3 {
-            font-size: 18px;
+            font-size: 21px;
             font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
+            color: var(--apple-black);
         }
         
         .timeline-content .company {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-bottom: 4px;
+            font-size: 17px;
+            color: var(--apple-gray);
         }
         
-        .timeline-content .description {
-            font-size: 14px;
-            color: var(--text-light);
-        }
-        
-        /* Projects */
-        .projects-section {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 24px;
-            margin: 24px 0;
-        }
-        
-        .project-grid {
+        /* Cards Grid */
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
         }
         
-        .project-card {
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-md);
-            padding: 20px;
+        .card {
+            background: var(--apple-light-gray);
+            border-radius: var(--radius-lg);
+            padding: 32px;
             transition: all 0.3s;
         }
         
-        .project-card:hover {
+        .card:hover {
+            transform: translateY(-4px);
             box-shadow: var(--shadow-lg);
-            border-color: var(--linkedin-blue);
         }
         
-        .project-card h3 {
-            font-size: 18px;
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 21px;
             font-weight: 600;
-            color: var(--linkedin-blue);
             margin-bottom: 12px;
+            color: var(--apple-black);
         }
         
-        .project-card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
+        .card p {
+            font-size: 15px;
+            color: var(--apple-gray);
             line-height: 1.6;
+            margin-bottom: 20px;
         }
         
-        .project-tags {
+        .card-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
         
         .tag {
-            padding: 4px 12px;
-            background: #ebf4fb;
-            color: var(--linkedin-blue);
-            border-radius: 12px;
+            padding: 6px 14px;
+            background: rgba(0,113,227,0.1);
+            color: var(--apple-blue);
+            border-radius: 980px;
             font-size: 12px;
             font-weight: 500;
         }
         
-        .project-links {
+        .card-links {
             display: flex;
             gap: 12px;
         }
         
-        .project-links a {
+        .card-links a {
             flex: 1;
             text-align: center;
-            padding: 8px;
-            background: var(--linkedin-blue);
+            padding: 10px;
+            background: var(--apple-blue);
             color: white;
             text-decoration: none;
             border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 500;
+            font-size: 13px;
             transition: all 0.2s;
         }
         
-        .project-links a:hover {
-            background: var(--linkedin-dark);
+        .card-links a:hover {
+            background: #0077ed;
         }
         
         /* Skills */
-        .skills-section {
-            background: var(--bg-white);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            padding: 24px;
-            margin: 24px 0;
-        }
-        
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
         
-        .skill-item {
-            padding: 16px;
-            border: 1px solid var(--border-light);
+        .skill-card {
+            background: var(--apple-light-gray);
             border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
             transition: all 0.3s;
         }
         
-        .skill-item:hover {
-            border-color: var(--linkedin-blue);
-            background: #ebf4fb;
+        .skill-card:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
         }
         
         .skill-icon {
-            font-size: 32px;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 16px;
         }
         
         .skill-name {
-            font-size: 16px;
+            font-size: 17px;
             font-weight: 600;
-            color: var(--text-primary);
             margin-bottom: 8px;
+            color: var(--apple-black);
         }
         
         .skill-desc {
-            font-size: 13px;
-            color: var(--text-secondary);
+            font-size: 14px;
+            color: var(--apple-gray);
             line-height: 1.5;
         }
         
         /* Footer */
         .footer {
-            background: var(--bg-white);
-            border-top: 1px solid var(--border-light);
-            padding: 32px 0;
-            margin-top: 40px;
+            background: var(--apple-light-gray);
+            padding: 40px 22px;
             text-align: center;
+            margin-top: 80px;
         }
         
         .footer p {
-            font-size: 14px;
-            color: var(--text-light);
+            font-size: 12px;
+            color: var(--apple-gray);
+        }
+        
+        .footer a {
+            color: var(--apple-blue);
+            text-decoration: none;
         }
         
         /* 响应式 */
         @media (max-width: 768px) {
-            .profile-header {
-                grid-template-columns: 1fr;
-                text-align: center;
+            .hero h1 {
+                font-size: 40px;
             }
             
-            .avatar {
-                width: 150px;
-                height: 150px;
-                font-size: 56px;
-                margin: 0 auto;
+            .hero-title {
+                font-size: 20px;
             }
             
-            .profile-actions {
-                justify-content: center;
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .about {
+                padding: 40px 24px;
+            }
+            
+            .about-text {
+                font-size: 17px;
             }
             
             .timeline-item {
@@ -452,7 +426,7 @@
                 gap: 8px;
             }
             
-            .project-grid {
+            .cards-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -463,55 +437,44 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="header-top">
-                <a href="#" class="logo">in Terry Wu</a>
-                <div class="language-switcher">
-                    <button class="lang-btn" onclick="switchLang('zh')" data-lang="zh">中文</button>
-                    <button class="lang-btn active" onclick="switchLang('en')" data-lang="en">EN</button>
-                    <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">日本語</button>
-                </div>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">Terry Wu</a>
+            <div class="language-switcher">
+                <button class="lang-btn" onclick="switchLang('zh')" data-lang="zh">中文</button>
+                <button class="lang-btn active" onclick="switchLang('en')" data-lang="en">EN</button>
+                <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">日本語</button>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Profile Banner -->
-    <div class="profile-banner"></div>
-
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <div class="profile-card">
-            <div class="profile-header">
-                <div class="avatar" onclick="celebrate()">TW</div>
-                <div class="profile-info">
-                    <h1 data-i18n="name">Terry Wu</h1>
-                    <p class="profile-title" data-i18n="title">Software-Defined Hardware, AI-Reimagined Solar-Storage</p>
-                    <p class="profile-location">Shanghai, China</p>
-                    <div class="profile-actions">
-                        <a href="mailto:wuxuegang@gmail.com" class="btn-primary">
-                            📧 <span data-i18n="contact">Contact</span>
-                        </a>
-                        <a href="https://github.com/xuegangwu" target="_blank" class="btn-secondary">
-                            🔗 <span data-i18n="github">GitHub</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="avatar" onclick="celebrate()">TW</div>
+        <h1 data-i18n="name">Terry Wu</h1>
+        <p class="hero-title" data-i18n="title">Software-Defined Hardware, AI-Reimagined Solar-Storage</p>
+        <div class="hero-actions">
+            <a href="mailto:wuxuegang@gmail.com" class="btn-primary">
+                📧 <span data-i18n="contact">Contact</span>
+            </a>
+            <a href="https://github.com/xuegangwu" target="_blank" class="btn-secondary">
+                🔗 <span data-i18n="github">GitHub</span>
+            </a>
         </div>
+    </section>
 
-        <!-- About -->
-        <div class="about-section">
-            <h2 class="section-title" data-i18n="about">About</h2>
-            <p class="about-text" data-i18n="about-text">
-                Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.
-            </p>
-        </div>
+    <!-- About -->
+    <div class="about">
+        <p class="about-text" data-i18n="about-text">
+            Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.
+        </p>
+    </div>
 
-        <!-- Experience -->
-        <div class="timeline-section">
-            <h2 class="section-title" data-i18n="experience">Experience</h2>
+    <!-- Experience -->
+    <section class="section">
+        <h2 class="section-title" data-i18n="experience">Experience</h2>
+        <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-period" data-i18n="period2">2019 ~ 2026</div>
                 <div class="timeline-content">
@@ -527,10 +490,12 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Education -->
-        <div class="timeline-section">
-            <h2 class="section-title" data-i18n="education">Education</h2>
+    <!-- Education -->
+    <section class="section">
+        <h2 class="section-title" data-i18n="education">Education</h2>
+        <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-period" data-i18n="edu3-period">2025</div>
                 <div class="timeline-content">
@@ -553,94 +518,94 @@
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Projects -->
-        <div class="projects-section">
-            <h2 class="section-title" data-i18n="projects">Projects</h2>
-            <div class="project-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <h3 data-i18n="project1-title">Solar-Storage Investment Map System</h3>
-                    <p data-i18n="project1-desc">Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan.</p>
-                    <div class="project-tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Leaflet</span>
-                        <span class="tag">Three.js</span>
-                        <span class="tag">SQLite</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">🔗 GitHub</a>
-                        <a href="http://localhost:3000" target="_blank">🌐 Demo</a>
-                    </div>
+    <!-- Projects -->
+    <section class="section">
+        <h2 class="section-title" data-i18n="projects">Projects</h2>
+        <div class="cards-grid">
+            <!-- Project 1 -->
+            <div class="card">
+                <div class="card-icon">🗺️</div>
+                <h3 data-i18n="project1-title">Solar-Storage Investment Map System</h3>
+                <p data-i18n="project1-desc">Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan.</p>
+                <div class="card-tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Leaflet</span>
+                    <span class="tag">Three.js</span>
+                    <span class="tag">SQLite</span>
                 </div>
+                <div class="card-links">
+                    <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">🔗 GitHub</a>
+                    <a href="http://localhost:3000" target="_blank">🌐 Demo</a>
+                </div>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <h3 data-i18n="project2-title">Guangchu - Industry News Collection</h3>
-                    <p data-i18n="project2-desc">Automated photovoltaic + energy storage industry information collection and analysis system with multi-language news scraping and FTS5 search.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Flask</span>
-                        <span class="tag">SQLite FTS5</span>
-                        <span class="tag">Web Scraping</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/xuegangwu/guangchu" target="_blank">🔗 GitHub</a>
-                        <a href="http://localhost:5000" target="_blank">🌐 Demo</a>
-                    </div>
+            <!-- Project 2 -->
+            <div class="card">
+                <div class="card-icon">🦞</div>
+                <h3 data-i18n="project2-title">Guangchu - Industry News Collection</h3>
+                <p data-i18n="project2-desc">Automated photovoltaic + energy storage industry information collection and analysis system with multi-language news scraping and FTS5 search.</p>
+                <div class="card-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">SQLite FTS5</span>
+                    <span class="tag">Web Scraping</span>
+                </div>
+                <div class="card-links">
+                    <a href="https://github.com/xuegangwu/guangchu" target="_blank">🔗 GitHub</a>
+                    <a href="http://localhost:5000" target="_blank">🌐 Demo</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Skills -->
-        <div class="skills-section">
-            <h2 class="section-title" data-i18n="skills">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-icon">🌐</div>
-                    <div class="skill-name" data-i18n="skill1-name">Frontend Development</div>
-                    <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations</div>
-                </div>
+    <!-- Skills -->
+    <section class="section">
+        <h2 class="section-title" data-i18n="skills">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-name" data-i18n="skill1-name">Frontend Development</div>
+                <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations</div>
+            </div>
 
-                <div class="skill-item">
-                    <div class="skill-icon">🗺️</div>
-                    <div class="skill-name" data-i18n="skill2-name">Map Visualization</div>
-                    <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>Interactive maps, 3D rendering</div>
-                </div>
+            <div class="skill-card">
+                <div class="skill-icon">🗺️</div>
+                <div class="skill-name" data-i18n="skill2-name">Map Visualization</div>
+                <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>Interactive maps, 3D rendering</div>
+            </div>
 
-                <div class="skill-item">
-                    <div class="skill-icon">🔧</div>
-                    <div class="skill-name" data-i18n="skill3-name">Backend Development</div>
-                    <div class="skill-desc" data-i18n="skill3-desc">Node.js, Express<br>Python, Flask</div>
-                </div>
+            <div class="skill-card">
+                <div class="skill-icon">🔧</div>
+                <div class="skill-name" data-i18n="skill3-name">Backend Development</div>
+                <div class="skill-desc" data-i18n="skill3-desc">Node.js, Express<br>Python, Flask</div>
+            </div>
 
-                <div class="skill-item">
-                    <div class="skill-icon">💾</div>
-                    <div class="skill-name" data-i18n="skill4-name">Database</div>
-                    <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>Full-text search, data modeling</div>
-                </div>
+            <div class="skill-card">
+                <div class="skill-icon">💾</div>
+                <div class="skill-name" data-i18n="skill4-name">Database</div>
+                <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>Full-text search, data modeling</div>
+            </div>
 
-                <div class="skill-item">
-                    <div class="skill-icon">🤖</div>
-                    <div class="skill-name" data-i18n="skill5-name">Automation</div>
-                    <div class="skill-desc" data-i18n="skill5-desc">Web scraping, scheduled tasks<br>Data extraction, report generation</div>
-                </div>
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <div class="skill-name" data-i18n="skill5-name">Automation</div>
+                <div class="skill-desc" data-i18n="skill5-desc">Web scraping, scheduled tasks<br>Data extraction, report generation</div>
+            </div>
 
-                <div class="skill-item">
-                    <div class="skill-icon">📊</div>
-                    <div class="skill-name" data-i18n="skill6-name">Data Analysis</div>
-                    <div class="skill-desc" data-i18n="skill6-desc">Information collection, trend analysis<br>Investment evaluation, decision support</div>
-                </div>
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <div class="skill-name" data-i18n="skill6-name">Data Analysis</div>
+                <div class="skill-desc" data-i18n="skill6-desc">Information collection, trend analysis<br>Investment evaluation, decision support</div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="profile-section">
-            <p>© 2026 Terry Wu. All rights reserved.</p>
-            <p>Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> ❤️</p>
-        </div>
+        <p>© 2026 Terry Wu. All rights reserved.</p>
+        <p>Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> ❤️</p>
     </footer>
 
     <script>
@@ -648,7 +613,6 @@
             zh: {
                 name: 'Terry Wu',
                 title: '软件定义硬件，AI 重构光储',
-                about: '关于',
                 'about-text': '专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策',
                 experience: '工作经历',
                 period1: '2002 ~ 2019',
@@ -691,7 +655,6 @@
             en: {
                 name: 'Terry Wu',
                 title: 'Software-Defined Hardware, AI-Reimagined Solar-Storage',
-                about: 'About',
                 'about-text': 'Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.',
                 experience: 'Experience',
                 period1: '2002 ~ 2019',
@@ -734,7 +697,6 @@
             ja: {
                 name: 'Terry Wu',
                 title: 'ソフトウェア定義ハードウェア、AI 再構築太陽光・蓄電池',
-                about: '概要',
                 'about-text': '太陽光＋蓄電池分野の評価システム開発に専念し、データ駆動型の意思決定で質の高い投資機会を特定します',
                 experience: '職歴',
                 period1: '2002 〜 2019',
@@ -781,7 +743,6 @@
         function switchLang(lang) {
             currentLang = lang;
             
-            // 更新按钮状态
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.lang === lang) {
@@ -789,7 +750,6 @@
                 }
             });
             
-            // 更新页面内容
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
                 if (translations[lang][key]) {
@@ -797,27 +757,22 @@
                 }
             });
             
-            // 保存语言偏好
             localStorage.setItem('preferredLang', lang);
-            
-            // 更新 HTML lang 属性
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ja');
         }
 
-        // 页面加载完成后初始化
         window.addEventListener('load', () => {
             const savedLang = localStorage.getItem('preferredLang') || 'en';
             switchLang(savedLang);
         });
 
-        // 庆祝动画
         function celebrate() {
-            const colors = ['#0077b5', '#004182', '#0a66c2', '#f5576c', '#4facfe'];
+            const colors = ['#1d1d1f', '#86868b', '#0071e3', '#f5f5f7'];
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
-                confetti.style.cssText = `position:fixed;width:10px;height:10px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}vw;top:-10px;border-radius:${Math.random()>0.5?'50%':'0'};pointer-events:none;z-index:9999;`;
+                confetti.style.cssText = `position:fixed;width:8px;height:8px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}vw;top:-10px;border-radius:50%;pointer-events:none;z-index:9999;`;
                 document.body.appendChild(confetti);
-                confetti.animate([{transform:'translateY(0) rotate(0deg)',opacity:1},{transform:`translateY(${window.innerHeight+10}px) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:2000+Math.random()*2000,easing:'cubic-bezier(0.25,0.46,0.45,0.94)'});
+                confetti.animate([{transform:'translateY(0)',opacity:1},{transform:`translateY(${window.innerHeight+10}px)`,opacity:0}],{duration:2000+Math.random()*2000,easing:'cubic-bezier(0.25,0.46,0.45,0.94)'});
                 setTimeout(()=>confetti.remove(),4000);
             }
         }
