@@ -74,7 +74,7 @@ Master's degree in related field.
 
 ## 💼 Work Experience
 
-### Oracle (2019 - Present)
+### Ricoh (2019 - Present)
 **CIO · VP · CEO**
 
 Chief Information Officer, Vice President, and Chief Executive Officer. Leading digital transformation and technology strategy.
