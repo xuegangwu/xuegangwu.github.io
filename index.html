@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terry Wu - 光储投资分析系统开发者">
-    <meta name="keywords" content="Terry Wu, 光储投资，太阳能，储能，投资地图，GitHub, 开发者">
+    <meta name="description" content="Terry Wu - Solar-Storage Investment System Developer">
+    <meta name="keywords" content="Terry Wu, Solar, Energy Storage, Investment, GitHub, Developer">
     <meta name="author" content="Terry Wu">
-    <title>Terry Wu - 光储投资分析系统开发者</title>
+    <title>Terry Wu - Solar-Storage Investment System Developer</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,114 +19,52 @@
         }
         
         :root {
-            /* 专业配色方案 */
-            --primary-dark: #1a1a2e;
-            --primary-purple: #667eea;
-            --primary-blue: #764ba2;
-            --accent-pink: #f093fb;
-            --accent-red: #f5576c;
-            --text-primary: #1a202c;
-            --text-secondary: #4a5568;
-            --text-light: #718096;
+            --primary-dark: #0f172a;
+            --primary-blue: #3b82f6;
+            --primary-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
             --bg-light: #f8fafc;
             --bg-white: #ffffff;
             --border-light: #e2e8f0;
-            
-            /* 阴影系统 */
-            --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 8px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 16px rgba(0,0,0,0.12);
-            --shadow-xl: 0 16px 32px rgba(0,0,0,0.16);
-            --shadow-2xl: 0 24px 48px rgba(0,0,0,0.2);
-            
-            /* 圆角系统 */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
-            --radius-full: 9999px;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--bg-light);
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
         
-        /* 背景动画 */
-        .bg-animation {
+        /* 背景 */
+        .bg-gradient {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 50%, var(--primary-blue) 100%);
+            height: 60vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--primary-purple) 100%);
             z-index: -1;
-            overflow: hidden;
-        }
-        
-        .bg-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-            opacity: 0.3;
-        }
-        
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: float 20s infinite ease-in-out;
-        }
-        
-        .bg-circle:nth-child(3) {
-            width: 400px;
-            height: 400px;
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
-        }
-        
-        .bg-circle:nth-child(4) {
-            width: 300px;
-            height: 300px;
-            bottom: -50px;
-            left: -50px;
-            animation-delay: 7s;
-        }
-        
-        .bg-circle:nth-child(5) {
-            width: 200px;
-            height: 200px;
-            top: 50%;
-            left: 50%;
-            animation-delay: 14s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
         }
         
         .container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
         
-        /* 语言切换器 - 专业化设计 */
+        /* 语言切换器 */
         .language-switcher {
             position: fixed;
             top: 24px;
@@ -137,9 +75,8 @@
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(20px);
             padding: 6px;
-            border-radius: var(--radius-full);
+            border-radius: 9999px;
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow: var(--shadow-lg);
         }
         
         .lang-btn {
@@ -147,253 +84,192 @@
             background: transparent;
             color: rgba(255,255,255,0.8);
             border: none;
-            border-radius: var(--radius-full);
+            border-radius: 9999px;
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: inherit;
+            transition: all 0.3s;
         }
         
         .lang-btn:hover {
             background: rgba(255,255,255,0.15);
             color: white;
-            transform: translateY(-1px);
         }
         
         .lang-btn.active {
             background: white;
-            color: var(--primary-purple);
-            box-shadow: var(--shadow-md);
+            color: var(--primary-blue);
         }
         
-        /* Header - 专业化设计 */
+        /* Header */
         .header {
-            text-align: center;
+            padding: 120px 0 80px;
             color: white;
-            padding: 140px 0 100px;
-            position: relative;
         }
         
-        .header-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-full);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 32px;
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: slideDown 0.8s ease-out;
+        .header-content {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+            align-items: center;
         }
         
-        .header-name {
-            font-size: 48px;
-            margin-bottom: 12px;
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #da251d, #ffcd3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: all 0.4s;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+        }
+        
+        .header-info h1 {
+            font-size: 42px;
             font-weight: 600;
+            margin-bottom: 8px;
             letter-spacing: -0.5px;
-            line-height: 1.2;
-            animation: slideDown 0.8s ease-out 0.1s both;
-            color: white;
-            opacity: 0.95;
         }
         
-        .header .title {
-            font-size: 24px;
+        .header-info .title {
+            font-size: 20px;
             opacity: 0.9;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             font-weight: 400;
-            animation: slideDown 0.8s ease-out 0.2s both;
         }
         
-        .header-experience {
+        /* 经历时间线 */
+        .experience-timeline {
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             border-radius: var(--radius-lg);
-            padding: 32px 40px;
-            max-width: 800px;
-            margin: 0 auto 48px;
-            animation: slideDown 0.8s ease-out 0.3s both;
+            padding: 24px 28px;
+            margin-bottom: 32px;
             border: 1px solid rgba(255,255,255,0.15);
         }
         
-        .experience-item {
+        .timeline-item {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
+            gap: 20px;
+            padding: 14px 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
-        .experience-item:last-child {
+        .timeline-item:last-child {
             border-bottom: none;
         }
         
-        .experience-period {
-            font-size: 15px;
+        .timeline-period {
+            font-size: 14px;
             font-weight: 600;
             color: rgba(255,255,255,0.9);
-            min-width: 140px;
+            min-width: 120px;
         }
         
-        .experience-role {
-            font-size: 15px;
-            color: rgba(255,255,255,0.85);
+        .timeline-content {
             flex: 1;
         }
         
-        .experience-company {
+        .timeline-role {
+            font-size: 15px;
+            color: white;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-company {
             font-size: 14px;
             color: rgba(255,255,255,0.7);
             font-style: italic;
         }
         
-        .header .subtitle {
-            font-size: 17px;
+        .header-subtitle {
+            font-size: 16px;
             opacity: 0.85;
-            max-width: 720px;
-            margin: 0 auto 48px;
-            line-height: 1.8;
-            animation: slideDown 0.8s ease-out 0.4s both;
-        }
-        
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .avatar-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 40px;
-            animation: slideDown 0.8s ease-out;
-        }
-        
-        .avatar {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 4px solid rgba(255,255,255,0.3);
-            background: linear-gradient(135deg, #da251d 0%, #ffcd3c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .avatar::before {
-            content: '✨';
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 32px;
-            animation: sparkle 2s infinite;
-        }
-        
-        @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
-            50% { opacity: 0.6; transform: scale(1.3) rotate(180deg); }
-        }
-        
-        .avatar:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+            line-height: 1.7;
+            max-width: 700px;
         }
         
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 16px;
+            gap: 12px;
+            margin-top: 32px;
             flex-wrap: wrap;
-            animation: slideUp 0.8s ease-out 0.4s both;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         
         .social-links a {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 16px 32px;
+            padding: 12px 24px;
             background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
             color: white;
             text-decoration: none;
             border-radius: var(--radius-full);
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             border: 1px solid rgba(255,255,255,0.2);
-            font-size: 15px;
+            font-size: 14px;
         }
         
         .social-links a:hover {
             background: rgba(255,255,255,0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
         }
         
-        /* Projects - 专业化设计 */
+        /* Projects */
         .projects {
             background: var(--bg-white);
             border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-            padding: 100px 0;
+            padding: 80px 0;
             margin-top: -60px;
-            position: relative;
-            box-shadow: var(--shadow-2xl);
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
+            box-shadow: var(--shadow-xl);
         }
         
         .section-label {
             display: inline-block;
-            padding: 8px 20px;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
             color: white;
             border-radius: var(--radius-full);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin-bottom: 20px;
             text-transform: uppercase;
         }
         
         .section-title {
-            font-size: 52px;
-            font-weight: 800;
+            font-size: 40px;
+            font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
         }
         
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 48px;
+            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+            gap: 40px;
         }
         
         .project-card {
             background: var(--bg-white);
             border-radius: var(--radius-xl);
-            padding: 48px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 40px;
+            transition: all 0.4s;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-md);
             position: relative;
@@ -407,52 +283,49 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
         }
         
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
-            border-color: var(--primary-purple);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-blue);
         }
         
         .project-icon {
-            font-size: 64px;
-            margin-bottom: 28px;
+            font-size: 56px;
+            margin-bottom: 24px;
             display: block;
-            animation: float 3s infinite ease-in-out;
         }
         
         .project-card h3 {
-            font-size: 28px;
-            margin-bottom: 20px;
+            font-size: 24px;
+            margin-bottom: 16px;
             color: var(--text-primary);
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
         
         .project-card p {
             color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.8;
-            font-size: 16px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+            font-size: 15px;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 32px;
+            gap: 8px;
+            margin-bottom: 28px;
         }
         
         .tag {
-            padding: 8px 16px;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            padding: 6px 14px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
             color: white;
             border-radius: var(--radius-full);
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
-            box-shadow: var(--shadow-sm);
         }
         
         .project-links {
@@ -463,15 +336,14 @@
         .project-links a {
             flex: 1;
             text-align: center;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
             color: white;
             text-decoration: none;
             border-radius: var(--radius-md);
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: var(--shadow-md);
-            font-size: 15px;
+            transition: all 0.3s;
+            font-size: 14px;
         }
         
         .project-links a:hover {
@@ -479,129 +351,85 @@
             box-shadow: var(--shadow-lg);
         }
         
-        /* Skills - 专业化设计 */
+        /* Skills */
         .skills {
             background: var(--bg-light);
-            padding: 100px 0;
+            padding: 80px 0;
         }
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 28px;
         }
         
         .skill-item {
             background: var(--bg-white);
-            padding: 40px;
+            padding: 36px;
             border-radius: var(--radius-xl);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-sm);
         }
         
         .skill-item:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-purple);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-blue);
         }
         
         .skill-icon {
-            font-size: 56px;
-            margin-bottom: 24px;
+            font-size: 48px;
+            margin-bottom: 20px;
             display: block;
         }
         
         .skill-name {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
+            margin-bottom: 10px;
         }
         
         .skill-desc {
-            color: var(--text-light);
-            font-size: 15px;
-            line-height: 1.7;
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
         }
         
-        /* Footer - 专业化设计 */
+        /* Footer */
         .footer {
             background: var(--primary-dark);
             color: white;
             text-align: center;
-            padding: 80px 0 40px;
-        }
-        
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
+            padding: 60px 0 40px;
         }
         
         .footer-logo {
-            font-size: 48px;
-            margin-bottom: 24px;
+            font-size: 40px;
+            margin-bottom: 20px;
             opacity: 0.8;
         }
         
         .footer p {
             opacity: 0.8;
-            margin-bottom: 12px;
-            font-size: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
         }
         
         .footer a {
             color: white;
             text-decoration: underline;
             font-weight: 600;
-            opacity: 0.9;
-        }
-        
-        .footer a:hover {
-            opacity: 1;
         }
         
         .footer-divider {
-            width: 60px;
+            width: 50px;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
-            margin: 32px auto;
-            border-radius: var(--radius-full);
-        }
-        
-        /* 加载动画 */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple), var(--primary-blue));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease-out;
-        }
-        
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(255,255,255,0.2);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
+            margin: 28px auto;
+            border-radius: 9999px;
         }
         
         /* 响应式 */
@@ -609,59 +437,47 @@
             .language-switcher {
                 top: 12px;
                 right: 12px;
-                padding: 4px;
             }
             
-            .lang-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            
-            .header h1 {
-                font-size: 42px;
-            }
-            
-            .header .title {
-                font-size: 20px;
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 32px;
             }
             
             .avatar {
-                width: 160px;
-                height: 160px;
-                font-size: 64px;
+                width: 140px;
+                height: 140px;
+                font-size: 56px;
+                margin: 0 auto;
+            }
+            
+            .header-info h1 {
+                font-size: 32px;
+            }
+            
+            .experience-timeline {
+                text-align: left;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                gap: 8px;
             }
             
             .project-grid {
                 grid-template-columns: 1fr;
             }
             
-            .projects {
-                padding: 60px 0;
-            }
-            
             .section-title {
-                font-size: 36px;
-            }
-            
-            .project-card {
-                padding: 32px;
+                font-size: 32px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 加载动画 -->
-    <div class="loading" id="loading">
-        <div class="loading-spinner"></div>
-    </div>
-    
-    <!-- 背景动画 -->
-    <div class="bg-animation">
-        <div class="bg-grid"></div>
-        <div class="bg-circle"></div>
-        <div class="bg-circle"></div>
-        <div class="bg-circle"></div>
-    </div>
+    <!-- 背景 -->
+    <div class="bg-gradient"></div>
     
     <!-- 语言切换器 -->
     <div class="language-switcher">
@@ -673,47 +489,47 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="header-badge" data-i18n="badge">🎯 专业的光储投资分析系统</div>
-            
-            <div class="avatar-container">
-                <div class="avatar" title="点击有惊喜！" onclick="celebrate()">TW</div>
-            </div>
-            
-            <h2 class="header-name" data-i18n="name">Terry Wu</h2>
-            <p class="title" data-i18n="title">光储投资分析系统开发者</p>
-            
-            <div class="header-experience">
-                <div class="experience-item">
-                    <span class="experience-period" data-i18n="period2">2019 ~ 2026</span>
-                    <span class="experience-role">
-                        <span data-i18n="role2">CIO, VP, CEO</span>
-                        <span class="experience-company" data-i18n="company2">@ Risen Energy</span>
-                    </span>
+            <div class="header-content">
+                <div class="avatar" onclick="celebrate()">TW</div>
+                
+                <div class="header-info">
+                    <h1 data-i18n="name">Terry Wu</h1>
+                    <p class="title" data-i18n="title">Solar-Storage Investment System Developer</p>
+                    
+                    <div class="experience-timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-period" data-i18n="period2">2019 ~ 2026</span>
+                            <div class="timeline-content">
+                                <div class="timeline-role" data-i18n="role2">CIO, VP, CEO</div>
+                                <div class="timeline-company" data-i18n="company2">@ Risen Energy</div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-period" data-i18n="period1">2002 ~ 2019</span>
+                            <div class="timeline-content">
+                                <div class="timeline-role" data-i18n="role1">Programmer, Manager</div>
+                                <div class="timeline-company" data-i18n="company1">@ Ricoh</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p class="header-subtitle" data-i18n="subtitle">Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions</p>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/xuegangwu" target="_blank" rel="noopener">
+                            🔗 <span data-i18n="github">GitHub</span>
+                        </a>
+                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
+                            🗺️ <span data-i18n="project1">Investment Map</span>
+                        </a>
+                        <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
+                            🦞 <span data-i18n="project2">Guangchu</span>
+                        </a>
+                        <a href="mailto:your.email@example.com" rel="noopener">
+                            📧 <span data-i18n="contact">Contact</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="experience-item">
-                    <span class="experience-period" data-i18n="period1">2002 ~ 2019</span>
-                    <span class="experience-role">
-                        <span data-i18n="role1">Programmer, Manager</span>
-                        <span class="experience-company" data-i18n="company1">@ Ricoh</span>
-                    </span>
-                </div>
-            </div>
-            
-            <p class="subtitle" data-i18n="subtitle">专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策</p>
-            
-            <div class="social-links">
-                <a href="https://github.com/xuegangwu" target="_blank" rel="noopener">
-                    <span>🔗</span> <span data-i18n="github">GitHub</span>
-                </a>
-                <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
-                    <span>🗺️</span> <span data-i18n="project1">投资地图</span>
-                </a>
-                <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
-                    <span>🦞</span> <span data-i18n="project2">光储龙虾</span>
-                </a>
-                <a href="mailto:your.email@example.com" rel="noopener">
-                    <span>📧</span> <span data-i18n="contact">联系我</span>
-                </a>
             </div>
         </div>
     </div>
@@ -721,30 +537,27 @@
     <!-- Projects -->
     <div class="projects">
         <div class="container">
-            <div class="section-header">
-                <div class="section-label" data-i18n="projectsLabel">PROJECTS</div>
-                <h2 class="section-title" data-i18n="projects">项目展示</h2>
-            </div>
+            <div class="section-label" data-i18n="projectsLabel">PROJECTS</div>
+            <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
             
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
                     <span class="project-icon">🗺️</span>
-                    <h3 data-i18n="project1-title">光储电站投资地图系统</h3>
-                    <p data-i18n="project1-desc">多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。</p>
+                    <h3 data-i18n="project1-title">Solar-Storage Investment Map System</h3>
+                    <p data-i18n="project1-desc">Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.</p>
                     <div class="project-tags">
                         <span class="tag">Node.js</span>
                         <span class="tag">Leaflet</span>
                         <span class="tag">Three.js</span>
                         <span class="tag">SQLite</span>
-                        <span class="tag" data-i18n="tag1">92 省份数据</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
                             🔗 <span data-i18n="github">GitHub</span>
                         </a>
                         <a href="http://localhost:3000" target="_blank" rel="noopener">
-                            🌐 <span data-i18n="demo">演示</span>
+                            🌐 <span data-i18n="demo">Demo</span>
                         </a>
                     </div>
                 </div>
@@ -752,21 +565,20 @@
                 <!-- Project 2 -->
                 <div class="project-card">
                     <span class="project-icon">🦞</span>
-                    <h3 data-i18n="project2-title">光储龙虾</h3>
-                    <p data-i18n="project2-desc">自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。</p>
+                    <h3 data-i18n="project2-title">Guangchu - Industry News Collection</h3>
+                    <p data-i18n="project2-desc">Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Flask</span>
                         <span class="tag">SQLite FTS5</span>
-                        <span class="tag" data-i18n="tag2">爬虫</span>
-                        <span class="tag" data-i18n="tag3">6 个信息源</span>
+                        <span class="tag">Web Scraping</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
                             🔗 <span data-i18n="github">GitHub</span>
                         </a>
                         <a href="http://localhost:5000" target="_blank" rel="noopener">
-                            🌐 <span data-i18n="demo">演示</span>
+                            🌐 <span data-i18n="demo">Demo</span>
                         </a>
                     </div>
                 </div>
@@ -777,46 +589,44 @@
     <!-- Skills -->
     <div class="skills">
         <div class="container">
-            <div class="section-header">
-                <div class="section-label" data-i18n="skillsLabel">SKILLS</div>
-                <h2 class="section-title" data-i18n="skills">技术栈</h2>
-            </div>
+            <div class="section-label" data-i18n="skillsLabel">SKILLS</div>
+            <h2 class="section-title" data-i18n="skills">Technical Expertise</h2>
             
             <div class="skills-grid">
                 <div class="skill-item">
                     <span class="skill-icon">🌐</span>
-                    <div class="skill-name" data-i18n="skill1-name">前端开发</div>
-                    <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果</div>
+                    <div class="skill-name" data-i18n="skill1-name">Frontend Development</div>
+                    <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">🗺️</span>
-                    <div class="skill-name" data-i18n="skill2-name">地图可视化</div>
-                    <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>交互式地图，3D 渲染</div>
+                    <div class="skill-name" data-i18n="skill2-name">Map Visualization</div>
+                    <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>Interactive maps, 3D rendering</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">🔧</span>
-                    <div class="skill-name" data-i18n="skill3-name">后端开发</div>
+                    <div class="skill-name" data-i18n="skill3-name">Backend Development</div>
                     <div class="skill-desc" data-i18n="skill3-desc">Node.js, Express<br>Python, Flask</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">💾</span>
-                    <div class="skill-name" data-i18n="skill4-name">数据库</div>
-                    <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>全文搜索，数据建模</div>
+                    <div class="skill-name" data-i18n="skill4-name">Database</div>
+                    <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>Full-text search, data modeling</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">🤖</span>
-                    <div class="skill-name" data-i18n="skill5-name">自动化</div>
-                    <div class="skill-desc" data-i18n="skill5-desc">网络爬虫，定时任务<br>数据抓取，报告生成</div>
+                    <div class="skill-name" data-i18n="skill5-name">Automation</div>
+                    <div class="skill-desc" data-i18n="skill5-desc">Web scraping, scheduled tasks<br>Data extraction, report generation</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">📊</span>
-                    <div class="skill-name" data-i18n="skill6-name">数据分析</div>
-                    <div class="skill-desc" data-i18n="skill6-desc">信息收集，趋势分析<br>投资评估，决策支持</div>
+                    <div class="skill-name" data-i18n="skill6-name">Data Analysis</div>
+                    <div class="skill-desc" data-i18n="skill6-desc">Information collection, trend analysis<br>Investment evaluation, decision support</div>
                 </div>
             </div>
         </div>
@@ -825,23 +635,16 @@
     <!-- Footer -->
     <div class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">⭐</div>
-                <p>© 2026 Terry Wu. All rights reserved.</p>
-                <div class="footer-divider"></div>
-                <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
-                <p style="margin-top: 20px; font-size: 14px; opacity: 0.7;" data-i18n="footer">
-                    🌍 让数据驱动光储投资决策
-                </p>
-            </div>
+            <div class="footer-logo">⭐</div>
+            <p>© 2026 Terry Wu. All rights reserved.</p>
+            <div class="footer-divider"></div>
+            <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
         </div>
     </div>
 
     <script>
-        // 多语言翻译
         const translations = {
             zh: {
-                badge: '🎯 专业的光储投资分析系统',
                 name: 'Terry Wu',
                 title: '光储投资分析系统开发者',
                 period1: '2002 ~ 2019',
@@ -859,11 +662,8 @@
                 projects: '项目展示',
                 'project1-title': '光储电站投资地图系统',
                 'project1-desc': '多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。',
-                'project2-title': '光储龙虾',
+                'project2-title': '光储龙虾 - 行业信息收集',
                 'project2-desc': '自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。',
-                tag1: '92 省份数据',
-                tag2: '爬虫',
-                tag3: '6 个信息源',
                 demo: '演示',
                 skillsLabel: 'SKILLS',
                 skills: '技术栈',
@@ -878,11 +678,9 @@
                 'skill5-name': '自动化',
                 'skill5-desc': '网络爬虫，定时任务<br>数据抓取，报告生成',
                 'skill6-name': '数据分析',
-                'skill6-desc': '信息收集，趋势分析<br>投资评估，决策支持',
-                footer: '🌍 让数据驱动光储投资决策'
+                'skill6-desc': '信息收集，趋势分析<br>投资评估，决策支持'
             },
             en: {
-                badge: '🎯 Professional Solar-Storage Investment System',
                 name: 'Terry Wu',
                 title: 'Solar-Storage Investment System Developer',
                 period1: '2002 ~ 2019',
@@ -895,19 +693,16 @@
                 github: 'GitHub',
                 project1: 'Investment Map',
                 project2: 'Guangchu',
-                contact: 'Contact Me',
+                contact: 'Contact',
                 projectsLabel: 'PROJECTS',
-                projects: 'Projects',
+                projects: 'Featured Projects',
                 'project1-title': 'Solar-Storage Investment Map System',
                 'project1-desc': 'Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.',
-                'project2-title': 'Guangchu - Solar-Storage News Collection',
-                'project2-desc': 'Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation, and more. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.',
-                tag1: '92 Provinces Data',
-                tag2: 'Web Scraping',
-                tag3: '6 Information Sources',
+                'project2-title': 'Guangchu - Industry News Collection',
+                'project2-desc': 'Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.',
                 demo: 'Demo',
                 skillsLabel: 'SKILLS',
-                skills: 'Tech Stack',
+                skills: 'Technical Expertise',
                 'skill1-name': 'Frontend Development',
                 'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations',
                 'skill2-name': 'Map Visualization',
@@ -919,11 +714,9 @@
                 'skill5-name': 'Automation',
                 'skill5-desc': 'Web scraping, scheduled tasks<br>Data extraction, report generation',
                 'skill6-name': 'Data Analysis',
-                'skill6-desc': 'Information collection, trend analysis<br>Investment evaluation, decision support',
-                footer: '🌍 Data-Driven Solar-Storage Investment Decisions'
+                'skill6-desc': 'Information collection, trend analysis<br>Investment evaluation, decision support'
             },
             ja: {
-                badge: '🎯 プロフェッショナル太陽光・蓄電池投資システム',
                 name: 'Terry Wu',
                 title: '太陽光・蓄電池投資システム開発者',
                 period1: '2002 〜 2019',
@@ -941,11 +734,8 @@
                 projects: 'プロジェクト',
                 'project1-title': '太陽光・蓄電池投資マップシステム',
                 'project1-desc': '中国 30 省、ベトナム 15 省、日本 47 都道府県をカバーする多国籍太陽光・蓄電池投資評価プラットフォーム。資源賦存、電力価格政策、市場状況、グリッド状況の 4 つの次元に基づき、科学的な投資判断をサポートします。',
-                'project2-title': '光儲龙虾 - ニュース収集システム',
+                'project2-title': '光儲龙虾 - 業界ニュース収集',
                 'project2-desc': '自動化された太陽光・蓄電池業界の情報収集・分析システム。多言語ニューススクレイピング、FTS5 全文検索、定期タスク、レポート生成などをサポート。情報源には PV Magazine、Energy Storage News など 6 つの主要メディアを含む。',
-                tag1: '92 地域データ',
-                tag2: 'Web スクレイピング',
-                tag3: '6 情報源',
                 demo: 'デモ',
                 skillsLabel: 'SKILLS',
                 skills: '技術スタック',
@@ -960,8 +750,7 @@
                 'skill5-name': '自動化',
                 'skill5-desc': 'Web スクレイピング、定期タスク<br>データ抽出、レポート生成',
                 'skill6-name': 'データ分析',
-                'skill6-desc': '情報収集、トレンド分析<br>投資評価、意思決定サポート',
-                footer: '🌍 データ駆動型太陽光・蓄電池投資判断'
+                'skill6-desc': '情報収集、トレンド分析<br>投資評価、意思決定サポート'
             }
         };
         
@@ -969,82 +758,33 @@
         
         function switchLang(lang) {
             currentLang = lang;
-            
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.dataset.lang === lang) {
-                    btn.classList.add('active');
-                }
+                if (btn.dataset.lang === lang) btn.classList.add('active');
             });
-            
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
-                if (translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
             });
-            
             localStorage.setItem('preferredLang', lang);
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ja');
         }
         
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 800);
-            
-            const savedLang = localStorage.getItem('preferredLang') || 'zh';
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
             switchLang(savedLang);
         });
         
         function celebrate() {
-            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe'];
+            const colors = ['#3b82f6', '#8b5cf6', '#06b6d4', '#f5576c', '#4facfe'];
             for (let i = 0; i < 50; i++) {
-                createConfetti(colors[Math.floor(Math.random() * colors.length)]);
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `position:fixed;width:10px;height:10px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}vw;top:-10px;border-radius:${Math.random()>0.5?'50%':'0'};pointer-events:none;z-index:9999;`;
+                document.body.appendChild(confetti);
+                confetti.animate([{transform:'translateY(0) rotate(0deg)',opacity:1},{transform:`translateY(${window.innerHeight+10}px) rotate(${Math.random()*720}deg)`,opacity:0}],{duration:2000+Math.random()*2000,easing:'cubic-bezier(0.25,0.46,0.45,0.94)'});
+                setTimeout(()=>confetti.remove(),4000);
             }
         }
-        
-        function createConfetti(color) {
-            const confetti = document.createElement('div');
-            confetti.style.cssText = `
-                position: fixed;
-                width: 10px;
-                height: 10px;
-                background: ${color};
-                left: ${Math.random() * 100}vw;
-                top: -10px;
-                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
-                pointer-events: none;
-                z-index: 9999;
-            `;
-            document.body.appendChild(confetti);
-            const duration = 2000 + Math.random() * 2000;
-            const endY = window.innerHeight + 10;
-            confetti.animate([
-                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                { transform: `translateY(${endY}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
-            ], {
-                duration: duration,
-                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-            });
-            setTimeout(() => confetti.remove(), duration);
-        }
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.project-card, .skill-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
-        });
     </script>
 </body>
 </html>
