@@ -74,14 +74,14 @@ Master's degree in related field.
 
 ## 💼 Work Experience
 
-### Ricoh (2019 - Present)
+### Risen Energy (日升) (2019 - Present)
 **CIO · VP · CEO**
 
-Chief Information Officer, Vice President, and Chief Executive Officer. Leading digital transformation and technology strategy.
+Chief Information Officer, Vice President, and Chief Executive Officer. Leading digital transformation and technology strategy in solar-storage industry.
 
 ---
 
-### Ricoh (2002 - 2019)
+### Ricoh (理光) (2002 - 2019)
 **Programmer · Manager · Director**
 
 Started as Programmer, promoted to Manager and Director. 17 years of experience in software development and team leadership.
