@@ -347,9 +347,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
             box-shadow: var(--shadow-sm);
             flex-shrink: 0;
+            overflow: hidden;
+            padding: 8px;
+        }
+        
+        .timeline-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .timeline-logo.risen {
+            background: linear-gradient(135deg, #e31e24, #f59820);
+        }
+        
+        .timeline-logo.ricoh {
+            background: #ffffff;
         }
         
         .timeline-content {
@@ -578,7 +593,7 @@
             .timeline-logo {
                 width: 50px;
                 height: 50px;
-                font-size: 20px;
+                padding: 6px;
             }
             
             .timeline-content {
@@ -753,7 +768,9 @@
         
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-logo">🏢</div>
+                <div class="timeline-logo risen">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Risen_Energy_logo.svg/200px-Risen_Energy_logo.svg.png" alt="Risen Energy Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2250%22>☀️</text></svg>';">
+                </div>
                 <div class="timeline-content">
                     <div class="timeline-period" data-i18n="period2">2019 ~ 2026</div>
                     <div class="timeline-details">
@@ -764,7 +781,9 @@
             </div>
             
             <div class="timeline-item">
-                <div class="timeline-logo">🖨️</div>
+                <div class="timeline-logo ricoh">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Ricoh_logo.svg/200px-Ricoh_logo.svg.png" alt="Ricoh Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2250%22>🖨️</text></svg>';">
+                </div>
                 <div class="timeline-content">
                     <div class="timeline-period" data-i18n="period1">2002 ~ 2019</div>
                     <div class="timeline-details">
@@ -785,7 +804,9 @@
         
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-logo">🎓</div>
+                <div class="timeline-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/University_of_Colorado_seal.svg/200px-University_of_Colorado_seal.svg.png" alt="University of Colorado Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2250%22>🎓</text></svg>';">
+                </div>
                 <div class="timeline-content">
                     <div class="timeline-period" data-i18n="edu3-period">2025</div>
                     <div class="timeline-details">
@@ -796,7 +817,9 @@
             </div>
             
             <div class="timeline-item">
-                <div class="timeline-logo">📚</div>
+                <div class="timeline-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/CEIBS_logo.svg/200px-CEIBS_logo.svg.png" alt="CEIBS Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2250%22>📚</text></svg>';">
+                </div>
                 <div class="timeline-content">
                     <div class="timeline-period" data-i18n="edu2-period">2023 ~ 2025</div>
                     <div class="timeline-details">
@@ -807,7 +830,9 @@
             </div>
             
             <div class="timeline-item">
-                <div class="timeline-logo">🎓</div>
+                <div class="timeline-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/zh-cn/thumb/f/f4/East_China_University_of_Science_and_Technology_logo.svg/200px-East_China_University_of_Science_and_Technology_logo.svg.png" alt="ECUST Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2250%22>🎓</text></svg>';">
+                </div>
                 <div class="timeline-content">
                     <div class="timeline-period" data-i18n="edu1-period">1999 ~ 2002</div>
                     <div class="timeline-details">
