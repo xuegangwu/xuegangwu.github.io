@@ -8,6 +8,9 @@
     <meta name="author" content="Terry Wu">
     <title>Terry Wu - 光储投资分析系统开发者</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,24 +19,43 @@
         }
         
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            --text-primary: #2d3748;
+            /* 专业配色方案 */
+            --primary-dark: #1a1a2e;
+            --primary-purple: #667eea;
+            --primary-blue: #764ba2;
+            --accent-pink: #f093fb;
+            --accent-red: #f5576c;
+            --text-primary: #1a202c;
             --text-secondary: #4a5568;
-            --bg-primary: #f7fafc;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+            --text-light: #718096;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-light: #e2e8f0;
+            
+            /* 阴影系统 */
+            --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 16px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 32px rgba(0,0,0,0.16);
+            --shadow-2xl: 0 24px 48px rgba(0,0,0,0.2);
+            
+            /* 圆角系统 */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
             color: var(--text-primary);
-            background: var(--bg-primary);
+            background: var(--bg-light);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         /* 背景动画 */
@@ -43,92 +65,157 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-purple) 50%, var(--primary-blue) 100%);
             z-index: -1;
             overflow: hidden;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            opacity: 0.3;
         }
         
         .bg-circle {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            animation: float 20s infinite;
-        }
-        
-        .bg-circle:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .bg-circle:nth-child(2) {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            right: 10%;
-            animation-delay: 5s;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            animation: float 20s infinite ease-in-out;
         }
         
         .bg-circle:nth-child(3) {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 30%;
-            animation-delay: 10s;
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .bg-circle:nth-child(4) {
+            width: 300px;
+            height: 300px;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 7s;
+        }
+        
+        .bg-circle:nth-child(5) {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 24px;
         }
         
-        /* 语言切换器 */
+        /* 语言切换器 - 专业化设计 */
         .language-switcher {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             z-index: 1000;
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+            padding: 6px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: var(--shadow-lg);
         }
         
         .lang-btn {
-            padding: 10px 16px;
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 25px;
+            padding: 10px 18px;
+            background: transparent;
+            color: rgba(255,255,255,0.8);
+            border: none;
+            border-radius: var(--radius-full);
             cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: inherit;
         }
         
         .lang-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateY(-1px);
         }
         
         .lang-btn.active {
             background: white;
-            color: #667eea;
+            color: var(--primary-purple);
+            box-shadow: var(--shadow-md);
         }
         
-        /* Header */
+        /* Header - 专业化设计 */
         .header {
             text-align: center;
             color: white;
-            padding: 100px 20px 80px;
+            padding: 140px 0 100px;
+            position: relative;
+        }
+        
+        .header-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-full);
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255,255,255,0.2);
             animation: slideDown 0.8s ease-out;
+        }
+        
+        .header h1 {
+            font-size: 72px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            animation: slideDown 0.8s ease-out 0.1s both;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header .title {
+            font-size: 28px;
+            opacity: 0.95;
+            margin-bottom: 24px;
+            font-weight: 400;
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+        
+        .header .subtitle {
+            font-size: 18px;
+            opacity: 0.85;
+            max-width: 720px;
+            margin: 0 auto 48px;
+            line-height: 1.8;
+            animation: slideDown 0.8s ease-out 0.3s both;
         }
         
         @keyframes slideDown {
@@ -136,12 +223,18 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+        
         .avatar {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 5px solid rgba(255,255,255,0.3);
-            margin: 0 auto 30px;
+            border: 4px solid rgba(255,255,255,0.3);
             background: linear-gradient(135deg, #da251d 0%, #ffcd3c 100%);
             display: flex;
             align-items: center;
@@ -149,10 +242,9 @@
             font-size: 80px;
             font-weight: bold;
             color: white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: pulse 2s infinite;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
@@ -160,84 +252,28 @@
         .avatar::before {
             content: '✨';
             position: absolute;
-            top: 10px;
-            right: 20px;
-            font-size: 30px;
-            animation: sparkle 1.5s infinite;
+            top: 15px;
+            right: 25px;
+            font-size: 32px;
+            animation: sparkle 2s infinite;
         }
         
         @keyframes sparkle {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.2); }
+            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.6; transform: scale(1.3) rotate(180deg); }
         }
         
         .avatar:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-            50% { box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
-        }
-        
-        .header h1 {
-            font-size: 64px;
-            margin-bottom: 15px;
-            font-weight: 800;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            letter-spacing: -2px;
-        }
-        
-        .header .title {
-            font-size: 28px;
-            opacity: 0.95;
-            margin-bottom: 20px;
-            font-weight: 300;
-        }
-        
-        .header .subtitle {
-            font-size: 18px;
-            opacity: 0.85;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 16px;
             flex-wrap: wrap;
-        }
-        
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 28px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
-            font-size: 16px;
-        }
-        
-        .social-links a:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        
-        /* Projects */
-        .projects {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 50px;
-            margin-top: -60px;
-            box-shadow: var(--shadow-xl);
-            animation: slideUp 0.8s ease-out;
+            animation: slideUp 0.8s ease-out 0.4s both;
         }
         
         @keyframes slideUp {
@@ -245,43 +281,80 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .section-title {
-            font-size: 48px;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--text-primary);
-            font-weight: 800;
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.2);
+            font-size: 15px;
+        }
+        
+        .social-links a:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Projects - 专业化设计 */
+        .projects {
+            background: var(--bg-white);
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+            padding: 100px 0;
+            margin-top: -60px;
             position: relative;
-            background: var(--primary-gradient);
+            box-shadow: var(--shadow-2xl);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-label {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+            color: white;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .section-title {
+            font-size: 52px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background: var(--primary-gradient);
-            border-radius: 3px;
-        }
-        
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 48px;
         }
         
         .project-card {
-            background: var(--card-gradient);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 5px solid #667eea;
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
             box-shadow: var(--shadow-md);
             position: relative;
             overflow: hidden;
@@ -293,128 +366,110 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--primary-gradient);
-            opacity: 0;
-            transition: opacity 0.4s;
-            z-index: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
         }
         
         .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .project-card:hover::before {
-            opacity: 0.05;
-        }
-        
-        .project-card > * {
-            position: relative;
-            z-index: 1;
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--primary-purple);
         }
         
         .project-icon {
             font-size: 64px;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
             display: block;
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            animation: float 3s infinite ease-in-out;
         }
         
         .project-card h3 {
-            font-size: 32px;
+            font-size: 28px;
             margin-bottom: 20px;
             color: var(--text-primary);
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
         
         .project-card p {
             color: var(--text-secondary);
-            margin-bottom: 30px;
+            margin-bottom: 32px;
             line-height: 1.8;
-            font-size: 17px;
+            font-size: 16px;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
+            gap: 10px;
+            margin-bottom: 32px;
         }
         
         .tag {
             padding: 8px 16px;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
             color: white;
-            border-radius: 24px;
-            font-size: 14px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
             font-weight: 600;
             box-shadow: var(--shadow-sm);
         }
         
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
         
         .project-links a {
             flex: 1;
             text-align: center;
             padding: 16px;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
             color: white;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             font-weight: 600;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: var(--shadow-md);
-            font-size: 16px;
+            font-size: 15px;
         }
         
         .project-links a:hover {
-            transform: translateY(-3px);
+            transform: translateY(-2px);
             box-shadow: var(--shadow-lg);
         }
         
-        /* Skills */
+        /* Skills - 专业化设计 */
         .skills {
-            background: white;
-            border-radius: 24px;
-            padding: 60px 50px;
-            margin-top: 40px;
-            box-shadow: var(--shadow-xl);
-            animation: slideUp 0.8s ease-out 0.2s both;
+            background: var(--bg-light);
+            padding: 100px 0;
         }
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
         }
         
         .skill-item {
-            background: var(--bg-primary);
-            padding: 35px;
-            border-radius: 16px;
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: var(--radius-xl);
             text-align: center;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--border-light);
             box-shadow: var(--shadow-sm);
         }
         
         .skill-item:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: var(--shadow-lg);
-            background: white;
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-purple);
         }
         
         .skill-icon {
             font-size: 56px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: block;
         }
         
@@ -422,43 +477,58 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
         }
         
         .skill-desc {
-            color: var(--text-secondary);
+            color: var(--text-light);
             font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
-        /* Footer */
+        /* Footer - 专业化设计 */
         .footer {
-            text-align: center;
+            background: var(--primary-dark);
             color: white;
-            padding: 60px 20px;
-            margin-top: 60px;
-            animation: fadeIn 1s ease-out;
+            text-align: center;
+            padding: 80px 0 40px;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .footer-logo {
+            font-size: 48px;
+            margin-bottom: 24px;
+            opacity: 0.8;
         }
         
         .footer p {
-            opacity: 0.9;
-            margin-bottom: 10px;
-            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 12px;
+            font-size: 15px;
         }
         
         .footer a {
             color: white;
             text-decoration: underline;
             font-weight: 600;
+            opacity: 0.9;
         }
         
         .footer a:hover {
-            opacity: 0.8;
+            opacity: 1;
+        }
+        
+        .footer-divider {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue));
+            margin: 32px auto;
+            border-radius: var(--radius-full);
         }
         
         /* 加载动画 */
@@ -468,12 +538,12 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: var(--primary-gradient);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-purple), var(--primary-blue));
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.5s;
+            transition: opacity 0.6s ease-out;
         }
         
         .loading.hidden {
@@ -482,9 +552,9 @@
         }
         
         .loading-spinner {
-            width: 70px;
-            height: 70px;
-            border: 5px solid rgba(255,255,255,0.3);
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(255,255,255,0.2);
             border-top-color: white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -497,8 +567,9 @@
         /* 响应式 */
         @media (max-width: 768px) {
             .language-switcher {
-                top: 10px;
-                right: 10px;
+                top: 12px;
+                right: 12px;
+                padding: 4px;
             }
             
             .lang-btn {
@@ -507,11 +578,11 @@
             }
             
             .header h1 {
-                font-size: 48px;
+                font-size: 42px;
             }
             
             .header .title {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             .avatar {
@@ -524,12 +595,16 @@
                 grid-template-columns: 1fr;
             }
             
-            .projects, .skills {
-                padding: 40px 25px;
+            .projects {
+                padding: 60px 0;
             }
             
             .section-title {
                 font-size: 36px;
+            }
+            
+            .project-card {
+                padding: 32px;
             }
         }
     </style>
@@ -542,6 +617,7 @@
     
     <!-- 背景动画 -->
     <div class="bg-animation">
+        <div class="bg-grid"></div>
         <div class="bg-circle"></div>
         <div class="bg-circle"></div>
         <div class="bg-circle"></div>
@@ -550,14 +626,19 @@
     <!-- 语言切换器 -->
     <div class="language-switcher">
         <button class="lang-btn active" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</button>
-        <button class="lang-btn" onclick="switchLang('en')" data-lang="en">🇺🇸 English</button>
+        <button class="lang-btn" onclick="switchLang('en')" data-lang="en">🇺🇸 EN</button>
         <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">🇯🇵 日本語</button>
     </div>
     
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="avatar" title="点击有惊喜！" onclick="celebrate()">TW</div>
+            <div class="header-badge" data-i18n="badge">🎯 专业的光储投资分析系统</div>
+            
+            <div class="avatar-container">
+                <div class="avatar" title="点击有惊喜！" onclick="celebrate()">TW</div>
+            </div>
+            
             <h1 data-i18n="name">Terry Wu</h1>
             <p class="title" data-i18n="title">光储投资分析系统开发者</p>
             <p class="subtitle" data-i18n="subtitle">专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策</p>
@@ -577,10 +658,15 @@
                 </a>
             </div>
         </div>
-        
-        <!-- Projects -->
-        <div class="projects">
-            <h2 class="section-title" data-i18n="projects">🚀 项目展示</h2>
+    </div>
+    
+    <!-- Projects -->
+    <div class="projects">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label" data-i18n="projectsLabel">PROJECTS</div>
+                <h2 class="section-title" data-i18n="projects">项目展示</h2>
+            </div>
             
             <div class="project-grid">
                 <!-- Project 1 -->
@@ -628,10 +714,15 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Skills -->
-        <div class="skills">
-            <h2 class="section-title" data-i18n="skills">💡 技术栈</h2>
+    </div>
+    
+    <!-- Skills -->
+    <div class="skills">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label" data-i18n="skillsLabel">SKILLS</div>
+                <h2 class="section-title" data-i18n="skills">技术栈</h2>
+            </div>
             
             <div class="skills-grid">
                 <div class="skill-item">
@@ -671,14 +762,20 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>© 2026 Terry Wu. All rights reserved.</p>
-            <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
-            <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;" data-i18n="footer">
-                🌍 让数据驱动光储投资决策
-            </p>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">⭐</div>
+                <p>© 2026 Terry Wu. All rights reserved.</p>
+                <div class="footer-divider"></div>
+                <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
+                <p style="margin-top: 20px; font-size: 14px; opacity: 0.7;" data-i18n="footer">
+                    🌍 让数据驱动光储投资决策
+                </p>
+            </div>
         </div>
     </div>
 
@@ -686,6 +783,7 @@
         // 多语言翻译
         const translations = {
             zh: {
+                badge: '🎯 专业的光储投资分析系统',
                 name: 'Terry Wu',
                 title: '光储投资分析系统开发者',
                 subtitle: '专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策',
@@ -693,7 +791,8 @@
                 project1: '投资地图',
                 project2: '光储龙虾',
                 contact: '联系我',
-                projects: '🚀 项目展示',
+                projectsLabel: 'PROJECTS',
+                projects: '项目展示',
                 project1Title: '光储电站投资地图系统',
                 project1Desc: '多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。',
                 project2Title: '光储龙虾',
@@ -702,7 +801,8 @@
                 tag2: '爬虫',
                 tag3: '6 个信息源',
                 demo: '演示',
-                skills: '💡 技术栈',
+                skillsLabel: 'SKILLS',
+                skills: '技术栈',
                 skill1Name: '前端开发',
                 skill1Desc: 'HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果',
                 skill2Name: '地图可视化',
@@ -718,6 +818,7 @@
                 footer: '🌍 让数据驱动光储投资决策'
             },
             en: {
+                badge: '🎯 Professional Solar-Storage Investment System',
                 name: 'Terry Wu',
                 title: 'Solar-Storage Investment System Developer',
                 subtitle: 'Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions',
@@ -725,7 +826,8 @@
                 project1: 'Investment Map',
                 project2: 'Guangchu',
                 contact: 'Contact Me',
-                projects: '🚀 Projects',
+                projectsLabel: 'PROJECTS',
+                projects: 'Projects',
                 project1Title: 'Solar-Storage Investment Map System',
                 project1Desc: 'Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.',
                 project2Title: 'Guangchu - Solar-Storage News Collection',
@@ -734,7 +836,8 @@
                 tag2: 'Web Scraping',
                 tag3: '6 Information Sources',
                 demo: 'Demo',
-                skills: '💡 Tech Stack',
+                skillsLabel: 'SKILLS',
+                skills: 'Tech Stack',
                 skill1Name: 'Frontend Development',
                 skill1Desc: 'HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations',
                 skill2Name: 'Map Visualization',
@@ -750,6 +853,7 @@
                 footer: '🌍 Data-Driven Solar-Storage Investment Decisions'
             },
             ja: {
+                badge: '🎯 プロフェッショナル太陽光・蓄電池投資システム',
                 name: 'Terry Wu',
                 title: '太陽光・蓄電池投資システム開発者',
                 subtitle: '太陽光＋蓄電池分野の評価システム開発に専念し、データ駆動型の意思決定で質の高い投資機会を特定します',
@@ -757,7 +861,8 @@
                 project1: '投資マップ',
                 project2: '光儲龙虾',
                 contact: 'お問い合わせ',
-                projects: '🚀 プロジェクト',
+                projectsLabel: 'PROJECTS',
+                projects: 'プロジェクト',
                 project1Title: '太陽光・蓄電池投資マップシステム',
                 project1Desc: '中国 30 省、ベトナム 15 省、日本 47 都道府県をカバーする多国籍太陽光・蓄電池投資評価プラットフォーム。資源賦存、電力価格政策、市場状況、グリッド状況の 4 つの次元に基づき、科学的な投資判断をサポートします。',
                 project2Title: '光儲龙虾 - ニュース収集システム',
@@ -766,7 +871,8 @@
                 tag2: 'Web スクレイピング',
                 tag3: '6 情報源',
                 demo: 'デモ',
-                skills: '💡 技術スタック',
+                skillsLabel: 'SKILLS',
+                skills: '技術スタック',
                 skill1Name: 'フロントエンド開発',
                 skill1Desc: 'HTML5, CSS3, JavaScript (ES6+)<br>レスポンシブデザイン、アニメーション',
                 skill2Name: 'マップ可視化',
@@ -783,14 +889,11 @@
             }
         };
         
-        // 当前语言
         let currentLang = 'zh';
         
-        // 切换语言
         function switchLang(lang) {
             currentLang = lang;
             
-            // 更新按钮状态
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.lang === lang) {
@@ -798,7 +901,6 @@
                 }
             });
             
-            // 更新页面内容
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
                 if (translations[lang][key]) {
@@ -806,28 +908,21 @@
                 }
             });
             
-            // 保存语言偏好
             localStorage.setItem('preferredLang', lang);
-            
-            // 更新 HTML lang 属性
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ja');
         }
         
-        // 页面加载完成后隐藏加载动画
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
             }, 800);
             
-            // 恢复用户语言偏好
             const savedLang = localStorage.getItem('preferredLang') || 'zh';
             switchLang(savedLang);
         });
         
-        // 庆祝动画
         function celebrate() {
             const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe'];
-            
             for (let i = 0; i < 50; i++) {
                 createConfetti(colors[Math.floor(Math.random() * colors.length)]);
             }
@@ -846,12 +941,9 @@
                 pointer-events: none;
                 z-index: 9999;
             `;
-            
             document.body.appendChild(confetti);
-            
             const duration = 2000 + Math.random() * 2000;
             const endY = window.innerHeight + 10;
-            
             confetti.animate([
                 { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
                 { transform: `translateY(${endY}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
@@ -859,11 +951,9 @@
                 duration: duration,
                 easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
             });
-            
             setTimeout(() => confetti.remove(), duration);
         }
         
-        // 滚动动画
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
