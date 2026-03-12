@@ -1,145 +1,122 @@
-# 🚀 GitHub Pages 部署说明
+# 🚀 部署指南
 
-**更新时间**: 2026-03-12 15:55
+## 快速部署步骤
 
----
+### 步骤 1: 在 GitHub 上创建仓库
 
-## ⚠️ 重要：GitHub Pages 配置步骤
+1. 访问：https://github.com/new
+2. **Repository name**: `xuegangwu.github.io`
+3. **Visibility**: Public（必须公开！）
+4. ❌ 不要勾选 "Add a README file"
+5. 点击 **Create repository**
 
-由于 GitHub Pages 需要手动配置，请按以下步骤操作：
+### 步骤 2: 推送代码
 
----
+在终端执行以下命令：
 
-## 📋 第 1 步：访问仓库
+```bash
+cd /home/admin/openclaw/workspace/projects/xuegangwu.github.io
 
-**打开**: https://github.com/xuegangwu/portfolio
+# 初始化 Git（如果还没有）
+git init
 
-**确认**:
-- ✅ 可以看到 index.html 文件
-- ✅ 可以看到 README.md 文件
-- ✅ 仓库是 **Public**（不是 Private）
+# 添加所有文件
+git add .
 
----
+# 提交
+git commit -m "Initial commit - Personal homepage"
 
-## 📋 第 2 步：配置 GitHub Pages
+# 设置主分支
+git branch -M main
 
-### 方法 A：使用 Settings（推荐）
+# 添加远程仓库（替换为您的 GitHub 用户名）
+git remote add origin https://github.com/xuegangwu/xuegangwu.github.io.git
 
-1. **访问**: https://github.com/xuegangwu/portfolio/settings/pages
+# 推送
+git push -u origin main
+```
 
-2. **Source 配置**:
-   - **Deploy from a branch**
-   - **Branch**: main
-   - **Folder**: / (root)
+### 步骤 3: 配置 GitHub Pages
 
-3. **点击 Save**
+1. 访问：https://github.com/xuegangwu/xuegangwu.github.io/settings/pages
+2. **Source**: Deploy from a branch
+3. **Branch**: main
+4. **Folder**: / (root)
+5. 点击 **Save**
 
-4. **等待 1-2 分钟**
+### 步骤 4: 等待部署
 
-5. **访问**: https://xuegangwu.github.io/portfolio/
+等待 1-2 分钟，GitHub 会自动部署。
 
----
+### 步骤 5: 访问
 
-### 方法 B：如果 Settings 页面无法访问
-
-1. **访问**: https://github.com/xuegangwu/portfolio
-
-2. **点击 Settings 标签**（顶部导航）
-
-3. **左侧菜单找到 Pages**
-
-4. **配置**:
-   - Source: Deploy from a branch
-   - Branch: main
-   - Folder: / (root)
-
-5. **点击 Save**
-
----
-
-## ⚠️ 如果仓库是 Private
-
-**GitHub 免费账户无法为 Private 仓库启用 Pages！**
-
-**解决**:
-
-1. 访问：https://github.com/xuegangwu/portfolio/settings
-2. 滚动到 **Danger Zone**
-3. 点击 **Change visibility**
-4. 选择 **Make public**
-5. 确认
+```
+https://xuegangwu.github.io/
+```
 
 ---
 
-## ✅ 验证部署
+## 📁 文件说明
 
-### 1. 检查部署状态
-
-访问：https://github.com/xuegangwu/portfolio/deployments
-
-应该看到：
-- ✅ github-pages 部署
-- ✅ 状态：Success
-
-### 2. 访问 Pages
-
-访问：https://xuegangwu.github.io/portfolio/
-
-应该看到：
-- 👤 个人头像（TW）
-- 📛 Terry Wu
-- 🗺️ 投资地图项目
-- 🦞 光储龙虾项目
-- 💡 技术栈
+- `index.html` - 个人主页（包含日记 Link）
+- `DEPLOY.md` - 本部署指南
 
 ---
 
-## 🔧 故障排查
+## 🔗 日记 Link 位置
 
-### 还是 404？
+个人主页上有一个醒目的蓝色卡片：
 
-**原因**: 
-1. Pages 还未配置
-2. 仓库是 Private
-3. 部署还未完成
+```
+📔 开发日记
+参考 sanwan.ai (3 万点 AI) 设计风格
 
-**解决**:
-1. 确认已按上述步骤配置 Pages
-2. 将仓库改为 Public
-3. 等待 1-2 分钟
+记录每一天的工作进展...
 
-### Settings 页面无法访问？
+[🏠 访问日记首页] [📖 查看日记列表]
+```
 
-**原因**: 浏览器缓存或网络问题
-
-**解决**:
-1. 清除浏览器缓存（Ctrl+Shift+Delete）
-2. 使用无痕模式访问
-3. 或者直接访问：https://github.com/xuegangwu/portfolio/settings/pages
+点击按钮会跳转到：
+- 日记首页：https://xuegangwu.github.io/guangchu/
+- 日记列表：https://xuegangwu.github.io/guangchu/diary-list.html
 
 ---
 
-## 📞 快速链接
+## ⚠️ 注意事项
 
-| 功能 | 链接 |
+1. **仓库名称必须是**: `xuegangwu.github.io`
+   - 这是 GitHub Pages 的用户主页命名规则
+   
+2. **必须是 Public 仓库**
+   - 免费 GitHub 账户只能公开仓库使用 Pages
+
+3. **等待部署**
+   - 首次部署需要 1-2 分钟
+   - 可以在 GitHub 仓库的 Actions 标签查看部署进度
+
+---
+
+## 🎯 访问地址
+
+部署完成后：
+
+| 页面 | 地址 |
 |------|------|
-| **仓库主页** | https://github.com/xuegangwu/portfolio |
-| **Pages 设置** | https://github.com/xuegangwu/portfolio/settings/pages |
-| **部署状态** | https://github.com/xuegangwu/portfolio/deployments |
-| **GitHub Pages** | https://xuegangwu.github.io/portfolio/ |
+| **个人主页** | https://xuegangwu.github.io/ |
+| **日记首页** | https://xuegangwu.github.io/guangchu/ |
+| **日记列表** | https://xuegangwu.github.io/guangchu/diary-list.html |
 
 ---
 
-## 🎯 总结
+## 💡 需要帮助？
 
-**代码已推送**: ✅ main 分支已包含 index.html
+如果遇到问题：
 
-**需要配置**: 在 GitHub 上配置 Pages 从 main 分支部署
-
-**配置后等待**: 1-2 分钟
-
-**访问**: https://xuegangwu.github.io/portfolio/
+1. 检查仓库名称是否正确
+2. 确认仓库是 Public
+3. 检查 GitHub Pages 设置
+4. 清除浏览器缓存
 
 ---
 
-**请按上述步骤在 GitHub 上配置 Pages！** 🚀
+© 2026 Terry Wu
