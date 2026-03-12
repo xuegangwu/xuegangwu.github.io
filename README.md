@@ -21,8 +21,11 @@ Record daily work progress, witness project growth. Minimalist · Professional �
 ### 🦞 Guangchu (光储龙虾)
 **Solar-Storage News Collection & Analysis System**
 
-- **Live Demo**: https://xuegangwu.github.io/guangchu/
+Global photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation.
+
+- **Tech Stack**: Python, Flask, SQLite, FTS5
 - **📔 Development Diary**: https://xuegangwu.github.io/guangchu/diary-list.html
+- **Live Demo**: https://xuegangwu.github.io/guangchu/
 - **GitHub**: https://github.com/xuegangwu/guangchu
 
 ---
@@ -30,16 +33,76 @@ Record daily work progress, witness project growth. Minimalist · Professional �
 ### 🗺️ Solar-Storage Investment Map
 **Multi-Country Investment Evaluation Platform**
 
+Covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions.
+
 - **Tech Stack**: Node.js, Leaflet, Three.js
 - **Live Demo**: http://localhost:3000/
 
 ---
 
+### 📊 Data Analysis Tools
+**Industry Data Analysis and Visualization**
+
+Multi-dimensional data analysis and report generation tools.
+
+- **Tech Stack**: Python, Pandas, Plotly
+
+---
+
+## 🎓 Education
+
+### University of Colorado (2025 - Present)
+**AI Engineering Master's Degree**
+
+Currently pursuing AI engineering master's degree, focusing on machine learning and deep learning applications.
+
+---
+
+### CEIBS (2023 - 2025)
+**EMBA**
+
+Executive Master of Business Administration at China Europe International Business School.
+
+---
+
+### East China University of Science and Technology (1999 - 2002)
+**Master's Degree**
+
+Master's degree in related field.
+
+---
+
+## 💼 Work Experience
+
+### Oracle (2019 - Present)
+**CIO · VP · CEO**
+
+Chief Information Officer, Vice President, and Chief Executive Officer. Leading digital transformation and technology strategy.
+
+---
+
+### Ricoh (2002 - 2019)
+**Programmer · Manager · Director**
+
+Started as Programmer, promoted to Manager and Director. 17 years of experience in software development and team leadership.
+
+---
+
 ## 🛠️ Skills & Expertise
 
-- **Backend**: Python, Node.js, Flask, SQLite
-- **Frontend**: HTML5, CSS3, JavaScript, React
-- **Data**: Pandas, NumPy, Plotly
+### Backend Development
+- **Languages**: Python, Node.js, JavaScript
+- **Frameworks**: Flask, Express
+- **Databases**: SQLite, PostgreSQL
+
+### Frontend Development
+- **Languages**: HTML5, CSS3, JavaScript
+- **Frameworks**: React, Vue.js
+- **Libraries**: Leaflet, Three.js
+
+### Data Analysis
+- **Tools**: Pandas, NumPy, Matplotlib, Plotly
+- **Skills**: Data visualization, statistical analysis
 
 ---
 
@@ -47,8 +110,9 @@ Record daily work progress, witness project growth. Minimalist · Professional �
 
 - **Email**: wuxuegang@gmail.com
 - **GitHub**: https://github.com/xuegangwu
+- **LinkedIn**: https://linkedin.com/in/xuegangwu
 - **Personal Homepage**: https://xuegangwu.github.io/
 
 ---
 
-© 2026 Terry Wu
+© 2026 Terry Wu. All rights reserved.
