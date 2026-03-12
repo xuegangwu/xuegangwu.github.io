@@ -88,30 +88,11 @@ Started as Programmer, promoted to Manager and Director. 17 years of experience 
 
 ---
 
-## 🛠️ Skills & Expertise
-
-### Backend Development
-- **Languages**: Python, Node.js, JavaScript
-- **Frameworks**: Flask, Express
-- **Databases**: SQLite, PostgreSQL
-
-### Frontend Development
-- **Languages**: HTML5, CSS3, JavaScript
-- **Frameworks**: React, Vue.js
-- **Libraries**: Leaflet, Three.js
-
-### Data Analysis
-- **Tools**: Pandas, NumPy, Matplotlib, Plotly
-- **Skills**: Data visualization, statistical analysis
-
----
-
 ## 📞 Contact
 
 - **Email**: wuxuegang@gmail.com
 - **GitHub**: https://github.com/xuegangwu
 - **LinkedIn**: https://linkedin.com/in/xuegangwu
-- **Personal Homepage**: https://xuegangwu.github.io/
 
 ---
 
