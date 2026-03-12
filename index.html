@@ -58,14 +58,27 @@
         
         /* Sections */
         .section { margin-bottom: 60px; }
-        .section-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; }
+        .section-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Projects */
+        .project-card {
+            padding: 25px; background: #f8f8f8; border-radius: 12px;
+            margin-bottom: 20px; border-left: 4px solid #0071e3;
+        }
+        .project-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .project-desc { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 12px; }
+        .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+        .project-links a {
+            color: #0071e3; text-decoration: none; font-weight: 600;
+            padding: 6px 14px; background: #e6f2ff; border-radius: 6px;
+            font-size: 13px;
+        }
         
         /* Timeline */
         .timeline-item {
             padding: 20px; background: #f8f8f8; border-radius: 12px;
-            margin-bottom: 20px; border-left: 4px solid #0071e3;
+            margin-bottom: 20px; border-left: 4px solid #667eea;
         }
-        .timeline-item:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         .timeline-period { font-size: 14px; color: #999; margin-bottom: 8px; }
         .timeline-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
         .timeline-desc { font-size: 14px; color: #666; line-height: 1.8; }
@@ -94,7 +107,7 @@
             </div>
         </div>
         
-        <!-- Diary Featured -->
+        <!-- 1. Diary Featured (最顶部) -->
         <div class="diary-featured">
             <div class="diary-featured-header">
                 <span class="diary-featured-icon">📔</span>
@@ -131,7 +144,38 @@
             </div>
         </div>
         
-        <!-- Education -->
+        <!-- 2. Projects (中间) -->
+        <div class="section">
+            <h2 class="section-title">💼 Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3 class="project-title">🦞 Guangchu (光储龙虾)</h3>
+                <p class="project-desc">Solar-Storage News Collection & Analysis System - Global photovoltaic + energy storage industry information collection and analysis system.</p>
+                <div class="project-links">
+                    <a href="https://xuegangwu.github.io/guangchu/" target="_blank">📔 Diary</a>
+                    <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank">📖 Diary List</a>
+                    <a href="https://github.com/xuegangwu/guangchu" target="_blank">🐙 GitHub</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">🗺️ Solar-Storage Investment Map</h3>
+                <p class="project-desc">Multi-Country Investment Evaluation Platform - Covering China, Vietnam, and Japan.</p>
+                <div class="project-links">
+                    <a href="http://localhost:3000/" target="_blank">🌐 Live Demo</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">📊 Data Analysis Tools</h3>
+                <p class="project-desc">Industry Data Analysis and Visualization - Multi-dimensional data analysis and report generation tools.</p>
+                <div class="project-links">
+                    <a href="#">🔗 Coming Soon</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 3. Education & Work Experience (最底部) -->
         <div class="section">
             <h2 class="section-title">🎓 Education</h2>
             
@@ -154,7 +198,6 @@
             </div>
         </div>
         
-        <!-- Work Experience -->
         <div class="section">
             <h2 class="section-title">💼 Work Experience</h2>
             
