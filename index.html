@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="description" content="Terry Wu - Solar-Storage Investment System Developer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Terry Wu - Software-Defined Hardware, AI-Reimagined Solar-Storage">
     <meta name="keywords" content="Terry Wu, Solar, Energy Storage, Investment, GitHub, Developer">
     <meta name="author" content="Terry Wu">
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#0077b5">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
-    <title>Terry Wu - Solar-Storage Investment System Developer</title>
+    <title>Terry Wu - Software-Defined Hardware, AI-Reimagined Solar-Storage</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,129 +22,121 @@
         }
         
         :root {
-            --primary-dark: #0f172a;
-            --primary-blue: #3b82f6;
-            --primary-purple: #8b5cf6;
-            --accent-cyan: #06b6d4;
-            --text-primary: #1e293b;
-            --text-secondary: #64748b;
-            --text-light: #94a3b8;
-            --bg-light: #f8fafc;
+            --linkedin-blue: #0077b5;
+            --linkedin-dark: #004182;
+            --linkedin-light: #0a66c2;
+            --text-primary: #191919;
+            --text-secondary: #666666;
+            --text-light: #888888;
+            --bg-primary: #f3f2ef;
             --bg-white: #ffffff;
-            --border-light: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
+            --border-light: #e0e0e0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 2px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 4px 12px rgba(0,0,0,0.12);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
         }
         
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--text-primary);
-            background: var(--bg-light);
+            background: var(--bg-primary);
             overflow-x: hidden;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            user-select: none;
-            touch-action: manipulation;
         }
         
-        /* 移动端触摸优化 */
-        @media (hover: none) {
-            .avatar:hover,
-            .project-card:hover,
-            .skill-item:hover,
-            .social-links a:hover,
-            .project-links a:hover {
-                transform: none;
-            }
-            
-            .avatar:active {
-                transform: scale(0.95);
-            }
-            
-            .project-card:active,
-            .skill-item:active {
-                transform: scale(0.98);
-            }
-        }
-        
-        /* 背景 */
-        .bg-gradient {
-            position: fixed;
+        /* Header - LinkedIn 风格 */
+        .header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 60vh;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 50%, var(--primary-purple) 100%);
-            z-index: -1;
+            z-index: 100;
         }
         
-        .container {
-            max-width: 1200px;
+        .header-content {
+            max-width: 1128px;
             margin: 0 auto;
             padding: 0 24px;
         }
         
-        /* 语言切换器 */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--linkedin-blue);
+            text-decoration: none;
+        }
+        
         .language-switcher {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 1000;
             display: flex;
             gap: 8px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(20px);
-            padding: 6px;
-            border-radius: 9999px;
-            border: 1px solid rgba(255,255,255,0.2);
         }
         
         .lang-btn {
-            padding: 10px 18px;
+            padding: 8px 16px;
             background: transparent;
-            color: rgba(255,255,255,0.8);
-            border: none;
-            border-radius: 9999px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
             cursor: pointer;
             font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 500;
+            transition: all 0.2s;
         }
         
         .lang-btn:hover {
-            background: rgba(255,255,255,0.15);
-            color: white;
+            background: var(--bg-primary);
+            border-color: var(--linkedin-blue);
         }
         
         .lang-btn.active {
-            background: white;
-            color: var(--primary-blue);
-        }
-        
-        /* Header */
-        .header {
-            padding: 120px 0 80px;
+            background: var(--linkedin-blue);
             color: white;
+            border-color: var(--linkedin-blue);
         }
         
-        .header-content {
+        /* Profile Banner */
+        .profile-banner {
+            background: linear-gradient(135deg, var(--linkedin-blue), var(--linkedin-dark));
+            height: 200px;
+            position: relative;
+        }
+        
+        /* Profile Section */
+        .profile-section {
+            max-width: 1128px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .profile-card {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            margin-top: -80px;
+            padding: 24px;
+            position: relative;
+        }
+        
+        .profile-header {
             display: grid;
             grid-template-columns: 200px 1fr;
-            gap: 48px;
-            align-items: center;
+            gap: 32px;
+            margin-bottom: 32px;
         }
         
         .avatar {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             background: linear-gradient(135deg, #da251d, #ffcd3c);
             display: flex;
@@ -155,60 +145,122 @@
             font-size: 72px;
             font-weight: bold;
             color: white;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-lg);
             cursor: pointer;
-            transition: all 0.4s;
-            border: 4px solid rgba(255,255,255,0.3);
+            transition: all 0.3s;
+            border: 4px solid white;
         }
         
         .avatar:hover {
             transform: scale(1.05);
-            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
         }
         
-        .header-info h1 {
-            font-size: 42px;
+        .profile-info h1 {
+            font-size: 32px;
             font-weight: 600;
             margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            color: var(--text-primary);
         }
         
-        .header-info .title {
+        .profile-title {
             font-size: 20px;
-            opacity: 0.9;
-            margin-bottom: 24px;
+            color: var(--text-primary);
+            margin-bottom: 16px;
             font-weight: 400;
         }
         
-        /* 经历时间线 */
-        .experience-section {
-            margin-bottom: 32px;
+        .profile-location {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
         }
         
-        .section-heading {
-            font-size: 18px;
-            font-weight: 700;
+        .profile-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .btn-primary {
+            padding: 10px 24px;
+            background: var(--linkedin-blue);
             color: white;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            opacity: 0.9;
+            border: none;
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .experience-timeline {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+        .btn-primary:hover {
+            background: var(--linkedin-dark);
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            padding: 10px 24px;
+            background: white;
+            color: var(--linkedin-blue);
+            border: 1px solid var(--linkedin-blue);
+            border-radius: 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-secondary:hover {
+            background: #ebf4fb;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: var(--bg-white);
             border-radius: var(--radius-lg);
-            padding: 24px 28px;
+            box-shadow: var(--shadow-md);
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 16px;
-            border: 1px solid rgba(255,255,255,0.15);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .about-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        /* Experience & Education */
+        .timeline-section {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 24px;
+            margin: 24px 0;
         }
         
         .timeline-item {
-            display: flex;
+            display: grid;
+            grid-template-columns: 80px 1fr;
             gap: 20px;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-light);
         }
         
         .timeline-item:last-child {
@@ -217,159 +269,83 @@
         
         .timeline-period {
             font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .timeline-content h3 {
+            font-size: 18px;
             font-weight: 600;
-            color: rgba(255,255,255,0.9);
-            min-width: 120px;
-        }
-        
-        .timeline-content {
-            flex: 1;
-        }
-        
-        .timeline-role {
-            font-size: 15px;
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 4px;
         }
         
-        .timeline-company {
+        .timeline-content .company {
+            font-size: 15px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+        
+        .timeline-content .description {
             font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            font-style: italic;
-        }
-        
-        .header-subtitle {
-            font-size: 16px;
-            opacity: 0.85;
-            line-height: 1.7;
-            max-width: 700px;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 12px;
-            margin-top: 32px;
-            flex-wrap: wrap;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--radius-full);
-            font-weight: 600;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.2);
-            font-size: 14px;
-        }
-        
-        .social-links a:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
+            color: var(--text-light);
         }
         
         /* Projects */
-        .projects {
+        .projects-section {
             background: var(--bg-white);
-            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-            padding: 80px 0;
-            margin-top: -60px;
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .section-label {
-            display: inline-block;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            color: white;
-            border-radius: var(--radius-full);
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-        
-        .section-title {
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 60px;
-            letter-spacing: -1px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 24px;
+            margin: 24px 0;
         }
         
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
         }
         
         .project-card {
-            background: var(--bg-white);
-            border-radius: var(--radius-xl);
-            padding: 40px;
-            transition: all 0.4s;
             border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-md);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
+            border-radius: var(--radius-md);
+            padding: 20px;
+            transition: all 0.3s;
         }
         
         .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-xl);
-            border-color: var(--primary-blue);
-        }
-        
-        .project-icon {
-            font-size: 56px;
-            margin-bottom: 24px;
-            display: block;
+            box-shadow: var(--shadow-lg);
+            border-color: var(--linkedin-blue);
         }
         
         .project-card h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            color: var(--text-primary);
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--linkedin-blue);
+            margin-bottom: 12px;
         }
         
         .project-card p {
+            font-size: 14px;
             color: var(--text-secondary);
-            margin-bottom: 28px;
-            line-height: 1.7;
-            font-size: 15px;
+            margin-bottom: 16px;
+            line-height: 1.6;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 28px;
+            margin-bottom: 16px;
         }
         
         .tag {
-            padding: 6px 14px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
-            color: white;
-            border-radius: var(--radius-full);
+            padding: 4px 12px;
+            background: #ebf4fb;
+            color: var(--linkedin-blue);
+            border-radius: 12px;
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 500;
         }
         
         .project-links {
@@ -380,393 +356,212 @@
         .project-links a {
             flex: 1;
             text-align: center;
-            padding: 14px;
-            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+            padding: 8px;
+            background: var(--linkedin-blue);
             color: white;
             text-decoration: none;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-sm);
             font-weight: 600;
-            transition: all 0.3s;
             font-size: 14px;
+            transition: all 0.2s;
         }
         
         .project-links a:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            background: var(--linkedin-dark);
         }
         
         /* Skills */
-        .skills {
-            background: var(--bg-light);
-            padding: 80px 0;
+        .skills-section {
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: 24px;
+            margin: 24px 0;
         }
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
         }
         
         .skill-item {
-            background: var(--bg-white);
-            padding: 36px;
-            border-radius: var(--radius-xl);
-            text-align: center;
-            transition: all 0.3s;
+            padding: 16px;
             border: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
+            border-radius: var(--radius-md);
+            transition: all 0.3s;
         }
         
         .skill-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-blue);
+            border-color: var(--linkedin-blue);
+            background: #ebf4fb;
         }
         
         .skill-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
+            font-size: 32px;
+            margin-bottom: 12px;
         }
         
         .skill-name {
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .skill-desc {
+            font-size: 13px;
             color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
         
         /* Footer */
         .footer {
-            background: var(--primary-dark);
-            color: white;
+            background: var(--bg-white);
+            border-top: 1px solid var(--border-light);
+            padding: 32px 0;
+            margin-top: 40px;
             text-align: center;
-            padding: 60px 0 40px;
-        }
-        
-        .footer-logo {
-            font-size: 40px;
-            margin-bottom: 20px;
-            opacity: 0.8;
         }
         
         .footer p {
-            opacity: 0.8;
-            margin-bottom: 10px;
             font-size: 14px;
+            color: var(--text-light);
         }
         
-        .footer a {
-            color: white;
-            text-decoration: underline;
-            font-weight: 600;
-        }
-        
-        .footer-divider {
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
-            margin: 28px auto;
-            border-radius: 9999px;
-        }
-        
-        /* 响应式 - 平板和手机 */
+        /* 响应式 */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-            
-            .language-switcher {
-                top: 12px;
-                right: 12px;
-                padding: 4px;
-            }
-            
-            .lang-btn {
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-            
-            .header {
-                padding: 100px 0 60px;
-            }
-            
-            .header-content {
+            .profile-header {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 32px;
             }
             
             .avatar {
-                width: 140px;
-                height: 140px;
+                width: 150px;
+                height: 150px;
                 font-size: 56px;
                 margin: 0 auto;
             }
             
-            .header-info h1 {
-                font-size: 28px;
-            }
-            
-            .header-info .title {
-                font-size: 16px;
-            }
-            
-            .experience-timeline {
-                padding: 20px;
-                text-align: left;
-            }
-            
-            .timeline-item {
-                flex-direction: column;
-                gap: 6px;
-                padding: 12px 0;
-            }
-            
-            .timeline-period {
-                min-width: auto;
-                font-size: 13px;
-            }
-            
-            .timeline-role {
-                font-size: 14px;
-            }
-            
-            .timeline-company {
-                font-size: 13px;
-            }
-            
-            .header-subtitle {
-                font-size: 15px;
-            }
-            
-            .social-links {
+            .profile-actions {
                 justify-content: center;
             }
             
-            .social-links a {
-                padding: 10px 18px;
-                font-size: 13px;
-            }
-            
-            /* Projects */
-            .projects {
-                padding: 60px 0;
-                margin-top: -40px;
-            }
-            
-            .section-label {
-                font-size: 11px;
-                padding: 6px 14px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-                margin-bottom: 40px;
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
             
             .project-grid {
                 grid-template-columns: 1fr;
-                gap: 28px;
-            }
-            
-            .project-card {
-                padding: 28px;
-            }
-            
-            .project-icon {
-                font-size: 48px;
-            }
-            
-            .project-card h3 {
-                font-size: 20px;
-            }
-            
-            .project-card p {
-                font-size: 14px;
-            }
-            
-            .tag {
-                font-size: 11px;
-                padding: 5px 12px;
-            }
-            
-            /* Skills */
-            .skills {
-                padding: 60px 0;
             }
             
             .skills-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .skill-item {
-                padding: 28px;
-            }
-            
-            .skill-icon {
-                font-size: 40px;
-            }
-            
-            .skill-name {
-                font-size: 17px;
-            }
-            
-            .skill-desc {
-                font-size: 13px;
-            }
-            
-            /* Footer */
-            .footer {
-                padding: 50px 0 30px;
-            }
-            
-            .footer-logo {
-                font-size: 32px;
-            }
-        }
-        
-        /* 小屏手机 */
-        @media (max-width: 480px) {
-            .header {
-                padding: 80px 0 50px;
-            }
-            
-            .avatar {
-                width: 120px;
-                height: 120px;
-                font-size: 48px;
-            }
-            
-            .header-info h1 {
-                font-size: 24px;
-            }
-            
-            .header-info .title {
-                font-size: 14px;
-            }
-            
-            .experience-timeline {
-                padding: 16px;
-            }
-            
-            .timeline-period {
-                font-size: 12px;
-            }
-            
-            .timeline-role {
-                font-size: 13px;
-            }
-            
-            .header-subtitle {
-                font-size: 14px;
-            }
-            
-            .social-links {
-                gap: 8px;
-            }
-            
-            .social-links a {
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-            
-            .projects {
-                padding: 50px 0;
-            }
-            
-            .project-card {
-                padding: 24px;
-            }
-            
-            .section-title {
-                font-size: 24px;
-            }
-            
-            .skill-item {
-                padding: 24px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 背景 -->
-    <div class="bg-gradient"></div>
-    
-    <!-- 语言切换器 -->
-    <div class="language-switcher">
-        <button class="lang-btn" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</button>
-        <button class="lang-btn active" onclick="switchLang('en')" data-lang="en">🇺🇸 EN</button>
-        <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">🇯🇵 日本語</button>
-    </div>
-    
-    <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <div class="header-content">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-top">
+                <a href="#" class="logo">in Terry Wu</a>
+                <div class="language-switcher">
+                    <button class="lang-btn" onclick="switchLang('zh')" data-lang="zh">中文</button>
+                    <button class="lang-btn active" onclick="switchLang('en')" data-lang="en">EN</button>
+                    <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">日本語</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Profile Banner -->
+    <div class="profile-banner"></div>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <div class="profile-card">
+            <div class="profile-header">
                 <div class="avatar" onclick="celebrate()">TW</div>
-                
-                <div class="header-info">
+                <div class="profile-info">
                     <h1 data-i18n="name">Terry Wu</h1>
-                    <p class="title" data-i18n="title">Solar-Storage Investment System Developer</p>
-                    
-                    <div class="experience-timeline">
-                        <div class="timeline-item">
-                            <span class="timeline-period" data-i18n="period2">2019 ~ 2026</span>
-                            <div class="timeline-content">
-                                <div class="timeline-role" data-i18n="role2">CIO, VP, CEO</div>
-                                <div class="timeline-company" data-i18n="company2">@ Risen</div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <span class="timeline-period" data-i18n="period1">2002 ~ 2019</span>
-                            <div class="timeline-content">
-                                <div class="timeline-role" data-i18n="role1">Programmer, Manager</div>
-                                <div class="timeline-company" data-i18n="company1">@ Ricoh</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <p class="header-subtitle" data-i18n="subtitle">Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions</p>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/xuegangwu" target="_blank" rel="noopener">
-                            🔗 <span data-i18n="github">GitHub</span>
-                        </a>
-                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
-                            🗺️ <span data-i18n="project1">Investment Map</span>
-                        </a>
-                        <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
-                            🦞 <span data-i18n="project2">Guangchu</span>
-                        </a>
-                        <a href="mailto:wuxuegang@gmail.com" rel="noopener">
+                    <p class="profile-title" data-i18n="title">Software-Defined Hardware, AI-Reimagined Solar-Storage</p>
+                    <p class="profile-location">Shanghai, China</p>
+                    <div class="profile-actions">
+                        <a href="mailto:wuxuegang@gmail.com" class="btn-primary">
                             📧 <span data-i18n="contact">Contact</span>
+                        </a>
+                        <a href="https://github.com/xuegangwu" target="_blank" class="btn-secondary">
+                            🔗 <span data-i18n="github">GitHub</span>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Projects -->
-    <div class="projects">
-        <div class="container">
-            <div class="section-label" data-i18n="projectsLabel">PROJECTS</div>
-            <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
-            
+
+        <!-- About -->
+        <div class="about-section">
+            <h2 class="section-title" data-i18n="about">About</h2>
+            <p class="about-text" data-i18n="about-text">
+                Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.
+            </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="timeline-section">
+            <h2 class="section-title" data-i18n="experience">Experience</h2>
+            <div class="timeline-item">
+                <div class="timeline-period" data-i18n="period2">2019 ~ 2026</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="role2">CIO, VP, CEO</h3>
+                    <div class="company" data-i18n="company2">@ Risen</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-period" data-i18n="period1">2002 ~ 2019</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="role1">Programmer, Manager</h3>
+                    <div class="company" data-i18n="company1">@ Ricoh</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="timeline-section">
+            <h2 class="section-title" data-i18n="education">Education</h2>
+            <div class="timeline-item">
+                <div class="timeline-period" data-i18n="edu3-period">2025</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="edu3-degree">AI Master (In Progress)</h3>
+                    <div class="company" data-i18n="edu3-school">@ University of Colorado</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-period" data-i18n="edu2-period">2023 ~ 2025</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="edu2-degree">EMBA</h3>
+                    <div class="company" data-i18n="edu2-school">@ CEIBS</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-period" data-i18n="edu1-period">1999 ~ 2002</div>
+                <div class="timeline-content">
+                    <h3 data-i18n="edu1-degree">Master's Degree</h3>
+                    <div class="company" data-i18n="edu1-school">@ East China University of Science and Technology</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="projects-section">
+            <h2 class="section-title" data-i18n="projects">Projects</h2>
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <span class="project-icon">🗺️</span>
                     <h3 data-i18n="project1-title">Solar-Storage Investment Map System</h3>
-                    <p data-i18n="project1-desc">Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.</p>
+                    <p data-i18n="project1-desc">Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan.</p>
                     <div class="project-tags">
                         <span class="tag">Node.js</span>
                         <span class="tag">Leaflet</span>
@@ -774,20 +569,15 @@
                         <span class="tag">SQLite</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
-                            🔗 <span data-i18n="github">GitHub</span>
-                        </a>
-                        <a href="http://localhost:3000" target="_blank" rel="noopener">
-                            🌐 <span data-i18n="demo">Demo</span>
-                        </a>
+                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">🔗 GitHub</a>
+                        <a href="http://localhost:3000" target="_blank">🌐 Demo</a>
                     </div>
                 </div>
-                
+
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <span class="project-icon">🦞</span>
                     <h3 data-i18n="project2-title">Guangchu - Industry News Collection</h3>
-                    <p data-i18n="project2-desc">Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.</p>
+                    <p data-i18n="project2-desc">Automated photovoltaic + energy storage industry information collection and analysis system with multi-language news scraping and FTS5 search.</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Flask</span>
@@ -795,99 +585,96 @@
                         <span class="tag">Web Scraping</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
-                            🔗 <span data-i18n="github">GitHub</span>
-                        </a>
-                        <a href="http://localhost:5000" target="_blank" rel="noopener">
-                            🌐 <span data-i18n="demo">Demo</span>
-                        </a>
+                        <a href="https://github.com/xuegangwu/guangchu" target="_blank">🔗 GitHub</a>
+                        <a href="http://localhost:5000" target="_blank">🌐 Demo</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Skills -->
-    <div class="skills">
-        <div class="container">
-            <div class="section-label" data-i18n="skillsLabel">SKILLS</div>
-            <h2 class="section-title" data-i18n="skills">Technical Expertise</h2>
-            
+
+        <!-- Skills -->
+        <div class="skills-section">
+            <h2 class="section-title" data-i18n="skills">Skills</h2>
             <div class="skills-grid">
                 <div class="skill-item">
-                    <span class="skill-icon">🌐</span>
+                    <div class="skill-icon">🌐</div>
                     <div class="skill-name" data-i18n="skill1-name">Frontend Development</div>
                     <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations</div>
                 </div>
-                
+
                 <div class="skill-item">
-                    <span class="skill-icon">🗺️</span>
+                    <div class="skill-icon">🗺️</div>
                     <div class="skill-name" data-i18n="skill2-name">Map Visualization</div>
                     <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>Interactive maps, 3D rendering</div>
                 </div>
-                
+
                 <div class="skill-item">
-                    <span class="skill-icon">🔧</span>
+                    <div class="skill-icon">🔧</div>
                     <div class="skill-name" data-i18n="skill3-name">Backend Development</div>
                     <div class="skill-desc" data-i18n="skill3-desc">Node.js, Express<br>Python, Flask</div>
                 </div>
-                
+
                 <div class="skill-item">
-                    <span class="skill-icon">💾</span>
+                    <div class="skill-icon">💾</div>
                     <div class="skill-name" data-i18n="skill4-name">Database</div>
                     <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>Full-text search, data modeling</div>
                 </div>
-                
+
                 <div class="skill-item">
-                    <span class="skill-icon">🤖</span>
+                    <div class="skill-icon">🤖</div>
                     <div class="skill-name" data-i18n="skill5-name">Automation</div>
                     <div class="skill-desc" data-i18n="skill5-desc">Web scraping, scheduled tasks<br>Data extraction, report generation</div>
                 </div>
-                
+
                 <div class="skill-item">
-                    <span class="skill-icon">📊</span>
+                    <div class="skill-icon">📊</div>
                     <div class="skill-name" data-i18n="skill6-name">Data Analysis</div>
                     <div class="skill-desc" data-i18n="skill6-desc">Information collection, trend analysis<br>Investment evaluation, decision support</div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Footer -->
-    <div class="footer">
-        <div class="container">
-            <div class="footer-logo">⭐</div>
+    <footer class="footer">
+        <div class="profile-section">
             <p>© 2026 Terry Wu. All rights reserved.</p>
-            <div class="footer-divider"></div>
-            <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
+            <p>Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> ❤️</p>
         </div>
-    </div>
+    </footer>
 
     <script>
         const translations = {
             zh: {
                 name: 'Terry Wu',
                 title: '软件定义硬件，AI 重构光储',
+                about: '关于',
+                'about-text': '专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策',
+                experience: '工作经历',
                 period1: '2002 ~ 2019',
                 role1: 'Programmer, Manager',
                 company1: '@ 理光 (Ricoh)',
                 period2: '2019 ~ 2026',
                 role2: 'CIO, VP, CEO',
                 company2: '@ 日升 (Risen)',
-                subtitle: '专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策',
-                github: 'GitHub',
-                project1: '投资地图',
-                project2: '光储龙虾',
-                contact: '联系我',
-                projectsLabel: 'PROJECTS',
-                projects: '项目展示',
+                education: '教育背景',
+                'edu1-period': '1999 ~ 2002',
+                'edu1-degree': '硕士',
+                'edu1-school': '@ 华东理工大学',
+                'edu2-period': '2023 ~ 2025',
+                'edu2-degree': 'EMBA',
+                'edu2-school': '@ 中欧国际工商学院',
+                'edu3-period': '2025',
+                'edu3-degree': 'AI 硕士 在读',
+                'edu3-school': '@ 美国科罗拉多大学',
+                projects: '项目',
                 'project1-title': '光储电站投资地图系统',
                 'project1-desc': '多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。',
                 'project2-title': '光储龙虾 - 行业信息收集',
-                'project2-desc': '自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。',
-                demo: '演示',
-                skillsLabel: 'SKILLS',
-                skills: '技术栈',
+                'project2-desc': '自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。',
+                contact: '联系我',
+                github: 'GitHub',
+                skills: '技能',
                 'skill1-name': '前端开发',
                 'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果',
                 'skill2-name': '地图可视化',
@@ -904,37 +691,33 @@
             en: {
                 name: 'Terry Wu',
                 title: 'Software-Defined Hardware, AI-Reimagined Solar-Storage',
-                education: '🎓 Education',
-                work: '💼 Work Experience',
-                edu1-period: '1999 ~ 2002',
-                edu1-degree: 'Master\'s Degree',
-                edu1-school: '@ East China University of Science and Technology',
-                edu2-period: '2023 ~ 2025',
-                edu2-degree: 'EMBA',
-                edu2-school: '@ CEIBS',
-                edu3-period: '2025',
-                edu3-degree: 'AI Master (In Progress)',
-                edu3-school: '@ University of Colorado',
+                about: 'About',
+                'about-text': 'Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.',
+                experience: 'Experience',
                 period1: '2002 ~ 2019',
                 role1: 'Programmer, Manager',
                 company1: '@ Ricoh',
                 period2: '2019 ~ 2026',
                 role2: 'CIO, VP, CEO',
                 company2: '@ Risen',
-                subtitle: 'Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions',
-                github: 'GitHub',
-                project1: 'Investment Map',
-                project2: 'Guangchu',
-                contact: 'Contact',
-                projectsLabel: 'PROJECTS',
-                projects: 'Featured Projects',
+                education: 'Education',
+                'edu1-period': '1999 ~ 2002',
+                'edu1-degree': "Master's Degree",
+                'edu1-school': '@ East China University of Science and Technology',
+                'edu2-period': '2023 ~ 2025',
+                'edu2-degree': 'EMBA',
+                'edu2-school': '@ CEIBS',
+                'edu3-period': '2025',
+                'edu3-degree': 'AI Master (In Progress)',
+                'edu3-school': '@ University of Colorado',
+                projects: 'Projects',
                 'project1-title': 'Solar-Storage Investment Map System',
-                'project1-desc': 'Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.',
+                'project1-desc': 'Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan.',
                 'project2-title': 'Guangchu - Industry News Collection',
-                'project2-desc': 'Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.',
-                demo: 'Demo',
-                skillsLabel: 'SKILLS',
-                skills: 'Technical Expertise',
+                'project2-desc': 'Automated photovoltaic + energy storage industry information collection and analysis system with multi-language news scraping and FTS5 search.',
+                contact: 'Contact',
+                github: 'GitHub',
+                skills: 'Skills',
                 'skill1-name': 'Frontend Development',
                 'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations',
                 'skill2-name': 'Map Visualization',
@@ -951,26 +734,33 @@
             ja: {
                 name: 'Terry Wu',
                 title: 'ソフトウェア定義ハードウェア、AI 再構築太陽光・蓄電池',
+                about: '概要',
+                'about-text': '太陽光＋蓄電池分野の評価システム開発に専念し、データ駆動型の意思決定で質の高い投資機会を特定します',
+                experience: '職歴',
                 period1: '2002 〜 2019',
                 role1: 'プログラマー、マネージャー',
                 company1: '@ リコー (Ricoh)',
                 period2: '2019 〜 2026',
                 role2: 'CIO, VP, CEO',
                 company2: '@ 日升 (Risen)',
-                subtitle: '太陽光＋蓄電池分野の評価システム開発に専念し、データ駆動型の意思決定で質の高い投資機会を特定します',
-                github: 'GitHub',
-                project1: '投資マップ',
-                project2: '光儲龙虾',
-                contact: 'お問い合わせ',
-                projectsLabel: 'PROJECTS',
+                education: '学歴',
+                'edu1-period': '1999 〜 2002',
+                'edu1-degree': '修士号',
+                'edu1-school': '@ 華東理工大学',
+                'edu2-period': '2023 〜 2025',
+                'edu2-degree': 'EMBA',
+                'edu2-school': '@ 中欧国際工商学院',
+                'edu3-period': '2025',
+                'edu3-degree': 'AI 修士課程（在学中）',
+                'edu3-school': '@ コロラド大学',
                 projects: 'プロジェクト',
                 'project1-title': '太陽光・蓄電池投資マップシステム',
-                'project1-desc': '中国 30 省、ベトナム 15 省、日本 47 都道府県をカバーする多国籍太陽光・蓄電池投資評価プラットフォーム。資源賦存、電力価格政策、市場状況、グリッド状況の 4 つの次元に基づき、科学的な投資判断をサポートします。',
+                'project1-desc': '中国 30 省、ベトナム 15 省、日本 47 都道府県をカバーする多国籍太陽光・蓄電池投資評価プラットフォーム。',
                 'project2-title': '光儲龙虾 - 業界ニュース収集',
-                'project2-desc': '自動化された太陽光・蓄電池業界の情報収集・分析システム。多言語ニューススクレイピング、FTS5 全文検索、定期タスク、レポート生成などをサポート。情報源には PV Magazine、Energy Storage News など 6 つの主要メディアを含む。',
-                demo: 'デモ',
-                skillsLabel: 'SKILLS',
-                skills: '技術スタック',
+                'project2-desc': '自動化された太陽光・蓄電池業界の情報収集・分析システム。多言語ニューススクレイピング、FTS5 全文検索などをサポート。',
+                contact: 'お問い合わせ',
+                github: 'GitHub',
+                skills: 'スキル',
                 'skill1-name': 'フロントエンド開発',
                 'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>レスポンシブデザイン、アニメーション',
                 'skill2-name': 'マップ可視化',
@@ -985,30 +775,44 @@
                 'skill6-desc': '情報収集、トレンド分析<br>投資評価、意思決定サポート'
             }
         };
-        
+
         let currentLang = 'en';
-        
+
         function switchLang(lang) {
             currentLang = lang;
+            
+            // 更新按钮状态
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (btn.dataset.lang === lang) btn.classList.add('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
             });
+            
+            // 更新页面内容
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
-                if (translations[lang][key]) el.innerHTML = translations[lang][key];
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
             });
+            
+            // 保存语言偏好
             localStorage.setItem('preferredLang', lang);
+            
+            // 更新 HTML lang 属性
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ja');
         }
-        
+
+        // 页面加载完成后初始化
         window.addEventListener('load', () => {
             const savedLang = localStorage.getItem('preferredLang') || 'en';
             switchLang(savedLang);
         });
-        
+
+        // 庆祝动画
         function celebrate() {
-            const colors = ['#3b82f6', '#8b5cf6', '#06b6d4', '#f5576c', '#4facfe'];
+            const colors = ['#0077b5', '#004182', '#0a66c2', '#f5576c', '#4facfe'];
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.cssText = `position:fixed;width:10px;height:10px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}vw;top:-10px;border-radius:${Math.random()>0.5?'50%':'0'};pointer-events:none;z-index:9999;`;
