@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terry Wu - 光储投资分析系统开发者，专注于太阳能 + 储能领域的投资评估系统开发">
+    <meta name="description" content="Terry Wu - 光储投资分析系统开发者">
     <meta name="keywords" content="Terry Wu, 光储投资，太阳能，储能，投资地图，GitHub, 开发者">
     <meta name="author" content="Terry Wu">
     <title>Terry Wu - 光储投资分析系统开发者</title>
@@ -88,6 +88,39 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+        }
+        
+        /* 语言切换器 */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            padding: 10px 16px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active {
+            background: white;
+            color: #667eea;
         }
         
         /* Header */
@@ -463,6 +496,16 @@
         
         /* 响应式 */
         @media (max-width: 768px) {
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .lang-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
             .header h1 {
                 font-size: 48px;
             }
@@ -489,17 +532,6 @@
                 font-size: 36px;
             }
         }
-        
-        /* 打印样式 */
-        @media print {
-            .bg-animation, .loading, .social-links, .project-links {
-                display: none;
-            }
-            
-            .header {
-                color: black;
-            }
-        }
     </style>
 </head>
 <body>
@@ -515,56 +547,60 @@
         <div class="bg-circle"></div>
     </div>
     
+    <!-- 语言切换器 -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</button>
+        <button class="lang-btn" onclick="switchLang('en')" data-lang="en">🇺🇸 English</button>
+        <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">🇯🇵 日本語</button>
+    </div>
+    
     <div class="container">
         <!-- Header -->
         <div class="header">
             <div class="avatar" title="点击有惊喜！" onclick="celebrate()">TW</div>
-            <h1>Terry Wu</h1>
-            <p class="title">光储投资分析系统开发者</p>
-            <p class="subtitle">专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策</p>
+            <h1 data-i18n="name">Terry Wu</h1>
+            <p class="title" data-i18n="title">光储投资分析系统开发者</p>
+            <p class="subtitle" data-i18n="subtitle">专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策</p>
             
             <div class="social-links">
                 <a href="https://github.com/xuegangwu" target="_blank" rel="noopener">
-                    <span>🔗</span> GitHub
+                    <span>🔗</span> <span data-i18n="github">GitHub</span>
                 </a>
                 <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
-                    <span>🗺️</span> 投资地图
+                    <span>🗺️</span> <span data-i18n="project1">投资地图</span>
                 </a>
                 <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
-                    <span>🦞</span> 光储龙虾
+                    <span>🦞</span> <span data-i18n="project2">光储龙虾</span>
                 </a>
                 <a href="mailto:your.email@example.com" rel="noopener">
-                    <span>📧</span> 联系我
+                    <span>📧</span> <span data-i18n="contact">联系我</span>
                 </a>
             </div>
         </div>
         
         <!-- Projects -->
         <div class="projects">
-            <h2 class="section-title">🚀 项目展示</h2>
+            <h2 class="section-title" data-i18n="projects">🚀 项目展示</h2>
             
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
                     <span class="project-icon">🗺️</span>
-                    <h3>光储电站投资地图系统</h3>
-                    <p>
-                        多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。
-                        基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。
-                    </p>
+                    <h3 data-i18n="project1-title">光储电站投资地图系统</h3>
+                    <p data-i18n="project1-desc">多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。</p>
                     <div class="project-tags">
                         <span class="tag">Node.js</span>
                         <span class="tag">Leaflet</span>
                         <span class="tag">Three.js</span>
                         <span class="tag">SQLite</span>
-                        <span class="tag">92 省份数据</span>
+                        <span class="tag" data-i18n="tag1">92 省份数据</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
-                            🔗 GitHub
+                            🔗 <span data-i18n="github">GitHub</span>
                         </a>
                         <a href="http://localhost:3000" target="_blank" rel="noopener">
-                            🌐 演示
+                            🌐 <span data-i18n="demo">演示</span>
                         </a>
                     </div>
                 </div>
@@ -572,24 +608,21 @@
                 <!-- Project 2 -->
                 <div class="project-card">
                     <span class="project-icon">🦞</span>
-                    <h3>光储龙虾</h3>
-                    <p>
-                        自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、
-                        定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。
-                    </p>
+                    <h3 data-i18n="project2-title">光储龙虾</h3>
+                    <p data-i18n="project2-desc">自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Flask</span>
                         <span class="tag">SQLite FTS5</span>
-                        <span class="tag">爬虫</span>
-                        <span class="tag">6 个信息源</span>
+                        <span class="tag" data-i18n="tag2">爬虫</span>
+                        <span class="tag" data-i18n="tag3">6 个信息源</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
-                            🔗 GitHub
+                            🔗 <span data-i18n="github">GitHub</span>
                         </a>
                         <a href="http://localhost:5000" target="_blank" rel="noopener">
-                            🌐 演示
+                            🌐 <span data-i18n="demo">演示</span>
                         </a>
                     </div>
                 </div>
@@ -598,43 +631,43 @@
         
         <!-- Skills -->
         <div class="skills">
-            <h2 class="section-title">💡 技术栈</h2>
+            <h2 class="section-title" data-i18n="skills">💡 技术栈</h2>
             
             <div class="skills-grid">
                 <div class="skill-item">
                     <span class="skill-icon">🌐</span>
-                    <div class="skill-name">前端开发</div>
-                    <div class="skill-desc">HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果</div>
+                    <div class="skill-name" data-i18n="skill1-name">前端开发</div>
+                    <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">🗺️</span>
-                    <div class="skill-name">地图可视化</div>
-                    <div class="skill-desc">Leaflet, Three.js<br>交互式地图，3D 渲染</div>
+                    <div class="skill-name" data-i18n="skill2-name">地图可视化</div>
+                    <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>交互式地图，3D 渲染</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">🔧</span>
-                    <div class="skill-name">后端开发</div>
-                    <div class="skill-desc">Node.js, Express<br>Python, Flask</div>
+                    <div class="skill-name" data-i18n="skill3-name">后端开发</div>
+                    <div class="skill-desc" data-i18n="skill3-desc">Node.js, Express<br>Python, Flask</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">💾</span>
-                    <div class="skill-name">数据库</div>
-                    <div class="skill-desc">SQLite, FTS5<br>全文搜索，数据建模</div>
+                    <div class="skill-name" data-i18n="skill4-name">数据库</div>
+                    <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>全文搜索，数据建模</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">🤖</span>
-                    <div class="skill-name">自动化</div>
-                    <div class="skill-desc">网络爬虫，定时任务<br>数据抓取，报告生成</div>
+                    <div class="skill-name" data-i18n="skill5-name">自动化</div>
+                    <div class="skill-desc" data-i18n="skill5-desc">网络爬虫，定时任务<br>数据抓取，报告生成</div>
                 </div>
                 
                 <div class="skill-item">
                     <span class="skill-icon">📊</span>
-                    <div class="skill-name">数据分析</div>
-                    <div class="skill-desc">信息收集，趋势分析<br>投资评估，决策支持</div>
+                    <div class="skill-name" data-i18n="skill6-name">数据分析</div>
+                    <div class="skill-desc" data-i18n="skill6-desc">信息收集，趋势分析<br>投资评估，决策支持</div>
                 </div>
             </div>
         </div>
@@ -643,18 +676,152 @@
         <div class="footer">
             <p>© 2026 Terry Wu. All rights reserved.</p>
             <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
-            <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;">
+            <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;" data-i18n="footer">
                 🌍 让数据驱动光储投资决策
             </p>
         </div>
     </div>
 
     <script>
+        // 多语言翻译
+        const translations = {
+            zh: {
+                name: 'Terry Wu',
+                title: '光储投资分析系统开发者',
+                subtitle: '专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策',
+                github: 'GitHub',
+                project1: '投资地图',
+                project2: '光储龙虾',
+                contact: '联系我',
+                projects: '🚀 项目展示',
+                project1Title: '光储电站投资地图系统',
+                project1Desc: '多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。',
+                project2Title: '光储龙虾',
+                project2Desc: '自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。',
+                tag1: '92 省份数据',
+                tag2: '爬虫',
+                tag3: '6 个信息源',
+                demo: '演示',
+                skills: '💡 技术栈',
+                skill1Name: '前端开发',
+                skill1Desc: 'HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果',
+                skill2Name: '地图可视化',
+                skill2Desc: 'Leaflet, Three.js<br>交互式地图，3D 渲染',
+                skill3Name: '后端开发',
+                skill3Desc: 'Node.js, Express<br>Python, Flask',
+                skill4Name: '数据库',
+                skill4Desc: 'SQLite, FTS5<br>全文搜索，数据建模',
+                skill5Name: '自动化',
+                skill5Desc: '网络爬虫，定时任务<br>数据抓取，报告生成',
+                skill6Name: '数据分析',
+                skill6Desc: '信息收集，趋势分析<br>投资评估，决策支持',
+                footer: '🌍 让数据驱动光储投资决策'
+            },
+            en: {
+                name: 'Terry Wu',
+                title: 'Solar-Storage Investment System Developer',
+                subtitle: 'Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions',
+                github: 'GitHub',
+                project1: 'Investment Map',
+                project2: 'Guangchu',
+                contact: 'Contact Me',
+                projects: '🚀 Projects',
+                project1Title: 'Solar-Storage Investment Map System',
+                project1Desc: 'Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.',
+                project2Title: 'Guangchu - Solar-Storage News Collection',
+                project2Desc: 'Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation, and more. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.',
+                tag1: '92 Provinces Data',
+                tag2: 'Web Scraping',
+                tag3: '6 Information Sources',
+                demo: 'Demo',
+                skills: '💡 Tech Stack',
+                skill1Name: 'Frontend Development',
+                skill1Desc: 'HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations',
+                skill2Name: 'Map Visualization',
+                skill2Desc: 'Leaflet, Three.js<br>Interactive maps, 3D rendering',
+                skill3Name: 'Backend Development',
+                skill3Desc: 'Node.js, Express<br>Python, Flask',
+                skill4Name: 'Database',
+                skill4Desc: 'SQLite, FTS5<br>Full-text search, data modeling',
+                skill5Name: 'Automation',
+                skill5Desc: 'Web scraping, scheduled tasks<br>Data extraction, report generation',
+                skill6Name: 'Data Analysis',
+                skill6Desc: 'Information collection, trend analysis<br>Investment evaluation, decision support',
+                footer: '🌍 Data-Driven Solar-Storage Investment Decisions'
+            },
+            ja: {
+                name: 'Terry Wu',
+                title: '太陽光・蓄電池投資システム開発者',
+                subtitle: '太陽光＋蓄電池分野の評価システム開発に専念し、データ駆動型の意思決定で質の高い投資機会を特定します',
+                github: 'GitHub',
+                project1: '投資マップ',
+                project2: '光儲龙虾',
+                contact: 'お問い合わせ',
+                projects: '🚀 プロジェクト',
+                project1Title: '太陽光・蓄電池投資マップシステム',
+                project1Desc: '中国 30 省、ベトナム 15 省、日本 47 都道府県をカバーする多国籍太陽光・蓄電池投資評価プラットフォーム。資源賦存、電力価格政策、市場状況、グリッド状況の 4 つの次元に基づき、科学的な投資判断をサポートします。',
+                project2Title: '光儲龙虾 - ニュース収集システム',
+                project2Desc: '自動化された太陽光・蓄電池業界の情報収集・分析システム。多言語ニューススクレイピング、FTS5 全文検索、定期タスク、レポート生成などをサポート。情報源には PV Magazine、Energy Storage News など 6 つの主要メディアを含む。',
+                tag1: '92 地域データ',
+                tag2: 'Web スクレイピング',
+                tag3: '6 情報源',
+                demo: 'デモ',
+                skills: '💡 技術スタック',
+                skill1Name: 'フロントエンド開発',
+                skill1Desc: 'HTML5, CSS3, JavaScript (ES6+)<br>レスポンシブデザイン、アニメーション',
+                skill2Name: 'マップ可視化',
+                skill2Desc: 'Leaflet, Three.js<br>インタラクティブマップ、3D レンダリング',
+                skill3Name: 'バックエンド開発',
+                skill3Desc: 'Node.js, Express<br>Python, Flask',
+                skill4Name: 'データベース',
+                skill4Desc: 'SQLite, FTS5<br>全文検索、データモデリング',
+                skill5Name: '自動化',
+                skill5Desc: 'Web スクレイピング、定期タスク<br>データ抽出、レポート生成',
+                skill6Name: 'データ分析',
+                skill6Desc: '情報収集、トレンド分析<br>投資評価、意思決定サポート',
+                footer: '🌍 データ駆動型太陽光・蓄電池投資判断'
+            }
+        };
+        
+        // 当前语言
+        let currentLang = 'zh';
+        
+        // 切换语言
+        function switchLang(lang) {
+            currentLang = lang;
+            
+            // 更新按钮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // 更新页面内容
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // 保存语言偏好
+            localStorage.setItem('preferredLang', lang);
+            
+            // 更新 HTML lang 属性
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ja');
+        }
+        
         // 页面加载完成后隐藏加载动画
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loading').classList.add('hidden');
             }, 800);
+            
+            // 恢复用户语言偏好
+            const savedLang = localStorage.getItem('preferredLang') || 'zh';
+            switchLang(savedLang);
         });
         
         // 庆祝动画
