@@ -2,10 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="Terry Wu - Solar-Storage Investment System Developer">
     <meta name="keywords" content="Terry Wu, Solar, Energy Storage, Investment, GitHub, Developer">
     <meta name="author" content="Terry Wu">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <title>Terry Wu - Solar-Storage Investment System Developer</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +50,31 @@
             color: var(--text-primary);
             background: var(--bg-light);
             overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+        
+        /* 移动端触摸优化 */
+        @media (hover: none) {
+            .avatar:hover,
+            .project-card:hover,
+            .skill-item:hover,
+            .social-links a:hover,
+            .project-links a:hover {
+                transform: none;
+            }
+            
+            .avatar:active {
+                transform: scale(0.95);
+            }
+            
+            .project-card:active,
+            .skill-item:active {
+                transform: scale(0.98);
+            }
         }
         
         /* 背景 */
@@ -432,11 +462,25 @@
             border-radius: 9999px;
         }
         
-        /* 响应式 */
+        /* 响应式 - 平板和手机 */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+            
             .language-switcher {
                 top: 12px;
                 right: 12px;
+                padding: 4px;
+            }
+            
+            .lang-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .header {
+                padding: 100px 0 60px;
             }
             
             .header-content {
@@ -453,24 +497,187 @@
             }
             
             .header-info h1 {
-                font-size: 32px;
+                font-size: 28px;
+            }
+            
+            .header-info .title {
+                font-size: 16px;
             }
             
             .experience-timeline {
+                padding: 20px;
                 text-align: left;
             }
             
             .timeline-item {
                 flex-direction: column;
-                gap: 8px;
+                gap: 6px;
+                padding: 12px 0;
+            }
+            
+            .timeline-period {
+                min-width: auto;
+                font-size: 13px;
+            }
+            
+            .timeline-role {
+                font-size: 14px;
+            }
+            
+            .timeline-company {
+                font-size: 13px;
+            }
+            
+            .header-subtitle {
+                font-size: 15px;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .social-links a {
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+            
+            /* Projects */
+            .projects {
+                padding: 60px 0;
+                margin-top: -40px;
+            }
+            
+            .section-label {
+                font-size: 11px;
+                padding: 6px 14px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 40px;
             }
             
             .project-grid {
                 grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            
+            .project-card {
+                padding: 28px;
+            }
+            
+            .project-icon {
+                font-size: 48px;
+            }
+            
+            .project-card h3 {
+                font-size: 20px;
+            }
+            
+            .project-card p {
+                font-size: 14px;
+            }
+            
+            .tag {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+            
+            /* Skills */
+            .skills {
+                padding: 60px 0;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .skill-item {
+                padding: 28px;
+            }
+            
+            .skill-icon {
+                font-size: 40px;
+            }
+            
+            .skill-name {
+                font-size: 17px;
+            }
+            
+            .skill-desc {
+                font-size: 13px;
+            }
+            
+            /* Footer */
+            .footer {
+                padding: 50px 0 30px;
+            }
+            
+            .footer-logo {
+                font-size: 32px;
+            }
+        }
+        
+        /* 小屏手机 */
+        @media (max-width: 480px) {
+            .header {
+                padding: 80px 0 50px;
+            }
+            
+            .avatar {
+                width: 120px;
+                height: 120px;
+                font-size: 48px;
+            }
+            
+            .header-info h1 {
+                font-size: 24px;
+            }
+            
+            .header-info .title {
+                font-size: 14px;
+            }
+            
+            .experience-timeline {
+                padding: 16px;
+            }
+            
+            .timeline-period {
+                font-size: 12px;
+            }
+            
+            .timeline-role {
+                font-size: 13px;
+            }
+            
+            .header-subtitle {
+                font-size: 14px;
+            }
+            
+            .social-links {
+                gap: 8px;
+            }
+            
+            .social-links a {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+            
+            .projects {
+                padding: 50px 0;
+            }
+            
+            .project-card {
+                padding: 24px;
             }
             
             .section-title {
-                font-size: 32px;
+                font-size: 24px;
+            }
+            
+            .skill-item {
+                padding: 24px;
             }
         }
     </style>
