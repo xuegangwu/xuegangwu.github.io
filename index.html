@@ -434,51 +434,179 @@
             text-decoration: none;
         }
         
-        /* 响应式 */
+        /* 响应式 - 移动端优化 */
         @media (max-width: 768px) {
+            /* Hero 区域更紧凑 */
+            .hero {
+                padding: 60px 16px 32px;
+            }
+            
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+                margin-bottom: 16px;
+            }
+            
             .hero h1 {
-                font-size: 36px;
+                font-size: 28px;
+                margin-bottom: 6px;
             }
             
             .hero-title {
-                font-size: 18px;
+                font-size: 15px;
+                margin-bottom: 20px;
             }
             
-            .section-title {
-                font-size: 32px;
+            .hero-actions {
+                gap: 8px;
             }
             
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+            
+            /* About 更紧凑 */
             .about {
-                padding: 32px 24px;
+                margin: 24px 16px;
+                padding: 24px;
             }
             
             .about-text {
-                font-size: 16px;
+                font-size: 15px;
+            }
+            
+            /* Section 间距减小 */
+            .section {
+                padding: 40px 16px;
+            }
+            
+            .section-header {
+                margin-bottom: 32px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 6px;
+            }
+            
+            .section-subtitle {
+                font-size: 14px;
+            }
+            
+            /* 项目卡片更紧凑 */
+            .project-card {
+                padding: 20px;
+                margin-bottom: 16px;
             }
             
             .project-header {
                 flex-direction: column;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+            
+            .project-icon {
+                font-size: 36px;
+            }
+            
+            .project-info h3 {
+                font-size: 18px;
+                margin-bottom: 6px;
+            }
+            
+            .project-info p {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+            
+            .project-tags {
+                gap: 6px;
+                margin-bottom: 16px;
+            }
+            
+            .tag {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+            
+            .project-links {
+                gap: 8px;
+            }
+            
+            .project-links a {
+                padding: 10px;
+                font-size: 13px;
+            }
+            
+            /* 技能卡片更紧凑 */
+            .skills-grid {
+                gap: 12px;
+            }
+            
+            .skill-card {
+                padding: 16px;
+            }
+            
+            .skill-icon {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+            
+            .skill-name {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+            
+            .skill-desc {
+                font-size: 13px;
+            }
+            
+            /* 经历卡片更紧凑 */
+            .timeline {
                 gap: 16px;
             }
             
             .timeline-item {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 12px;
+                padding: 16px;
             }
             
             .timeline-logo {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
             
             .timeline-content {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 8px;
             }
             
-            .project-card {
-                padding: 28px;
+            .timeline-period {
+                font-size: 13px;
+            }
+            
+            .timeline-details h3 {
+                font-size: 17px;
+                margin-bottom: 4px;
+            }
+            
+            .timeline-details .company {
+                font-size: 14px;
+            }
+            
+            /* Footer 更紧凑 */
+            .footer {
+                padding: 24px 16px;
+                margin-top: 40px;
+            }
+            
+            .footer p {
+                font-size: 11px;
             }
         }
     </style>
