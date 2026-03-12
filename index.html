@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terry Wu - 光储投资分析系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+        }
+        
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.3);
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #da251d 0%, #ffcd3c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Projects */
+        .projects {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: -40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .section-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s;
+            border-left: 4px solid #667eea;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .project-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .project-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .project-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tag {
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .project-links a {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .project-links a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Skills */
+        .skills {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .skill-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .skill-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+            
+            .header p {
+                font-size: 16px;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .projects, .skills {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="avatar">TW</div>
+            <h1>Terry Wu</h1>
+            <p>光储投资分析系统开发者</p>
+            <p>Solar-Storage Investment Analysis System Developer</p>
+            
+            <div class="social-links">
+                <a href="https://github.com/xuegangwu" target="_blank">GitHub</a>
+                <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">投资地图</a>
+                <a href="https://github.com/xuegangwu/guangchu" target="_blank">光储龙虾</a>
+            </div>
+        </div>
+        
+        <!-- Projects -->
+        <div class="projects">
+            <h2 class="section-title">🚀 项目展示</h2>
+            
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-icon">🗺️</div>
+                    <h3>光储电站投资地图系统</h3>
+                    <p>
+                        多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。
+                        基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供 A/B/C/D 四级投资建议。
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Leaflet</span>
+                        <span class="tag">Three.js</span>
+                        <span class="tag">SQLite</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">GitHub</a>
+                        <a href="https://xuegangwu.github.io/china-solar-storage" target="_blank">演示</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-icon">🦞</div>
+                    <h3>光储龙虾</h3>
+                    <p>
+                        自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、
+                        定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News、北极星储能网等。
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">SQLite FTS5</span>
+                        <span class="tag">爬虫</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/xuegangwu/guangchu" target="_blank">GitHub</a>
+                        <a href="https://xuegangwu.github.io/guangchu" target="_blank">演示</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Skills -->
+        <div class="skills">
+            <h2 class="section-title">💡 技术栈</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-icon">🌐</div>
+                    <div class="skill-name">前端开发</div>
+                    <div style="color: #666; font-size: 14px; margin-top: 5px;">HTML5, CSS3, JavaScript</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">🗺️</div>
+                    <div class="skill-name">地图可视化</div>
+                    <div style="color: #666; font-size: 14px; margin-top: 5px;">Leaflet, Three.js</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">🔧</div>
+                    <div class="skill-name">后端开发</div>
+                    <div style="color: #666; font-size: 14px; margin-top: 5px;">Node.js, Python, Flask</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">💾</div>
+                    <div class="skill-name">数据库</div>
+                    <div style="color: #666; font-size: 14px; margin-top: 5px;">SQLite, FTS5</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">🤖</div>
+                    <div class="skill-name">自动化</div>
+                    <div style="color: #666; font-size: 14px; margin-top: 5px;">爬虫，定时任务</div>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">📊</div>
+                    <div class="skill-name">数据分析</div>
+                    <div style="color: #666; font-size: 14px; margin-top: 5px;">信息收集，报告生成</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2026 Terry Wu. All rights reserved.</p>
+            <p>Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+        </div>
+    </div>
+</body>
+</html>
