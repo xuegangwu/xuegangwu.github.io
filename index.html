@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terry Wu - 光储投资分析系统</title>
+    <meta name="description" content="Terry Wu - 光储投资分析系统开发者">
+    <meta name="keywords" content="Terry Wu, 光储投资，太阳能，储能，投资地图，GitHub">
+    <title>Terry Wu - 光储投资分析系统开发者</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
     <style>
         * {
             margin: 0;
@@ -11,12 +14,73 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --bg-primary: #f7fafc;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.15);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+        
+        /* 背景动画 */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary-gradient);
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            animation: float 20s infinite;
+        }
+        
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .bg-circle:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .bg-circle:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
         }
         
         .container {
@@ -29,201 +93,364 @@
         .header {
             text-align: center;
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px 60px;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .avatar {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            border: 4px solid rgba(255,255,255,0.3);
-            margin-bottom: 20px;
+            border: 5px solid rgba(255,255,255,0.3);
+            margin: 0 auto 25px;
             background: linear-gradient(135deg, #da251d 0%, #ffcd3c 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 60px;
+            font-size: 72px;
             font-weight: bold;
             color: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .avatar:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
         }
         
         .header h1 {
-            font-size: 48px;
+            font-size: 56px;
             margin-bottom: 10px;
-            font-weight: 700;
+            font-weight: 800;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: -1px;
         }
         
-        .header p {
-            font-size: 20px;
-            opacity: 0.9;
-            margin-bottom: 20px;
+        .header .title {
+            font-size: 24px;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         
         .social-links a {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 12px 24px;
             background: rgba(255,255,255,0.2);
-            border-radius: 25px;
+            border-radius: 30px;
+            font-weight: 600;
             transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
         }
         
         .social-links a:hover {
             background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
         /* Projects */
         .projects {
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-top: -40px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: -50px;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .section-title {
-            font-size: 32px;
+            font-size: 40px;
             text-align: center;
-            margin-bottom: 40px;
-            color: #333;
+            margin-bottom: 50px;
+            color: var(--text-primary);
+            font-weight: 800;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
         }
         
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 35px;
         }
         
         .project-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 30px;
-            transition: all 0.3s;
-            border-left: 4px solid #667eea;
+            background: var(--card-gradient);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 5px solid #667eea;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 0;
         }
         
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .project-card:hover::before {
+            opacity: 0.05;
+        }
+        
+        .project-card > * {
+            position: relative;
+            z-index: 1;
         }
         
         .project-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         
         .project-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #333;
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-weight: 700;
         }
         
         .project-card p {
-            color: #666;
-            margin-bottom: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
             line-height: 1.8;
+            font-size: 16px;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .tag {
-            padding: 5px 12px;
-            background: #667eea;
+            padding: 6px 14px;
+            background: var(--primary-gradient);
             color: white;
-            border-radius: 15px;
-            font-size: 12px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 600;
+            box-shadow: var(--shadow-sm);
         }
         
         .project-links {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
         
         .project-links a {
             flex: 1;
             text-align: center;
-            padding: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 14px;
+            background: var(--primary-gradient);
             color: white;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 10px;
             font-weight: 600;
             transition: all 0.3s;
+            box-shadow: var(--shadow-md);
         }
         
         .project-links a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
         }
         
         /* Skills */
         .skills {
             background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin-top: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: 20px;
+            padding: 50px 40px;
+            margin-top: 35px;
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.8s ease-out 0.2s both;
         }
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
         
         .skill-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
+            background: var(--bg-primary);
+            padding: 30px;
+            border-radius: 14px;
             text-align: center;
+            transition: all 0.3s;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: var(--shadow-lg);
+            background: white;
         }
         
         .skill-icon {
-            font-size: 36px;
-            margin-bottom: 10px;
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
         }
         
         .skill-name {
-            font-size: 16px;
-            font-weight: 600;
-            color: #333;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .skill-desc {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         /* Footer */
         .footer {
             text-align: center;
             color: white;
-            padding: 40px 20px;
-            margin-top: 40px;
+            padding: 50px 20px;
+            margin-top: 50px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 10px;
         }
         
         .footer a {
             color: white;
             text-decoration: underline;
+            font-weight: 600;
         }
         
-        /* Responsive */
+        .footer a:hover {
+            opacity: 0.8;
+        }
+        
+        /* 加载动画 */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+        
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 响应式 */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 36px;
+                font-size: 40px;
             }
             
-            .header p {
-                font-size: 16px;
+            .header .title {
+                font-size: 20px;
+            }
+            
+            .avatar {
+                width: 140px;
+                height: 140px;
+                font-size: 56px;
             }
             
             .project-grid {
@@ -231,24 +458,60 @@
             }
             
             .projects, .skills {
-                padding: 20px;
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+        }
+        
+        /* 打印样式 */
+        @media print {
+            .bg-animation, .loading, .social-links, .project-links {
+                display: none;
+            }
+            
+            .header {
+                color: black;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 加载动画 -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- 背景动画 -->
+    <div class="bg-animation">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+    
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="avatar">TW</div>
+            <div class="avatar" title="点击有惊喜！" onclick="celebrate()">TW</div>
             <h1>Terry Wu</h1>
-            <p>光储投资分析系统开发者</p>
-            <p>Solar-Storage Investment Analysis System Developer</p>
+            <p class="title">光储投资分析系统开发者</p>
+            <p class="subtitle">专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策</p>
             
             <div class="social-links">
-                <a href="https://github.com/xuegangwu" target="_blank">GitHub</a>
-                <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">投资地图</a>
-                <a href="https://github.com/xuegangwu/guangchu" target="_blank">光储龙虾</a>
+                <a href="https://github.com/xuegangwu" target="_blank" rel="noopener">
+                    <span>🔗</span> GitHub
+                </a>
+                <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
+                    <span>🗺️</span> 投资地图
+                </a>
+                <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
+                    <span>🦞</span> 光储龙虾
+                </a>
+                <a href="mailto:your.email@example.com" rel="noopener">
+                    <span>📧</span> 联系我
+                </a>
             </div>
         </div>
         
@@ -259,41 +522,51 @@
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="project-icon">🗺️</div>
+                    <span class="project-icon">🗺️</span>
                     <h3>光储电站投资地图系统</h3>
                     <p>
                         多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。
-                        基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供 A/B/C/D 四级投资建议。
+                        基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。
                     </p>
                     <div class="project-tags">
                         <span class="tag">Node.js</span>
                         <span class="tag">Leaflet</span>
                         <span class="tag">Three.js</span>
                         <span class="tag">SQLite</span>
+                        <span class="tag">92 省份数据</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">GitHub</a>
-                        <a href="https://xuegangwu.github.io/china-solar-storage" target="_blank">演示</a>
+                        <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank" rel="noopener">
+                            🔗 GitHub
+                        </a>
+                        <a href="http://localhost:3000" target="_blank" rel="noopener">
+                            🌐 演示
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <div class="project-icon">🦞</div>
+                    <span class="project-icon">🦞</span>
                     <h3>光储龙虾</h3>
                     <p>
                         自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、
-                        定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News、北极星储能网等。
+                        定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。
                     </p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Flask</span>
                         <span class="tag">SQLite FTS5</span>
                         <span class="tag">爬虫</span>
+                        <span class="tag">6 个信息源</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/xuegangwu/guangchu" target="_blank">GitHub</a>
-                        <a href="https://xuegangwu.github.io/guangchu" target="_blank">演示</a>
+                        <a href="https://github.com/xuegangwu/guangchu" target="_blank" rel="noopener">
+                            🔗 GitHub
+                        </a>
+                        <a href="http://localhost:5000" target="_blank" rel="noopener">
+                            🌐 演示
+                        </a>
                     </div>
                 </div>
             </div>
@@ -305,39 +578,39 @@
             
             <div class="skills-grid">
                 <div class="skill-item">
-                    <div class="skill-icon">🌐</div>
+                    <span class="skill-icon">🌐</span>
                     <div class="skill-name">前端开发</div>
-                    <div style="color: #666; font-size: 14px; margin-top: 5px;">HTML5, CSS3, JavaScript</div>
+                    <div class="skill-desc">HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果</div>
                 </div>
                 
                 <div class="skill-item">
-                    <div class="skill-icon">🗺️</div>
+                    <span class="skill-icon">🗺️</span>
                     <div class="skill-name">地图可视化</div>
-                    <div style="color: #666; font-size: 14px; margin-top: 5px;">Leaflet, Three.js</div>
+                    <div class="skill-desc">Leaflet, Three.js<br>交互式地图，3D 渲染</div>
                 </div>
                 
                 <div class="skill-item">
-                    <div class="skill-icon">🔧</div>
+                    <span class="skill-icon">🔧</span>
                     <div class="skill-name">后端开发</div>
-                    <div style="color: #666; font-size: 14px; margin-top: 5px;">Node.js, Python, Flask</div>
+                    <div class="skill-desc">Node.js, Express<br>Python, Flask</div>
                 </div>
                 
                 <div class="skill-item">
-                    <div class="skill-icon">💾</div>
+                    <span class="skill-icon">💾</span>
                     <div class="skill-name">数据库</div>
-                    <div style="color: #666; font-size: 14px; margin-top: 5px;">SQLite, FTS5</div>
+                    <div class="skill-desc">SQLite, FTS5<br>全文搜索，数据建模</div>
                 </div>
                 
                 <div class="skill-item">
-                    <div class="skill-icon">🤖</div>
+                    <span class="skill-icon">🤖</span>
                     <div class="skill-name">自动化</div>
-                    <div style="color: #666; font-size: 14px; margin-top: 5px;">爬虫，定时任务</div>
+                    <div class="skill-desc">网络爬虫，定时任务<br>数据抓取，报告生成</div>
                 </div>
                 
                 <div class="skill-item">
-                    <div class="skill-icon">📊</div>
+                    <span class="skill-icon">📊</span>
                     <div class="skill-name">数据分析</div>
-                    <div style="color: #666; font-size: 14px; margin-top: 5px;">信息收集，报告生成</div>
+                    <div class="skill-desc">信息收集，趋势分析<br>投资评估，决策支持</div>
                 </div>
             </div>
         </div>
@@ -345,8 +618,76 @@
         <!-- Footer -->
         <div class="footer">
             <p>© 2026 Terry Wu. All rights reserved.</p>
-            <p>Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+            <p>Powered by <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> ❤️</p>
+            <p style="margin-top: 15px; font-size: 14px; opacity: 0.7;">
+                🌍 让数据驱动光储投资决策
+            </p>
         </div>
     </div>
+
+    <script>
+        // 页面加载完成后隐藏加载动画
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 800);
+        });
+        
+        // 庆祝动画
+        function celebrate() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe'];
+            
+            for (let i = 0; i < 50; i++) {
+                createConfetti(colors[Math.floor(Math.random() * colors.length)]);
+            }
+        }
+        
+        function createConfetti(color) {
+            const confetti = document.createElement('div');
+            confetti.style.cssText = `
+                position: fixed;
+                width: 10px;
+                height: 10px;
+                background: ${color};
+                left: ${Math.random() * 100}vw;
+                top: -10px;
+                border-radius: ${Math.random() > 0.5 ? '50%' : '0'};
+                pointer-events: none;
+                z-index: 9999;
+            `;
+            
+            document.body.appendChild(confetti);
+            
+            const duration = 2000 + Math.random() * 2000;
+            const endY = window.innerHeight + 10;
+            
+            confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: `translateY(${endY}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+            ], {
+                duration: duration,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            setTimeout(() => confetti.remove(), duration);
+        }
+        
+        // 滚动动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.project-card, .skill-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
