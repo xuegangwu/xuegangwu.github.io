@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terry Wu - 光储投资分析系统开发者">
-    <meta name="keywords" content="Terry Wu, 光储投资，太阳能，储能，投资地图，GitHub">
+    <meta name="description" content="Terry Wu - 光储投资分析系统开发者，专注于太阳能 + 储能领域的投资评估系统开发">
+    <meta name="keywords" content="Terry Wu, 光储投资，太阳能，储能，投资地图，GitHub, 开发者">
+    <meta name="author" content="Terry Wu">
     <title>Terry Wu - 光储投资分析系统开发者</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
     <style>
         * {
             margin: 0;
@@ -93,7 +94,7 @@
         .header {
             text-align: center;
             color: white;
-            padding: 80px 20px 60px;
+            padding: 100px 20px 80px;
             animation: slideDown 0.8s ease-out;
         }
         
@@ -103,22 +104,38 @@
         }
         
         .avatar {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             border: 5px solid rgba(255,255,255,0.3);
-            margin: 0 auto 25px;
+            margin: 0 auto 30px;
             background: linear-gradient(135deg, #da251d 0%, #ffcd3c 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 72px;
+            font-size: 80px;
             font-weight: bold;
             color: white;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             animation: pulse 2s infinite;
             cursor: pointer;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .avatar::before {
+            content: '✨';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            animation: sparkle 1.5s infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
         }
         
         .avatar:hover {
@@ -132,25 +149,25 @@
         }
         
         .header h1 {
-            font-size: 56px;
-            margin-bottom: 10px;
+            font-size: 64px;
+            margin-bottom: 15px;
             font-weight: 800;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            letter-spacing: -1px;
+            letter-spacing: -2px;
         }
         
         .header .title {
-            font-size: 24px;
+            font-size: 28px;
             opacity: 0.95;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: 300;
         }
         
         .header .subtitle {
-            font-size: 16px;
+            font-size: 18px;
             opacity: 0.85;
-            max-width: 600px;
-            margin: 0 auto 30px;
+            max-width: 700px;
+            margin: 0 auto 40px;
             line-height: 1.8;
         }
         
@@ -164,13 +181,14 @@
         .social-links a {
             color: white;
             text-decoration: none;
-            padding: 12px 24px;
+            padding: 14px 28px;
             background: rgba(255,255,255,0.2);
             border-radius: 30px;
             font-weight: 600;
             transition: all 0.3s;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255,255,255,0.3);
+            font-size: 16px;
         }
         
         .social-links a:hover {
@@ -182,9 +200,9 @@
         /* Projects */
         .projects {
             background: white;
-            border-radius: 20px;
-            padding: 50px 40px;
-            margin-top: -50px;
+            border-radius: 24px;
+            padding: 60px 50px;
+            margin-top: -60px;
             box-shadow: var(--shadow-xl);
             animation: slideUp 0.8s ease-out;
         }
@@ -195,36 +213,40 @@
         }
         
         .section-title {
-            font-size: 40px;
+            font-size: 48px;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             color: var(--text-primary);
             font-weight: 800;
             position: relative;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--primary-gradient);
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 40px;
         }
         
         .project-card {
             background: var(--card-gradient);
-            border-radius: 16px;
-            padding: 35px;
+            border-radius: 20px;
+            padding: 40px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-left: 5px solid #667eea;
             box-shadow: var(--shadow-md);
@@ -246,7 +268,7 @@
         }
         
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-15px) scale(1.02);
             box-shadow: var(--shadow-xl);
         }
         
@@ -260,8 +282,8 @@
         }
         
         .project-icon {
-            font-size: 56px;
-            margin-bottom: 20px;
+            font-size: 64px;
+            margin-bottom: 25px;
             display: block;
             animation: bounce 2s infinite;
         }
@@ -272,52 +294,53 @@
         }
         
         .project-card h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 20px;
             color: var(--text-primary);
             font-weight: 700;
         }
         
         .project-card p {
             color: var(--text-secondary);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             line-height: 1.8;
-            font-size: 16px;
+            font-size: 17px;
         }
         
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
         
         .tag {
-            padding: 6px 14px;
+            padding: 8px 16px;
             background: var(--primary-gradient);
             color: white;
-            border-radius: 20px;
-            font-size: 13px;
+            border-radius: 24px;
+            font-size: 14px;
             font-weight: 600;
             box-shadow: var(--shadow-sm);
         }
         
         .project-links {
             display: flex;
-            gap: 12px;
+            gap: 15px;
         }
         
         .project-links a {
             flex: 1;
             text-align: center;
-            padding: 14px;
+            padding: 16px;
             background: var(--primary-gradient);
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
             transition: all 0.3s;
             box-shadow: var(--shadow-md);
+            font-size: 16px;
         }
         
         .project-links a:hover {
@@ -328,50 +351,50 @@
         /* Skills */
         .skills {
             background: white;
-            border-radius: 20px;
-            padding: 50px 40px;
-            margin-top: 35px;
+            border-radius: 24px;
+            padding: 60px 50px;
+            margin-top: 40px;
             box-shadow: var(--shadow-xl);
             animation: slideUp 0.8s ease-out 0.2s both;
         }
         
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .skill-item {
             background: var(--bg-primary);
-            padding: 30px;
-            border-radius: 14px;
+            padding: 35px;
+            border-radius: 16px;
             text-align: center;
             transition: all 0.3s;
             box-shadow: var(--shadow-sm);
         }
         
         .skill-item:hover {
-            transform: translateY(-5px) scale(1.03);
+            transform: translateY(-8px) scale(1.03);
             box-shadow: var(--shadow-lg);
             background: white;
         }
         
         .skill-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: 56px;
+            margin-bottom: 20px;
             display: block;
         }
         
         .skill-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .skill-desc {
             color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6;
         }
         
@@ -379,8 +402,8 @@
         .footer {
             text-align: center;
             color: white;
-            padding: 50px 20px;
-            margin-top: 50px;
+            padding: 60px 20px;
+            margin-top: 60px;
             animation: fadeIn 1s ease-out;
         }
         
@@ -392,6 +415,7 @@
         .footer p {
             opacity: 0.9;
             margin-bottom: 10px;
+            font-size: 16px;
         }
         
         .footer a {
@@ -425,9 +449,9 @@
         }
         
         .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255,255,255,0.3);
+            width: 70px;
+            height: 70px;
+            border: 5px solid rgba(255,255,255,0.3);
             border-top-color: white;
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -440,17 +464,17 @@
         /* 响应式 */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 40px;
+                font-size: 48px;
             }
             
             .header .title {
-                font-size: 20px;
+                font-size: 22px;
             }
             
             .avatar {
-                width: 140px;
-                height: 140px;
-                font-size: 56px;
+                width: 160px;
+                height: 160px;
+                font-size: 64px;
             }
             
             .project-grid {
@@ -458,11 +482,11 @@
             }
             
             .projects, .skills {
-                padding: 30px 20px;
+                padding: 40px 25px;
             }
             
             .section-title {
-                font-size: 32px;
+                font-size: 36px;
             }
         }
         
