@@ -5,337 +5,290 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terry Wu - Personal Homepage</title>
     <style>
-        :root {
-            --apple-blue: #0071e3;
-            --apple-gray: #86868b;
-            --apple-gray-light: #f5f5f7;
-            --apple-gray-dark: #1d1d1f;
-            --apple-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-            --apple-radius: 18px;
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
             line-height: 1.6;
-            color: var(--apple-gray-dark);
+            color: #1a1a1a;
             background: #ffffff;
+            padding: 0 20px;
         }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
         
-        .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
-        
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
-        }
-        
+        /* Header */
+        .header { text-align: center; margin-bottom: 60px; padding-bottom: 40px; border-bottom: 2px solid #eaeaea; }
         .avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 56px;
-            color: white;
-            font-weight: 700;
-            margin: 0 auto 32px;
+            width: 150px; height: 150px; border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 60px; color: white; font-weight: bold;
+            margin: 0 auto 24px;
         }
+        .header h1 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+        .header-title { font-size: 18px; color: #666; margin-bottom: 20px; }
         
-        .hero h1 { font-size: 48px; font-weight: 700; margin-bottom: 16px; }
-        .hero-title { font-size: 20px; color: var(--apple-gray); margin-bottom: 32px; }
-        
-        .lang-switcher { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; }
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
         .lang-btn {
-            padding: 10px 20px;
-            border: 1.5px solid var(--apple-blue);
+            padding: 8px 16px;
+            border: 2px solid #0071e3;
             background: white;
-            color: var(--apple-blue);
+            color: #0071e3;
             border-radius: 980px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.3s;
         }
-        .lang-btn.active { background: var(--apple-blue); color: white; }
-        
-        .social-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
-        .social-link {
-            color: var(--apple-blue);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 12px 24px;
-            background: var(--apple-gray-light);
-            border-radius: 980px;
-        }
-        
-        .section { padding: 80px 0; }
-        .section-title { font-size: 32px; font-weight: 700; margin-bottom: 40px; }
-        
-        .featured-card {
-            background: linear-gradient(135deg, #f5f5f7 0%, #ffffff 100%);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: var(--apple-radius);
-            padding: 48px;
-            margin-bottom: 60px;
-            box-shadow: var(--apple-shadow);
-        }
-        
-        .featured-header { display: flex; align-items: center; gap: 20px; margin-bottom: 28px; }
-        .featured-icon { font-size: 56px; }
-        .featured-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; }
-        .featured-desc { font-size: 17px; line-height: 1.8; margin-bottom: 32px; }
-        
-        .featured-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            padding: 28px;
-            background: rgba(0, 113, 227, 0.05);
-            border-radius: 12px;
-            margin-bottom: 32px;
-        }
-        .stat-item { text-align: center; }
-        .stat-value { font-size: 36px; font-weight: 700; color: var(--apple-blue); }
-        .stat-label { font-size: 13px; color: var(--apple-gray); }
-        
-        .featured-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-        .featured-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background: var(--apple-blue);
+        .lang-btn:hover, .lang-btn.active {
+            background: #0071e3;
             color: white;
-            text-decoration: none;
-            border-radius: 980px;
-            font-weight: 600;
         }
-        .featured-btn.secondary { background: transparent; color: var(--apple-blue); border: 1.5px solid var(--apple-blue); }
         
-        .project-grid { display: grid; gap: 24px; }
+        .header-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .header-links a {
+            color: #0071e3; text-decoration: none; font-weight: 600;
+            padding: 8px 16px; background: #f0f0f0; border-radius: 980px;
+        }
+        
+        /* Diary Featured */
+        .diary-featured {
+            background: linear-gradient(135deg, #0071e3, #0077ed);
+            border-radius: 16px; padding: 40px; color: white;
+            margin-bottom: 60px;
+        }
+        .diary-featured-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .diary-featured-icon { font-size: 48px; }
+        .diary-featured-title { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .diary-featured-subtitle { font-size: 14px; opacity: 0.9; margin-bottom: 20px; }
+        .diary-featured-desc { font-size: 16px; line-height: 1.8; margin-bottom: 30px; opacity: 0.95; }
+        .diary-featured-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+        .stat-label { font-size: 13px; opacity: 0.8; }
+        .diary-featured-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
+        .diary-button {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 14px 28px; background: white; color: #0071e3;
+            text-decoration: none; border-radius: 980px;
+            font-size: 15px; font-weight: 600;
+        }
+        .diary-button.secondary { background: rgba(255,255,255,0.2); color: white; }
+        
+        /* Sections */
+        .section { margin-bottom: 60px; }
+        .section-title { font-size: 24px; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Projects */
         .project-card {
-            padding: 32px;
-            background: var(--apple-gray-light);
-            border-radius: var(--apple-radius);
+            padding: 25px; background: #f8f8f8; border-radius: 12px;
+            margin-bottom: 20px; border-left: 4px solid #0071e3;
         }
-        .project-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
-        .project-desc { font-size: 15px; color: var(--apple-gray); margin-bottom: 20px; }
+        .project-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .project-desc { font-size: 14px; color: #666; line-height: 1.8; margin-bottom: 12px; }
         .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
-        .project-link {
-            color: var(--apple-blue);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            background: rgba(0, 113, 227, 0.1);
-            border-radius: 8px;
-        }
-        
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--apple-blue) 0%, rgba(0, 113, 227, 0.1) 100%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding: 24px 0 24px 32px;
-            margin-bottom: 8px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -46px;
-            top: 32px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--apple-blue);
-            border: 3px solid white;
-            box-shadow: 0 2px 8px rgba(0, 113, 227, 0.3);
-        }
-        
-        .timeline-period {
+        .project-links a {
+            color: #0071e3; text-decoration: none; font-weight: 600;
+            padding: 6px 14px; background: #e6f2ff; border-radius: 6px;
             font-size: 13px;
-            color: var(--apple-gray);
-            font-weight: 600;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
         
-        .timeline-title {
-            font-size: 19px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--apple-gray-dark);
+        /* Timeline */
+        .timeline-item {
+            padding: 20px; background: #f8f8f8; border-radius: 12px;
+            margin-bottom: 20px; border-left: 4px solid #667eea;
         }
+        .timeline-period { font-size: 14px; color: #999; margin-bottom: 8px; }
+        .timeline-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+        .timeline-desc { font-size: 14px; color: #666; line-height: 1.8; }
         
-        .timeline-desc {
-            font-size: 15px;
-            color: var(--apple-gray);
-            line-height: 1.8;
-        }
+        /* Footer */
+        .footer { text-align: center; padding: 40px 20px; border-top: 2px solid #eaeaea; color: #999; font-size: 14px; }
         
-        .footer {
-            text-align: center;
-            padding: 60px 24px;
-            border-top: 1px solid var(--apple-gray-light);
-            color: var(--apple-gray);
-            font-size: 14px;
-            margin-top: 40px;
+        @media (max-width: 768px) {
+            .header h1 { font-size: 28px; }
+            .diary-featured-stats { grid-template-columns: 1fr; }
+            .diary-featured-buttons { flex-direction: column; }
         }
-        .footer a { color: var(--apple-blue); text-decoration: none; }
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="container">
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
             <div class="avatar">TW</div>
             <h1>Terry Wu</h1>
-            <p class="hero-title">Software Developer · Solar-Storage Investment System Creator</p>
+            <p class="header-title">Software Developer · Solar-Storage Investment System Creator</p>
             
+            <!-- Language Switcher -->
             <div class="lang-switcher">
                 <button class="lang-btn active" onclick="switchLang('zh')">🇨🇳 中文</button>
                 <button class="lang-btn" onclick="switchLang('en')">🇺🇸 English</button>
                 <button class="lang-btn" onclick="switchLang('ja')">🇯🇵 日本語</button>
-                <button class="lang-btn" onclick="switchLang('fr')">🇫🇷 Français</button>
-                <button class="lang-btn" onclick="switchLang('es')">🇪🇸 Español</button>
             </div>
             
-            <div class="social-links">
-                <a href="https://github.com/xuegangwu" target="_blank" class="social-link">GitHub</a>
-                <a href="mailto:wuxuegang@gmail.com" class="social-link">Email</a>
-                <a href="https://www.linkedin.com/in/terry-wu-ba818216/" target="_blank" class="social-link">LinkedIn</a>
+            <div class="header-links">
+                <a href="https://github.com/xuegangwu" target="_blank">GitHub</a>
+                <a href="mailto:wuxuegang@gmail.com">Email</a>
+                <a href="https://linkedin.com/in/xuegangwu" target="_blank">LinkedIn</a>
             </div>
         </div>
-    </section>
-
-    <div class="container">
-        <div class="featured-card">
-            <div class="featured-header">
-                <span class="featured-icon">📔</span>
+        
+        <!-- 1. Diary Featured -->
+        <div class="diary-featured">
+            <div class="diary-featured-header">
+                <span class="diary-featured-icon">📔</span>
                 <div>
-                    <h2 class="featured-title">开发日记</h2>
-                    <p style="color: var(--apple-gray);">参考 sanwan.ai (3 万点 AI) 设计风格</p>
+                    <h2 class="diary-featured-title" data-zh="开发日记" data-en="Development Diary" data-ja="開発日記">开发日记</h2>
+                    <p class="diary-featured-subtitle" data-zh="参考 sanwan.ai (3 万点 AI) 设计风格" data-en="Reference to sanwan.ai design style" data-ja="sanwan.ai デザインスタイルを参考">参考 sanwan.ai (3 万点 AI) 设计风格</p>
                 </div>
             </div>
-            <p class="featured-desc">记录每一天的工作进展，见证项目的成长历程。<br>极简 · 专业 · 真实</p>
-            <div class="featured-stats">
+            <p class="diary-featured-desc" data-zh="记录每一天的工作进展，见证项目的成长历程。<br>极简 · 专业 · 真实" data-en="Record daily work progress, witness project growth.<br>Minimalist · Professional · Authentic" data-ja="毎日の仕事の進捗を記録し、プロジェクトの成長を見守る。<br>ミニマリスト · プロフェッショナル · オーセンティック">记录每一天的工作进展，见证项目的成长历程。<br>极简 · 专业 · 真实</p>
+            <div class="diary-featured-stats">
                 <div class="stat-item">
                     <div class="stat-value">2</div>
-                    <div class="stat-label">篇日记</div>
+                    <div class="stat-label" data-zh="篇日记" data-en="posts" data-ja="投稿">篇日记</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value">2</div>
-                    <div class="stat-label">持续天数</div>
+                    <div class="stat-label" data-zh="持续天数" data-en="days" data-ja="日間">持续天数</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-value">13</div>
-                    <div class="stat-label">Git 提交</div>
+                    <div class="stat-label" data-zh="Git 提交" data-en="Git commits" data-ja="Git コミット">Git 提交</div>
                 </div>
             </div>
-            <div class="featured-buttons">
-                <a href="https://xuegangwu.github.io/guangchu/" target="_blank" class="featured-btn">🏠 访问日记首页</a>
-                <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank" class="featured-btn secondary">📖 查看日记列表</a>
+            <div class="diary-featured-buttons">
+                <a href="https://xuegangwu.github.io/guangchu/" target="_blank" class="diary-button">
+                    🏠 <span data-zh="访问日记首页" data-en="Visit Diary Homepage" data-ja="日記ホームページ">访问日记首页</span>
+                </a>
+                <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank" class="diary-button secondary">
+                    📖 <span data-zh="查看日记列表" data-en="View Diary List" data-ja="日記リスト">查看日记列表</span>
+                </a>
             </div>
         </div>
-
-        <section class="section">
-            <h2 class="section-title">💼 项目作品</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3 class="project-title">🦞 Guangchu (光储龙虾)</h3>
-                    <p class="project-desc">Solar-Storage News Collection & Analysis System - 全球光伏 + 储能行业信息收集与分析系统。</p>
-                    <div class="project-links">
-                        <a href="https://xuegangwu.github.io/guangchu/" target="_blank" class="project-link">📔 Diary</a>
-                        <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank" class="project-link">📖 Diary List</a>
-                        <a href="https://github.com/xuegangwu/guangchu" target="_blank" class="project-link">🐙 GitHub</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3 class="project-title">🗺️ 光储投资地图</h3>
-                    <p class="project-desc">Multi-Country Investment Evaluation Platform - 多国家光储电站投资评估平台，覆盖中国、越南、日本。</p>
-                    <div class="project-links">
-                        <a href="http://localhost:3000/" target="_blank" class="project-link">🌐 Live Demo</a>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <h3 class="project-title">📊 Data Analysis Tools</h3>
-                    <p class="project-desc">Industry Data Analysis and Visualization - 行业数据分析与可视化工具。</p>
-                    <div class="project-links">
-                        <a href="#" class="project-link">🔗 Coming Soon</a>
-                    </div>
-                </div>
-            </div>
-        </section>
         
-        <section class="section">
-            <h2 class="section-title">💼 工作经历</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-period">2019 - Present</div>
-                    <h3 class="timeline-title">Risen Energy (日升) - CIO · VP · CEO</h3>
-                    <p class="timeline-desc">首席信息官、副总裁、首席执行官。参与光储行业的数字化转型和商业运营。</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-period">2002 - 2019</div>
-                    <h3 class="timeline-title">Ricoh (理光) - Programmer · Manager · Director</h3>
-                    <p class="timeline-desc">从程序员做起，晋升为经理和总监。17 年软件开发和团队领导经验。</p>
+        <!-- 2. Projects -->
+        <div class="section">
+            <h2 class="section-title">
+                <span data-zh="💼 项目作品" data-en="💼 Featured Projects" data-ja="💼 注目プロジェクト">💼 项目作品</span>
+            </h2>
+            
+            <div class="project-card">
+                <h3 class="project-title">🦞 Guangchu (光储龙虾)</h3>
+                <p class="project-desc" data-zh="Solar-Storage News Collection & Analysis System - 全球光伏 + 储能行业信息收集与分析系统。" data-en="Solar-Storage News Collection & Analysis System - Global photovoltaic + energy storage industry information collection and analysis system." data-ja="太陽光・蓄電池ニュース収集・分析システム - 世界の太陽光発電 + エネルギー貯蔵業界の情報収集・分析システム。">Solar-Storage News Collection & Analysis System - 全球光伏 + 储能行业信息收集与分析系统。</p>
+                <div class="project-links">
+                    <a href="https://xuegangwu.github.io/guangchu/" target="_blank">📔 Diary</a>
+                    <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank">📖 Diary List</a>
+                    <a href="https://github.com/xuegangwu/guangchu" target="_blank">🐙 GitHub</a>
                 </div>
             </div>
-        </section>
+            
+            <div class="project-card">
+                <h3 class="project-title">🗺️ Solar-Storage Investment Map</h3>
+                <p class="project-desc" data-zh="Multi-Country Investment Evaluation Platform - 多国家光储电站投资评估平台，覆盖中国、越南、日本。" data-en="Multi-Country Investment Evaluation Platform - Covering China, Vietnam, and Japan." data-ja="多国籍投資評価プラットフォーム - 中国、ベトナム、日本をカバー。">Multi-Country Investment Evaluation Platform - 多国家光储电站投资评估平台，覆盖中国、越南、日本。</p>
+                <div class="project-links">
+                    <a href="http://localhost:3000/" target="_blank">🌐 Live Demo</a>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <h3 class="project-title">📊 Data Analysis Tools</h3>
+                <p class="project-desc" data-zh="Industry Data Analysis and Visualization - 行业数据分析与可视化工具。" data-en="Industry Data Analysis and Visualization - Multi-dimensional data analysis and report generation tools." data-ja="業界データ分析と可視化 - 多次元データ分析とレポート生成ツール。">Industry Data Analysis and Visualization - 行业数据分析与可视化工具。</p>
+                <div class="project-links">
+                    <a href="#">🔗 Coming Soon</a>
+                </div>
+            </div>
+        </div>
         
-        <section class="section">
-            <h2 class="section-title">🎓 学习经历</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-period">2025 - Present</div>
-                    <h3 class="timeline-title">University of Colorado - AI Engineering Master's Degree</h3>
-                    <p class="timeline-desc">科罗拉多大学 - AI 工程硕士，专注于机器学习和深度学习应用。</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-period">2023 - 2025</div>
-                    <h3 class="timeline-title">CEIBS - EMBA</h3>
-                    <p class="timeline-desc">中欧国际工商学院 - EMBA 工商管理硕士。</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-period">1999 - 2002</div>
-                    <h3 class="timeline-title">East China University of Science and Technology - Master's Degree</h3>
-                    <p class="timeline-desc">华东理工大学 - 硕士学位。</p>
-                </div>
+        <!-- 3. Work Experience -->
+        <div class="section">
+            <h2 class="section-title">
+                <span data-zh="💼 工作经历" data-en="💼 Work Experience" data-ja="💼 職歴">💼 工作经历</span>
+            </h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">2019 - Present</div>
+                <h3 class="timeline-title">Risen Energy (日升) - CIO · VP · CEO</h3>
+                <p class="timeline-desc" data-zh="首席信息官、副总裁、首席执行官。领导光储行业的数字化转型和技术战略。" data-en="Chief Information Officer, Vice President, and Chief Executive Officer. Leading digital transformation and technology strategy in solar-storage industry." data-ja="最高情報責任者、副社長、最高経営責任者。太陽光・蓄電池業界のデジタル変革と技術戦略をリード。">首席信息官、副总裁、首席执行官。领导光储行业的数字化转型和技术战略。</p>
             </div>
-        </section>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
+            
+            <div class="timeline-item">
+                <div class="timeline-period">2002 - 2019</div>
+                <h3 class="timeline-title">Ricoh (理光) - Programmer · Manager · Director</h3>
+                <p class="timeline-desc" data-zh="从程序员做起，晋升为经理和总监。17 年软件开发和团队领导经验。" data-en="Started as Programmer, promoted to Manager and Director. 17 years of experience in software development and team leadership." data-ja="プログラマーから始まり、マネージャー、ディレクターに昇進。ソフトウェア開発とチームリーダーシップの 17 年の経験。">从程序员做起，晋升为经理和总监。17 年软件开发和团队领导经验。</p>
+            </div>
+        </div>
+        
+        <!-- 4. Education -->
+        <div class="section">
+            <h2 class="section-title">
+                <span data-zh="🎓 学习经历" data-en="🎓 Education" data-ja="🎓 学歴">🎓 学习经历</span>
+            </h2>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">2025 - Present</div>
+                <h3 class="timeline-title">University of Colorado - AI Engineering Master's Degree</h3>
+                <p class="timeline-desc" data-zh="科罗拉多大学 - AI 工程硕士，专注于机器学习和深度学习应用。" data-en="Currently pursuing AI engineering master's degree, focusing on machine learning and deep learning applications." data-ja="AI エンジニアリング修士号、機械学習と深層学習の応用に焦点を当てています。">科罗拉多大学 - AI 工程硕士，专注于机器学习和深度学习应用。</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">2023 - 2025</div>
+                <h3 class="timeline-title">CEIBS - EMBA</h3>
+                <p class="timeline-desc" data-zh="中欧国际工商学院 - EMBA 工商管理硕士。" data-en="Executive Master of Business Administration at China Europe International Business School." data-ja="中国中欧国際商学院でエグゼクティブ MBA。">中欧国际工商学院 - EMBA 工商管理硕士。</p>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-period">1999 - 2002</div>
+                <h3 class="timeline-title">East China University of Science and Technology - Master's Degree</h3>
+                <p class="timeline-desc" data-zh="华东理工大学 - 硕士学位。" data-en="Master's degree in related field." data-ja="関連分野の修士号。">华东理工大学 - 硕士学位。</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
             <p>© 2026 Terry Wu. All rights reserved.</p>
-            <p style="margin-top: 12px;">Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+            <p style="margin-top: 10px;">Powered by <a href="https://pages.github.com/" target="_blank" style="color: #0071e3;">GitHub Pages</a></p>
         </div>
-    </footer>
+    </div>
     
     <script>
         function switchLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            // 更新按钮状态
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
             event.target.classList.add('active');
+            
+            // 更新页面内容
+            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                const key = 'data-' + lang;
+                if (el.hasAttribute(key)) {
+                    const html = el.getAttribute(key);
+                    if (html.includes('<br>')) {
+                        el.innerHTML = html;
+                    } else {
+                        el.textContent = html;
+                    }
+                }
+            });
+            
+            // 保存语言偏好
+            localStorage.setItem('preferredLang', lang);
         }
+        
+        // 页面加载时恢复语言偏好
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'zh';
+            const btn = document.querySelector(`.lang-btn[onclick="switchLang('${savedLang}')"]`);
+            if (btn) {
+                btn.click();
+            }
+        });
     </script>
 </body>
 </html>
