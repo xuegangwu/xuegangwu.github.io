@@ -410,6 +410,7 @@
         };
         
         function switchLang(lang) {
+            // Update button active state
             document.querySelectorAll('.lang-btn').forEach(function(btn) {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) {
@@ -417,7 +418,10 @@
                 }
             });
             
+            // Get translations for selected language
             const t = translations[lang];
+            
+            // Update all content
             if (t) {
                 document.getElementById('hero-title-text').textContent = t.heroTitle;
                 document.getElementById('diary-title').textContent = t.diaryTitle;
@@ -442,9 +446,11 @@
                 document.getElementById('edu3-desc').textContent = t.edu3Desc;
             }
             
+            // Save language preference
             localStorage.setItem('preferredLang', lang);
         }
         
+        // Initialize on page load - Default to English
         window.addEventListener('load', function() {
             var savedLang = localStorage.getItem('preferredLang') || 'en';
             switchLang(savedLang);
