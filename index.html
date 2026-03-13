@@ -291,7 +291,6 @@
     </footer>
     
     <script>
-        // Translations
         const translations = {
             en: {
                 heroTitle: "Software Developer · Solar-Storage Investment System Creator",
@@ -410,9 +409,7 @@
             }
         };
         
-        // Language switch function
         function switchLang(lang) {
-            // Update button active state
             document.querySelectorAll('.lang-btn').forEach(function(btn) {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) {
@@ -420,7 +417,6 @@
                 }
             });
             
-            // Update content
             const t = translations[lang];
             if (t) {
                 document.getElementById('hero-title-text').textContent = t.heroTitle;
@@ -446,11 +442,9 @@
                 document.getElementById('edu3-desc').textContent = t.edu3Desc;
             }
             
-            // Save language preference
             localStorage.setItem('preferredLang', lang);
         }
         
-        // Initialize on page load - Default to English
         window.addEventListener('load', function() {
             var savedLang = localStorage.getItem('preferredLang') || 'en';
             switchLang(savedLang);
