@@ -108,6 +108,32 @@
         .timeline-title { font-size: 19px; font-weight: 600; margin-bottom: 10px; }
         .timeline-desc { font-size: 15px; color: var(--apple-gray); line-height: 1.8; }
         
+        /* Skills Section */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .skill-card {
+            padding: 32px; background: var(--apple-gray-light);
+            border-radius: var(--apple-radius);
+            transition: all 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--apple-shadow);
+        }
+        .skill-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+        .skill-icon {
+            width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px; background: white;
+        }
+        .skill-title { font-size: 20px; font-weight: 600; }
+        .skill-level {
+            display: inline-block; padding: 6px 12px;
+            background: rgba(0, 113, 227, 0.1); color: var(--apple-blue);
+            border-radius: 980px; font-size: 13px; font-weight: 600;
+            margin-top: 8px;
+        }
+        .skill-desc { font-size: 15px; color: var(--apple-gray); line-height: 1.8; }
+        
         .footer {
             text-align: center; padding: 60px 24px;
             border-top: 1px solid var(--apple-gray-light);
@@ -138,6 +164,11 @@
             .timeline { padding-left: 30px; }
             .timeline-item::before { left: -36px; width: 10px; height: 10px; }
             .timeline-item { padding: 20px 0 20px 24px; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .skill-card { padding: 24px; }
+            .skill-header { flex-direction: column; align-items: flex-start; }
+            .skill-icon { width: 48px; height: 48px; font-size: 24px; }
+            .skill-title { font-size: 18px; }
         }
         
         @media (max-width: 375px) {
@@ -259,6 +290,45 @@
         </section>
         
         <section class="section">
+            <h2 class="section-title" id="skills-title">🌐 Language Skills</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🇨🇳</div>
+                        <div>
+                            <div class="skill-title">Chinese (中文)</div>
+                            <span class="skill-level" id="skill-cn-level">Native</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc" id="skill-cn-desc">Native speaker with excellent written and verbal communication skills. Professional business Chinese proficiency.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🇺🇸</div>
+                        <div>
+                            <div class="skill-title">English (英文)</div>
+                            <span class="skill-level" id="skill-en-level">Professional</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc" id="skill-en-desc">Professional working proficiency. Capable of technical documentation, business communication, and international collaboration.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <div class="skill-icon">🇯🇵</div>
+                        <div>
+                            <div class="skill-title">Japanese (日文)</div>
+                            <span class="skill-level" id="skill-ja-level">Business</span>
+                        </div>
+                    </div>
+                    <p class="skill-desc" id="skill-ja-desc">Business level proficiency. Experience working with Japanese companies and understanding of business etiquette.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
             <h2 class="section-title" id="edu-title">🎓 Education</h2>
             
             <div class="timeline">
@@ -313,7 +383,14 @@
                 eduTitle: "🎓 Education",
                 edu1Desc: "Currently pursuing AI engineering master's degree, focusing on machine learning and deep learning applications.",
                 edu2Desc: "Executive Master of Business Administration at China Europe International Business School.",
-                edu3Desc: "Master's degree in related field."
+                edu3Desc: "Master's degree in related field.",
+                skillsTitle: "🌐 Language Skills",
+                skillCnLevel: "Native",
+                skillCnDesc: "Native speaker with excellent written and verbal communication skills. Professional business Chinese proficiency.",
+                skillEnLevel: "Professional",
+                skillEnDesc: "Professional working proficiency. Capable of technical documentation, business communication, and international collaboration.",
+                skillJaLevel: "Business",
+                skillJaDesc: "Business level proficiency. Experience working with Japanese companies and understanding of business etiquette."
             },
             zh: {
                 heroTitle: "软件开发工程师 · 光储投资系统创建者",
@@ -336,7 +413,14 @@
                 eduTitle: "🎓 学习经历",
                 edu1Desc: "科罗拉多大学 - AI 工程硕士，专注于机器学习和深度学习应用。",
                 edu2Desc: "中欧国际工商学院 - EMBA 工商管理硕士。",
-                edu3Desc: "华东理工大学 - 硕士学位。"
+                edu3Desc: "华东理工大学 - 硕士学位。",
+                skillsTitle: "🌐 语言能力",
+                skillCnLevel: "母语",
+                skillCnDesc: "母语水平，具备出色的书面和口头表达能力。精通商务中文。",
+                skillEnLevel: "专业",
+                skillEnDesc: "专业工作水平。能够进行技术文档编写、商务沟通和国际协作。",
+                skillJaLevel: "商务",
+                skillJaDesc: "商务水平。具有日企工作经验，熟悉商务礼仪。"
             },
             ja: {
                 heroTitle: "ソフトウェア開発者 · 太陽光・蓄電池投資システムクリエイター",
@@ -359,7 +443,14 @@
                 eduTitle: "🎓 学歴",
                 edu1Desc: "AI エンジニアリング修士号、機械学習と深層学習の応用に焦点を当てています。",
                 edu2Desc: "中国中欧国際商学院でエグゼクティブ MBA。",
-                edu3Desc: "関連分野の修士号。"
+                edu3Desc: "関連分野の修士号。",
+                skillsTitle: "🌐 言語スキル",
+                skillCnLevel: "ネイティブ",
+                skillCnDesc: "ネイティブレベル。優れた文章・会話能力を備え、ビジネス中国語に精通。",
+                skillEnLevel: "プロフェッショナル",
+                skillEnDesc: "プロフェッショナルな実務レベル。技術文書、ビジネスコミュニケーション、国際協力が可能。",
+                skillJaLevel: "ビジネス",
+                skillJaDesc: "ビジネスレベル。日本企業での勤務経験があり、ビジネスマナーを理解。"
             },
             fr: {
                 heroTitle: "Développeur Logiciel · Créateur du Système d'Investissement Solaire-Stockage",
@@ -444,6 +535,13 @@
                 document.getElementById('edu1-desc').textContent = t.edu1Desc;
                 document.getElementById('edu2-desc').textContent = t.edu2Desc;
                 document.getElementById('edu3-desc').textContent = t.edu3Desc;
+                document.getElementById('skills-title').textContent = t.skillsTitle;
+                document.getElementById('skill-cn-level').textContent = t.skillCnLevel;
+                document.getElementById('skill-cn-desc').textContent = t.skillCnDesc;
+                document.getElementById('skill-en-level').textContent = t.skillEnLevel;
+                document.getElementById('skill-en-desc').textContent = t.skillEnDesc;
+                document.getElementById('skill-ja-level').textContent = t.skillJaLevel;
+                document.getElementById('skill-ja-desc').textContent = t.skillJaDesc;
             }
             
             // Save language preference
