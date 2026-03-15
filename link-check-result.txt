@@ -1,0 +1,48 @@
+🔍 Starting link check...
+==========================
+
+📍 Checking Personal Site Links...
+-----------------------------------
+[0;31m❌ FAIL[0m  Homepage
+      URL: https://xuegangwu.github.io/
+[0;31m❌ FAIL[0m  Projects Section
+      URL: https://xuegangwu.github.io/#projects
+[0;31m❌ FAIL[0m  Work Experience Section
+      URL: https://xuegangwu.github.io/#work
+[0;31m❌ FAIL[0m  Skills Section
+      URL: https://xuegangwu.github.io/#skills
+[0;32m✅ OK[0m    Education Section
+      URL: https://xuegangwu.github.io/#education
+[0;31m❌ FAIL[0m  Site Map Section
+      URL: https://xuegangwu.github.io/#sitemap
+
+🦞 Checking Guangchu Project Links...
+--------------------------------------
+[0;32m✅ OK[0m    Guangchu Project Home
+      URL: https://xuegangwu.github.io/guangchu/
+[0;32m✅ OK[0m    Project Introduction
+      URL: https://xuegangwu.github.io/guangchu/project-intro.html
+[0;32m✅ OK[0m    Diary Hub
+      URL: https://xuegangwu.github.io/guangchu/web/diary-hub.html
+[0;32m✅ OK[0m    Diary List Index
+      URL: https://xuegangwu.github.io/guangchu/diary/index.html
+[0;32m✅ OK[0m    System Architecture
+      URL: https://xuegangwu.github.io/guangchu/web/architecture.html
+[0;32m✅ OK[0m    Token Report
+      URL: https://xuegangwu.github.io/guangchu/web/token-report.html
+
+🔗 Checking External Links...
+------------------------------
+[0;32m✅ OK[0m    GitHub Profile
+      URL: https://github.com/xuegangwu
+[0;31m❌ FAIL[0m  Guangchu Repository
+      URL: https://github.com/xuegangwu/guangchu
+[0;32m✅ OK[0m    LinkedIn Profile
+      URL: https://www.linkedin.com/in/terry-wu-ba818216/
+
+📧 Checking Email Links...
+---------------------------
+ℹ️  Email: wuxuegang@gmail.com (skipped - mailto link)
+
+==========================
+✅ Link check complete!
