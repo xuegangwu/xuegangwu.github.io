@@ -1,1222 +1,964 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN" data-lang="zh">
 <head>
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="favicon.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Terry Wu - Software Developer & Solar-Storage Investment System Creator">
-    <meta name="keywords" content="Terry Wu, Software Developer, Solar-Storage, AI, GitHub">
-    <title>Terry Wu - Personal Homepage</title>
+    <title>Solaripple - 清洁能源，驱动可持续未来</title>
+    <meta name="description" content="专注中国、日本、东南亚工商业光储综合服务 - 开发、投资、运营、交易">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
     <style>
         :root {
-            --apple-blue: #0071e3;
-            --apple-blue-dark: #005bb5;
-            --apple-blue-light: #409cff;
-            --apple-gray: #86868b;
-            --apple-gray-light: #f5f5f7;
-            --apple-gray-dark: #1d1d1f;
-            --apple-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-            --apple-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.12);
-            --apple-radius: 18px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #0066FF;
+            --primary-light: #3399FF;
+            --accent: #00D4AA;
+            --accent-light: #00FFD4;
+            --gold: #FFD700;
+            --bg: #FAFBFC;
+            --bg-card: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #666666;
+            --border: #E5E7EB;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html { scroll-behavior: smooth; }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--apple-gray-dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            background-attachment: fixed;
-            font-size: 16px;
-            overflow-x: hidden;
         }
-        
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-blue-light));
-            z-index: 1000;
-            transition: width 0.1s ease;
-        }
-        
-        .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
-        
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 80px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 113, 227, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-        
-        .avatar {
-            width: 140px; height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 56px; color: white; font-weight: 700;
-            margin: 0 auto 32px;
-            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
-            transition: var(--transition);
-            animation: avatarFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes avatarFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .avatar:hover {
-            transform: scale(1.05) rotate(5deg);
-            box-shadow: 0 12px 48px rgba(102, 126, 234, 0.6);
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--apple-gray-dark) 0%, var(--apple-blue) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 0.8s ease;
-        }
-        
-        .hero-title {
-            font-size: 20px;
-            color: var(--apple-gray);
-            margin-bottom: 32px;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
+
         /* Language Switcher */
-        .lang-switcher {
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.4s both;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 8px 12px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
         }
-        
+
         .lang-btn {
-            padding: 10px 20px;
-            border: 1.5px solid var(--apple-blue);
-            background: white;
-            color: var(--apple-blue);
-            border-radius: 980px;
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
             cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-        }
-        
-        .lang-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
-        }
-        
-        .lang-btn.active {
-            background: var(--apple-blue);
-            color: white;
-            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.4);
-        }
-        
-        /* Social Links */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease 0.6s both;
-        }
-        
-        .social-link {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 56px;
-            height: 56px;
-            background: white;
-            border-radius: 50%;
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition);
-            font-size: 24px;
-            text-decoration: none;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: var(--apple-shadow-hover);
-            background: linear-gradient(135deg, var(--apple-blue), var(--apple-blue-dark));
-        }
-        
-        .social-link:hover .social-icon {
-            filter: brightness(0) invert(1);
-        }
-        
-        /* Toutiao special hover effect - red gradient */
-        .social-link[data-label="今日头条"]:hover {
-            background: linear-gradient(135deg, #ff3e3e, #e02020);
-        }
-        
-        .social-icon {
-            width: 28px;
-            height: 28px;
-            transition: var(--transition);
-        }
-        
-        /* Tooltip */
-        .social-link::before {
-            content: attr(data-label);
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-8px);
-            padding: 8px 14px;
-            background: var(--apple-gray-dark);
-            color: white;
+            border-radius: 20px;
             font-size: 13px;
             font-weight: 500;
-            border-radius: 8px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: var(--text-secondary);
+            transition: all 0.3s;
         }
-        
-        .social-link::after {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%) translateY(-2px);
-            border: 6px solid transparent;
-            border-top-color: var(--apple-gray-dark);
-            border-bottom: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
         }
-        
-        .social-link:hover::before,
-        .social-link:hover::after {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(-12px);
+
+        .lang-btn:hover:not(.active) {
+            background: var(--border);
         }
-        
-        .social-link:hover::after {
-            transform: translateX(-50%) translateY(-6px);
-        }
-        
-        /* Sections */
-        .section {
-            padding: 80px 0;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 70px;
             left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-blue-light));
-            border-radius: 2px;
+            right: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0 5%;
         }
-        
-        /* Featured Card */
-        .featured-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 247, 0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: var(--apple-radius);
-            padding: 48px;
-            margin-bottom: 60px;
-            backdrop-filter: blur(20px);
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition);
-        }
-        
-        .featured-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--apple-shadow-hover);
-        }
-        
-        .featured-header {
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 28px;
+            justify-content: space-between;
+            height: 70px;
         }
-        
-        .featured-icon {
-            font-size: 56px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .featured-title {
-            font-size: 32px;
+
+        .logo {
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        
-        .featured-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            padding: 28px;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.08) 0%, rgba(0, 113, 227, 0.02) 100%);
-            border-radius: 12px;
-            margin-bottom: 32px;
-        }
-        
-        .stat-item {
-            text-align: center;
-            transition: var(--transition);
-        }
-        
-        .stat-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .stat-value {
-            font-size: 36px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--apple-blue), var(--apple-blue-light));
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
-        .stat-label {
-            font-size: 13px;
-            color: var(--apple-gray);
-            margin-top: 4px;
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
         }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Multi-language Content System - Hide all first */
+        [data-i18n] { display: none !important; }
+        [data-i18n-block] { display: none !important; }
         
-        .featured-buttons {
+        /* Then show only the selected language */
+        html[data-lang="zh"] [data-i18n="zh"] { display: inline !important; }
+        html[data-lang="zh"] [data-i18n-block="zh"] { display: block !important; }
+        
+        html[data-lang="en"] [data-i18n="en"] { display: inline !important; }
+        html[data-lang="en"] [data-i18n-block="en"] { display: block !important; }
+        
+        html[data-lang="ja"] [data-i18n="ja"] { display: inline !important; }
+        html[data-lang="ja"] [data-i18n-block="ja"] { display: block !important; }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 5% 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #F0F7FF 0%, var(--bg) 100%);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(18px, 2.5vw, 22px);
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
+            justify-content: center;
         }
-        
-        .featured-btn {
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0,102,255,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,102,255,0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Stats Section */
+        .stats { padding: 60px 5%; background: white; }
+
+        .stats-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 16px;
+            background: var(--bg);
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* Business Section */
+        .business { padding: 80px 5%; background: var(--bg); }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        .business-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .business-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .business-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .business-icon { font-size: 50px; margin-bottom: 20px; }
+
+        .business-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .business-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 20px;
+            min-height: 44px;
+        }
+
+        .business-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background: linear-gradient(135deg, var(--apple-blue), var(--apple-blue-dark));
-            color: white;
-            text-decoration: none;
-            border-radius: 980px;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.3);
+            gap: 6px;
         }
-        
-        .featured-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.4);
+
+        /* Global Section */
+        .global {
+            padding: 80px 5%;
+            background: linear-gradient(180deg, white 0%, #F0F7FF 100%);
         }
-        
-        .featured-btn.secondary {
-            background: transparent;
-            color: var(--apple-blue);
-            border: 1.5px solid var(--apple-blue);
-            box-shadow: none;
-        }
-        
-        .featured-btn.secondary:hover {
-            background: var(--apple-blue);
-            color: white;
-        }
-        
-        /* Project Grid */
-        .project-grid {
+
+        .global-grid {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
-        
-        .project-card {
-            padding: 32px;
-            background: white;
-            border-radius: var(--apple-radius);
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--apple-shadow-hover);
-            border-color: var(--apple-blue);
-        }
-        
-        /* Coming Soon Card Special Style */
-        .coming-soon-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 245, 247, 0.9) 100%);
-            border: 2px dashed rgba(0, 113, 227, 0.3);
-        }
-        
-        .coming-soon-badge {
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-            color: white;
-            padding: 8px 40px;
-            font-size: 13px;
-            font-weight: 700;
-            transform: rotate(45deg);
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
-            letter-spacing: 1px;
-        }
-        
-        .project-link.disabled {
-            color: var(--apple-gray);
-            padding: 8px 16px;
-            background: var(--apple-gray-light);
-            border-radius: 8px;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-        
-        .project-title {
-            font-size: 22px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--apple-gray-dark);
-        }
-        
-        .project-desc {
-            font-size: 15px;
-            color: var(--apple-gray);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        
-        .project-link {
-            color: var(--apple-blue);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 8px 16px;
-            background: rgba(0, 113, 227, 0.08);
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .project-link:hover {
-            background: var(--apple-blue);
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(180deg, var(--apple-blue) 0%, rgba(0, 113, 227, 0.1) 100%);
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding: 24px 0 24px 32px;
-            margin-bottom: 8px;
-            transition: var(--transition);
-        }
-        
-        .timeline-item:hover {
-            transform: translateX(8px);
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -46px;
-            top: 32px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--apple-blue);
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
-            transition: var(--transition);
-        }
-        
-        .timeline-item:hover::before {
-            background: var(--apple-blue-dark);
-            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.4);
-        }
-        
-        .timeline-period {
-            font-size: 13px;
-            color: var(--apple-gray);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: inline-block;
-            padding: 4px 12px;
-            background: var(--apple-gray-light);
-            border-radius: 980px;
-        }
-        
-        .timeline-title {
-            font-size: 19px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--apple-gray-dark);
-        }
-        
-        .timeline-desc {
-            font-size: 15px;
-            color: var(--apple-gray);
-            line-height: 1.8;
-        }
-        
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        
-        .skill-card {
-            padding: 32px;
-            background: white;
-            border-radius: var(--apple-radius);
-            box-shadow: var(--apple-shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: var(--apple-shadow-hover);
-            border-color: var(--apple-blue);
-        }
-        
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        
-        .skill-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        
-        .skill-title {
-            font-size: 20px;
-            font-weight: 600;
-        }
-        
-        .skill-level {
-            display: inline-block;
-            padding: 6px 12px;
-            background: linear-gradient(135deg, rgba(0, 113, 227, 0.1), rgba(0, 113, 227, 0.05));
-            color: var(--apple-blue);
-            border-radius: 980px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-top: 8px;
-        }
-        
-        .skill-desc {
-            font-size: 15px;
-            color: var(--apple-gray);
-            line-height: 1.8;
-        }
-        
-        /* Skill Progress Bars */
-        .skill-progress-container {
-            margin-top: 16px;
-        }
-        
-        .skill-progress-bar {
-            height: 6px;
-            background: var(--apple-gray-light);
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-        
-        .skill-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--apple-blue), var(--apple-blue-light));
-            border-radius: 3px;
-            transition: width 1.5s ease;
-        }
-        
-        /* Footer */
-        .footer {
+
+        .global-item {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
-            padding: 60px 24px;
-            background: white;
-            border-top: 1px solid var(--apple-gray-light);
-            color: var(--apple-gray);
-            font-size: 14px;
-            margin-top: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
         }
-        
-        .footer a {
-            color: var(--apple-blue);
-            text-decoration: none;
-            transition: var(--transition);
+
+        .global-item:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-hover);
         }
-        
-        .footer a:hover {
-            color: var(--apple-blue-dark);
+
+        .global-flag { font-size: 40px; margin-bottom: 15px; }
+
+        .global-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
         }
-        
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--apple-blue), var(--apple-blue-dark));
-            color: white;
-            border-radius: 50%;
+
+        .global-item p { color: var(--text-secondary); font-size: 14px; }
+
+        /* Guangchu Section */
+        .guangchu { padding: 80px 5%; background: var(--bg-card); }
+
+        .guangchu-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .guangchu-info h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 12px;
+        }
+
+        .guangchu-info > p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .guangchu-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .guangchu-feature {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .guangchu-feature-icon { font-size: 28px; margin-bottom: 10px; }
+
+        .guangchu-feature h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .guangchu-cta {
+            background: linear-gradient(135deg, #1A1A2E 0%, #2D2D44 100%);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+        }
+
+        .guangchu-cta h3 {
             font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 16px rgba(0, 113, 227, 0.4);
-            transition: var(--transition);
-            opacity: 0;
-            visibility: hidden;
-            z-index: 999;
+            margin-bottom: 16px;
         }
-        
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+
+        .guangchu-cta > p {
+            opacity: 0.8;
+            margin-bottom: 30px;
         }
-        
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.5);
+
+        .btn-guangchu {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #1A1A2E;
+            padding: 16px 40px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
         }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .container { padding: 0 16px; }
-            .hero { padding: 80px 0 60px; }
-            .avatar { width: 100px; height: 100px; font-size: 40px; margin: 0 auto 24px; }
-            .hero h1 { font-size: 32px; }
-            .hero-title { font-size: 16px; }
-            .lang-switcher { gap: 8px; }
-            .lang-btn { padding: 8px 16px; font-size: 13px; }
-            .social-links { gap: 16px; }
-            .social-link { width: 48px; height: 48px; }
-            .social-icon { width: 24px; height: 24px; }
-            .featured-card { padding: 32px 20px; }
-            .featured-header { flex-direction: column; align-items: flex-start; }
-            .featured-icon { font-size: 40px; }
-            .featured-title { font-size: 24px; }
-            .featured-stats { grid-template-columns: 1fr; gap: 16px; }
-            .featured-buttons { flex-direction: column; }
-            .featured-btn { width: 100%; justify-content: center; }
-            .section { padding: 60px 0; }
-            .section-title { font-size: 26px; }
-            .project-card { padding: 24px; }
-            .project-title { font-size: 18px; }
-            .timeline { padding-left: 30px; }
-            .timeline-item::before { left: -36px; width: 10px; height: 10px; }
-            .timeline-item { padding: 20px 0 20px 24px; }
-            .skills-grid { grid-template-columns: 1fr; }
-            .skill-card { padding: 24px; }
-            .skill-header { flex-direction: column; align-items: flex-start; }
-            .skill-icon { width: 48px; height: 48px; font-size: 24px; }
-            .skill-title { font-size: 18px; }
-            .back-to-top { bottom: 20px; right: 20px; width: 45px; height: 45px; font-size: 20px; }
+
+        .btn-guangchu:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,212,170,0.4);
         }
-        
-        @media (max-width: 375px) {
-            .hero h1 { font-size: 28px; }
-            .hero-title { font-size: 14px; }
-            .avatar { width: 80px; height: 80px; font-size: 32px; }
-            .featured-title { font-size: 20px; }
-            .section-title { font-size: 22px; }
-            .social-links { gap: 12px; }
-            .social-link { width: 44px; height: 44px; }
-            .social-icon { width: 22px; height: 22px; }
+
+        /* Footer */
+        footer {
+            background: #1A1A2E;
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .footer-links ul { list-style: none; }
+
+        .footer-links li { margin-bottom: 12px; }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover { opacity: 1; }
+
+        .footer-bottom {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .stats-grid, .business-grid, .global-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .guangchu-content { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .nav-links { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid, .business-grid, .global-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</div>
-    
-    <section class="hero">
-        <div class="container">
-            <div class="avatar">TW</div>
-            <h1>Terry Wu</h1>
-            <p class="hero-title">
-                <span id="hero-title-text">Software Developer · Solar-Storage Investment System Creator</span>
-            </p>
-            
-            <div class="lang-switcher">
-                <button class="lang-btn active" onclick="switchLang('en')" data-lang="en">🇺🇸 English</button>
-                <button class="lang-btn" onclick="switchLang('zh')" data-lang="zh">🇨🇳 中文</button>
-                <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">🇯🇵 日本語</button>
-                <button class="lang-btn" onclick="switchLang('fr')" data-lang="fr">🇫🇷 Français</button>
-                <button class="lang-btn" onclick="switchLang('es')" data-lang="es">🇪🇸 Español</button>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button class="lang-btn active" data-target-lang="zh">中文</button>
+        <button class="lang-btn" data-target-lang="en">EN</button>
+        <button class="lang-btn" data-target-lang="ja">日本語</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span>☀️ Solaripple</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="zh">首页</a><a href="#home" data-i18n="en">Home</a><a href="#home" data-i18n="ja">ホーム</a></li>
+                <li><a href="#about" data-i18n="zh">关于我们</a><a href="#about" data-i18n="en">About</a><a href="#about" data-i18n="ja">会社概要</a></li>
+                <li><a href="#solutions" data-i18n="zh">解决方案</a><a href="#solutions" data-i18n="en">Solutions</a><a href="#solutions" data-i18n="ja">ソリューション</a></li>
+                <li><a href="#global" data-i18n="zh">全球布局</a><a href="#global" data-i18n="en">Global</a><a href="#global" data-i18n="ja">グローバル</a></li>
+                <li><a href="https://lab.solaripple.com" target="_blank" data-i18n="zh">Lab</a><a href="https://lab.solaripple.com" target="_blank" data-i18n="en">Lab</a><a href="https://lab.solaripple.com" target="_blank" data-i18n="ja">Lab</a></li>
+                <li><a href="#guangchu" data-i18n="zh">光储龙虾</a><a href="#guangchu" data-i18n="en">Guangchu</a><a href="#guangchu" data-i18n="ja">光儲龙虾</a></li>
+                <li><a href="#contact" data-i18n="zh">联系我们</a><a href="#contact" data-i18n="en">Contact</a><a href="#contact" data-i18n="ja">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-icon">☀️</div>
+        <h1>
+            <span data-i18n-block="zh">清洁能源，驱动可持续未来</span>
+            <span data-i18n-block="en">Clean Energy for a Sustainable Future</span>
+            <span data-i18n-block="ja">クリーンエネルギーで持続可能な未来を</span>
+        </h1>
+        <p class="subtitle">
+            <span data-i18n="zh">专注中国、日本、东南亚工商业光储综合服务</span>
+            <span data-i18n="en">Leading C&I Energy Storage Solutions in China, Japan & Southeast Asia</span>
+            <span data-i18n="ja">中国・日本・東南アジアの工商業用エネルギー貯蔵ソリューション</span>
+        </p>
+        <div class="hero-buttons">
+            <a href="#solutions" class="btn btn-primary" data-i18n="zh">探索解决方案</a>
+            <a href="#solutions" class="btn btn-primary" data-i18n="en">Explore Solutions</a>
+            <a href="#solutions" class="btn btn-primary" data-i18n="ja">ソリューションを見る</a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="zh">了解更多</a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="en">Learn More</a>
+            <a href="#contact" class="btn btn-secondary" data-i18n="ja">詳細を見る</a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-value">500+</div>
+                <div class="stat-label" data-i18n="zh">MW 开发规模</div>
+                <div class="stat-label" data-i18n="en">MW Deployed</div>
+                <div class="stat-label" data-i18n="ja">MW 開発規模</div>
             </div>
-            
-            <div class="social-links">
-                <a href="https://github.com/xuegangwu" target="_blank" class="social-link" data-label="GitHub" aria-label="GitHub">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                    </svg>
+            <div class="stat-item">
+                <div class="stat-value">¥50億+</div>
+                <div class="stat-label" data-i18n="zh">人民币 投资总额</div>
+                <div class="stat-label" data-i18n="en">CNY Total Investment</div>
+                <div class="stat-label" data-i18n="ja">元 投資総額</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">10+</div>
+                <div class="stat-label" data-i18n="zh">覆盖国家</div>
+                <div class="stat-label" data-i18n="en">Countries</div>
+                <div class="stat-label" data-i18n="ja">進出国</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5</div>
+                <div class="stat-label" data-i18n="zh">运营中项目</div>
+                <div class="stat-label" data-i18n="en">Projects Online</div>
+                <div class="stat-label" data-i18n="ja">稼働中プロジェクト</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Section -->
+    <section class="business" id="solutions">
+        <div class="section-title">
+            <h2>
+                <span data-i18n="zh">核心业务</span>
+                <span data-i18n="en">Our Solutions</span>
+                <span data-i18n="ja">コアビジネス</span>
+            </h2>
+            <p>
+                <span data-i18n="zh">开发 · 投资 · 运营 · 交易</span>
+                <span data-i18n="en">Development · Investment · Operations · Trading</span>
+                <span data-i18n="ja">開発・投資・運営・取引</span>
+            </p>
+        </div>
+        <div class="business-grid">
+            <div class="business-card">
+                <div class="business-icon">🔧</div>
+                <h3>
+                    <span data-i18n="zh">开发</span>
+                    <span data-i18n="en">Development</span>
+                    <span data-i18n="ja">開発</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">工商业分布式光伏+储能EPC</span>
+                    <span data-i18n="en">C&I Distributed PV + Storage EPC</span>
+                    <span data-i18n="ja">工商業用分散型太陽光+蓄電EPC</span>
+                </p>
+                <a href="#" class="business-link">
+                    <span data-i18n="zh">了解更多 →</span>
+                    <span data-i18n="en">Learn More →</span>
+                    <span data-i18n="ja">詳細を見る →</span>
                 </a>
-                <a href="https://www.toutiao.com/c/user/token/Cia7E_c2-7uU5Q5OUUqvUE7YDbBw6_9HRA1UFOojKL3nyOfAFYsSgRpJCjwAAAAAAAAAAAAAUC9KaexulLty_IEvq3dVCfF4B1diXDH51LE5llxspSqoV_gKnVP0idKcPtEySnf6YT4Qk5SMDhjDxYPqBCIBA0AvX4g=/?source=mine_profile&log_from=1fb27b3de4e83_1773570215246&from_pwa=1" target="_blank" class="social-link" data-label="今日头条" aria-label="今日头条">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14H4V7h8v10zm0-12H4V4h8v1zm8 12h-6V4h6v13z"/>
-                    </svg>
+            </div>
+            <div class="business-card">
+                <div class="business-icon">💰</div>
+                <h3>
+                    <span data-i18n="zh">投资</span>
+                    <span data-i18n="en">Investment</span>
+                    <span data-i18n="ja">投資</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">光储项目投资与融资服务</span>
+                    <span data-i18n="en">Project Investment & Financing</span>
+                    <span data-i18n="ja">プロジェクト投資・金融サービス</span>
+                </p>
+                <a href="#" class="business-link">
+                    <span data-i18n="zh">了解更多 →</span>
+                    <span data-i18n="en">Learn More →</span>
+                    <span data-i18n="ja">詳細を見る →</span>
                 </a>
-                <a href="https://www.linkedin.com/in/terry-wu-ba818216/" target="_blank" class="social-link" data-label="LinkedIn" aria-label="LinkedIn">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                    </svg>
+            </div>
+            <div class="business-card">
+                <div class="business-icon">⚡</div>
+                <h3>
+                    <span data-i18n="zh">运营</span>
+                    <span data-i18n="en">Operations</span>
+                    <span data-i18n="ja">運営</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">智能运维与资产管理</span>
+                    <span data-i18n="en">Smart O&M & Asset Management</span>
+                    <span data-i18n="ja">スマート運用・資産管理</span>
+                </p>
+                <a href="#" class="business-link">
+                    <span data-i18n="zh">了解更多 →</span>
+                    <span data-i18n="en">Learn More →</span>
+                    <span data-i18n="ja">詳細を見る →</span>
                 </a>
-                <a href="mailto:wuxuegang@gmail.com" class="social-link" data-label="Email" aria-label="Email">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
+            </div>
+            <div class="business-card">
+                <div class="business-icon">🔄</div>
+                <h3>
+                    <span data-i18n="zh">交易</span>
+                    <span data-i18n="en">Trading</span>
+                    <span data-i18n="ja">取引</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">电力交易与碳资产管理</span>
+                    <span data-i18n="en">Power Trading & Carbon Assets</span>
+                    <span data-i18n="ja">電力取引・炭素資産管理</span>
+                </p>
+                <a href="#" class="business-link">
+                    <span data-i18n="zh">了解更多 →</span>
+                    <span data-i18n="en">Learn More →</span>
+                    <span data-i18n="ja">詳細を見る →</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <div class="featured-card">
-            <div class="featured-header">
-                <span class="featured-icon">📔</span>
-                <div>
-                    <h2 class="featured-title" id="diary-title">Development Diary</h2>
-                    <p style="color: var(--apple-gray);" id="diary-subtitle">Reference to sanwan.ai design style</p>
+    <!-- Global Section -->
+    <section class="global" id="global">
+        <div class="section-title">
+            <h2>
+                <span data-i18n="zh">全球布局</span>
+                <span data-i18n="en">Global Presence</span>
+                <span data-i18n="ja">グローバル展開</span>
+            </h2>
+        </div>
+        <div class="global-grid">
+            <div class="global-item">
+                <div class="global-flag">🇨🇳</div>
+                <h3>
+                    <span data-i18n="zh">中国</span>
+                    <span data-i18n="en">China</span>
+                    <span data-i18n="ja">中国</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">15+ 省份覆盖</span>
+                    <span data-i18n="en">15+ Provinces</span>
+                    <span data-i18n="ja">15+ 省進出</span>
+                </p>
+            </div>
+            <div class="global-item">
+                <div class="global-flag">🇯🇵</div>
+                <h3>
+                    <span data-i18n="zh">日本</span>
+                    <span data-i18n="en">Japan</span>
+                    <span data-i18n="ja">日本</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">10+ 项目投资</span>
+                    <span data-i18n="en">10+ Projects</span>
+                    <span data-i18n="ja">10+ プロジェクト</span>
+                </p>
+            </div>
+            <div class="global-item">
+                <div class="global-flag">🇲🇾</div>
+                <h3>
+                    <span data-i18n="zh">马来西亚</span>
+                    <span data-i18n="en">Malaysia</span>
+                    <span data-i18n="ja">マレーシア</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">5+ 项目开发</span>
+                    <span data-i18n="en">5+ Projects</span>
+                    <span data-i18n="ja">5+ プロジェクト</span>
+                </p>
+            </div>
+            <div class="global-item">
+                <div class="global-flag">🌏</div>
+                <h3>
+                    <span data-i18n="zh">东南亚/欧洲</span>
+                    <span data-i18n="en">SEA / Europe</span>
+                    <span data-i18n="ja">東南アジア・欧州</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">市场开发中</span>
+                    <span data-i18n="en">Expanding</span>
+                    <span data-i18n="ja">市場開拓中</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solaripple Lab Section -->
+    <section class="guangchu" id="lab" style="background: linear-gradient(180deg, #F0F7FF 0%, #fff 100%);">
+        <div class="guangchu-content">
+            <div class="guangchu-info">
+                <h2>🔬</h2>
+                <h2>
+                    <span data-i18n="zh">Solaripple Lab</span>
+                    <span data-i18n="en">Solaripple Lab</span>
+                    <span data-i18n="ja">Solaripple Lab</span>
+                </h2>
+                <p data-i18n="zh">工商业光储实验室 - 专注技术研发、项目验证、解决方案测试。为中国、日本、东南亚市场提供最前沿的光储技术支持。</p>
+                <p data-i18n="en">C&I Energy Storage Lab - Focus on R&D, project verification & solution testing. Providing cutting-edge solar-storage tech for China, Japan & SEA markets.</p>
+                <p data-i18n="ja">工商業用エネルギー貯蔵ラボ - R&D、プロジェクト検証、ソリューション試験に特化。中国・日本・東南アジア市場向け先進的な光・蓄電技術を提供。</p>
+                <div class="guangchu-features">
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">🏢</div>
+                        <h4>
+                            <span data-i18n="zh">项目案例</span>
+                            <span data-i18n="en">Projects</span>
+                            <span data-i18n="ja">プロジェクト</span>
+                        </h4>
+                    </div>
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">💡</div>
+                        <h4>
+                            <span data-i18n="zh">解决方案</span>
+                            <span data-i18n="en">Solutions</span>
+                            <span data-i18n="ja">ソリューション</span>
+                        </h4>
+                    </div>
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">⚙️</div>
+                        <h4>
+                            <span data-i18n="zh">技术研发</span>
+                            <span data-i18n="en">R&D</span>
+                            <span data-i18n="ja">技術開発</span>
+                        </h4>
+                    </div>
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">🔧</div>
+                        <h4>
+                            <span data-i18n="zh">工具箱</span>
+                            <span data-i18n="en">Tools</span>
+                            <span data-i18n="ja">ツール</span>
+                        </h4>
+                    </div>
                 </div>
             </div>
-            <p id="diary-desc">Record daily work progress, witness project growth.<br>Minimalist · Professional · Authentic</p>
-            <div class="featured-stats">
-                <div class="stat-item">
-                    <div class="stat-value">5</div>
-                    <div class="stat-label" id="stat-posts">posts</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">5</div>
-                    <div class="stat-label" id="stat-days">days</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">78</div>
-                    <div class="stat-label" id="stat-commits">Git commits</div>
-                </div>
-            </div>
-            <div class="featured-buttons">
-                <a href="https://xuegangwu.github.io/guangchu/" target="_blank" class="featured-btn">
-                    🏠 <span id="btn-diary">Visit Diary Homepage</span>
-                </a>
-                <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank" class="featured-btn secondary">
-                    📖 <span id="btn-list">View Diary List</span>
+            <div class="guangchu-cta" style="background: linear-gradient(135deg, #0066FF, #00D4AA);">
+                <h3>
+                    <span data-i18n="zh">进入 Solaripple Lab</span>
+                    <span data-i18n="en">Enter Solaripple Lab</span>
+                    <span data-i18n="ja">Solaripple Labへ</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">探索更多工商业光储技术</span>
+                    <span data-i18n="en">Explore More C&I Storage Tech</span>
+                    <span data-i18n="ja">工商業用貯蔵技術更多信息</span>
+                </p>
+                <a href="https://lab.solaripple.com" target="_blank" class="btn-guangchu" style="background: white; color: #0066FF;">
+                    <span data-i18n="zh">访问 Lab →</span>
+                    <span data-i18n="en">Visit Lab →</span>
+                    <span data-i18n="ja">Labを見る →</span>
                 </a>
             </div>
         </div>
+    </section>
 
-        <section class="section" id="projects">
-            <h2 class="section-title" id="projects-title">💼 Featured Projects</h2>
-            
-            <div class="project-grid">
-                <div class="project-card">
-                    <h3 class="project-title">🦞 Guangchu (光储龙虾)</h3>
-                    <p class="project-desc" id="project1-desc">Solar-Storage News Collection & Analysis System - Global photovoltaic + energy storage industry information collection and analysis system.</p>
-                    <div class="project-links">
-                        <a href="https://xuegangwu.github.io/guangchu/project-intro.html" target="_blank" class="project-link">📄 Project Intro</a>
-                        <a href="https://xuegangwu.github.io/guangchu/" target="_blank" class="project-link">📔 Diary</a>
-                        <a href="https://xuegangwu.github.io/guangchu/diary-list.html" target="_blank" class="project-link">📖 Diary List</a>
-                        <a href="https://xuegangwu.github.io/guangchu/web/token-report.html" target="_blank" class="project-link">🤖 Token Report</a>
-                        <a href="https://github.com/xuegangwu/guangchu" target="_blank" class="project-link">🐙 GitHub</a>
+    <!-- Guangchu Section -->
+    <section class="guangchu" id="guangchu">
+        <div class="guangchu-content">
+            <div class="guangchu-info">
+                <h2>🦞</h2>
+                <h2>
+                    <span data-i18n="zh">光储龙虾社区</span>
+                    <span data-i18n="en">Guangchu Community</span>
+                    <span data-i18n="ja">光儲龙虾コミュニティ</span>
+                </h2>
+                <p data-i18n="zh">光储行业信息收集与分析系统，开源社区项目。实时追踪全球光伏+储能行业动态，为投资决策提供数据支持。</p>
+                <p data-i18n="en">Open-source solar-storage industry news collection & analysis system. Real-time tracking of global PV & storage industry trends.</p>
+                <p data-i18n="ja">开源の太陽光・蓄電業界ニュース収集・分析システム。グローバルPV・貯蔵業界の動向をリアルタイム追跡。</p>
+                <div class="guangchu-features">
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">📰</div>
+                        <h4>
+                            <span data-i18n="zh">行业新闻</span>
+                            <span data-i18n="en">Industry News</span>
+                            <span data-i18n="ja">業界ニュース</span>
+                        </h4>
                     </div>
-                </div>
-                
-                <div class="project-card coming-soon-card">
-                    <div class="coming-soon-badge">🚀 Coming Soon</div>
-                    <h3 class="project-title" id="project2-title">🗺️ Solar-Storage Investment Map</h3>
-                    <p class="project-desc" id="project2-desc">Multi-Country Investment Evaluation Platform - Covering China, Vietnam, and Japan.</p>
-                    <div class="project-links">
-                        <span class="project-link disabled">🌐 Coming Soon</span>
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">📊</div>
+                        <h4>
+                            <span data-i18n="zh">数据分析</span>
+                            <span data-i18n="en">Data Analysis</span>
+                            <span data-i18n="ja">データ分析</span>
+                        </h4>
                     </div>
-                </div>
-                
-                <div class="project-card coming-soon-card">
-                    <div class="coming-soon-badge">🚀 Coming Soon</div>
-                    <h3 class="project-title">📊 Data Analysis Tools</h3>
-                    <p class="project-desc" id="project3-desc">Industry Data Analysis and Visualization - Multi-dimensional data analysis and report generation tools.</p>
-                    <div class="project-links">
-                        <span class="project-link disabled">🔗 Coming Soon</span>
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">🔍</div>
+                        <h4>
+                            <span data-i18n="zh">搜索引擎</span>
+                            <span data-i18n="en">Search Engine</span>
+                            <span data-i18n="ja">検索エンジン</span>
+                        </h4>
                     </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="work">
-            <h2 class="section-title" id="work-title">💼 Work Experience</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-period">2019 - Present</div>
-                    <h3 class="timeline-title">Risen Energy (日升) - CIO · VP · CEO</h3>
-                    <p class="timeline-desc" id="work1-desc">Chief Information Officer, Vice President, and Chief Executive Officer. Participated in digital transformation and business operations in solar-storage industry.</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-period">2002 - 2019</div>
-                    <h3 class="timeline-title">Ricoh (理光) - Programmer · Manager · Director</h3>
-                    <p class="timeline-desc" id="work2-desc">Started as Programmer, promoted to Manager and Director. 17 years of experience in software development and team leadership.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="section" id="skills">
-            <h2 class="section-title" id="skills-title">🌐 Language Skills</h2>
-            
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">🇨🇳</div>
-                        <div>
-                            <div class="skill-title">Chinese (中文)</div>
-                            <span class="skill-level" id="skill-cn-level">Native</span>
-                        </div>
-                    </div>
-                    <p class="skill-desc" id="skill-cn-desc">Native speaker with excellent written and verbal communication skills. Professional business Chinese proficiency.</p>
-                    <div class="skill-progress-container">
-                        <div class="skill-progress-bar">
-                            <div class="skill-progress-fill" style="width: 100%;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">🇺🇸</div>
-                        <div>
-                            <div class="skill-title">English (英文)</div>
-                            <span class="skill-level" id="skill-en-level">Professional</span>
-                        </div>
-                    </div>
-                    <p class="skill-desc" id="skill-en-desc">Professional working proficiency. Capable of technical documentation, business communication, and international collaboration.</p>
-                    <div class="skill-progress-container">
-                        <div class="skill-progress-bar">
-                            <div class="skill-progress-fill" style="width: 85%;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon">🇯🇵</div>
-                        <div>
-                            <div class="skill-title">Japanese (日文)</div>
-                            <span class="skill-level" id="skill-ja-level">Business</span>
-                        </div>
-                    </div>
-                    <p class="skill-desc" id="skill-ja-desc">Business level proficiency. Experience working with Japanese companies and understanding of business etiquette.</p>
-                    <div class="skill-progress-container">
-                        <div class="skill-progress-bar">
-                            <div class="skill-progress-fill" style="width: 75%;"></div>
-                        </div>
+                    <div class="guangchu-feature">
+                        <div class="guangchu-feature-icon">📔</div>
+                        <h4>
+                            <span data-i18n="zh">研发日记</span>
+                            <span data-i18n="en">Dev Diary</span>
+                            <span data-i18n="ja">開発日記</span>
+                        </h4>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <section class="section" id="education">
-            <h2 class="section-title" id="edu-title">🎓 Education</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-period">2025 - Present</div>
-                    <h3 class="timeline-title">University of Colorado - AI Engineering Master's Degree</h3>
-                    <p class="timeline-desc" id="edu1-desc">Currently pursuing AI engineering master's degree, focusing on machine learning and deep learning applications.</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-period">2023 - 2025</div>
-                    <h3 class="timeline-title">CEIBS - EMBA</h3>
-                    <p class="timeline-desc" id="edu2-desc">Executive Master of Business Administration at China Europe International Business School.</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-period">1999 - 2002</div>
-                    <h3 class="timeline-title">East China University of Science and Technology - Master's Degree</h3>
-                    <p class="timeline-desc" id="edu3-desc">Master's degree in related field.</p>
-                </div>
+            <div class="guangchu-cta">
+                <h3>
+                    <span data-i18n="zh">加入光储龙虾社区</span>
+                    <span data-i18n="en">Join Guangchu Community</span>
+                    <span data-i18n="ja">光儲龙虾コミュニティに参加</span>
+                </h3>
+                <p>
+                    <span data-i18n="zh">开源、共享、协作</span>
+                    <span data-i18n="en">Open Source · Share · Collaborate</span>
+                    <span data-i18n="ja">オープンソース・共有・協働</span>
+                </p>
+                <a href="https://xuegangwu.github.io/guangchu" target="_blank" class="btn-guangchu">
+                    <span data-i18n="zh">访问光储龙虾 →</span>
+                    <span data-i18n="en">Visit Guangchu →</span>
+                    <span data-i18n="ja">光儲龙虾を見る →</span>
+                </a>
             </div>
-        </section>
-        
-        <!-- Site Map Section -->
-        <section class="section" id="sitemap">
-            <h2 class="section-title" id="sitemap-title">🗺️ Site Map</h2>
-            
-            <div class="featured-card" style="padding: 32px;">
-                <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                    <!-- Personal Site -->
-                    <div>
-                        <h3 style="font-size: 18px; margin-bottom: 16px; color: var(--apple-blue);">🏠 Personal Site</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 8px;"><a href="/" style="color: var(--apple-gray); text-decoration: none;">🏠 Homepage</a></li>
-                            <li style="margin-bottom: 8px;"><a href="#projects" style="color: var(--apple-gray); text-decoration: none;">💼 Projects</a></li>
-                            <li style="margin-bottom: 8px;"><a href="#work" style="color: var(--apple-gray); text-decoration: none;">💼 Work Experience</a></li>
-                            <li style="margin-bottom: 8px;"><a href="#skills" style="color: var(--apple-gray); text-decoration: none;">🌐 Skills</a></li>
-                            <li style="margin-bottom: 8px;"><a href="#education" style="color: var(--apple-gray); text-decoration: none;">🎓 Education</a></li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Guangchu Project -->
-                    <div>
-                        <h3 style="font-size: 18px; margin-bottom: 16px; color: var(--apple-blue);">🦞 Guangchu Project</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 8px;"><a href="https://xuegangwu.github.io/guangchu/" target="_blank" style="color: var(--apple-gray); text-decoration: none;">🏠 Project Home</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://xuegangwu.github.io/guangchu/project-intro.html" target="_blank" style="color: var(--apple-gray); text-decoration: none;">📄 Project Intro</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://xuegangwu.github.io/guangchu/web/diary-hub.html" target="_blank" style="color: var(--apple-gray); text-decoration: none;">📔 Diary Hub</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://xuegangwu.github.io/guangchu/diary/index.html" target="_blank" style="color: var(--apple-gray); text-decoration: none;">📖 Diary List</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://xuegangwu.github.io/guangchu/web/architecture.html" target="_blank" style="color: var(--apple-gray); text-decoration: none;">🏗️ Architecture</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://xuegangwu.github.io/guangchu/web/token-report.html" target="_blank" style="color: var(--apple-gray); text-decoration: none;">🤖 Token Report</a></li>
-                        </ul>
-                    </div>
-                    
-                    <!-- External Links -->
-                    <div>
-                        <h3 style="font-size: 18px; margin-bottom: 16px; color: var(--apple-blue);">🔗 External Links</h3>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="margin-bottom: 8px;"><a href="https://github.com/xuegangwu" target="_blank" style="color: var(--apple-gray); text-decoration: none;">🐙 GitHub</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://github.com/xuegangwu/guangchu" target="_blank" style="color: var(--apple-gray); text-decoration: none;">🦞 Guangchu Repo</a></li>
-                            <li style="margin-bottom: 8px;"><a href="https://www.linkedin.com/in/terry-wu-ba818216/" target="_blank" style="color: var(--apple-gray); text-decoration: none;">💼 LinkedIn</a></li>
-                            <li style="margin-bottom: 8px;"><a href="mailto:wuxuegang@gmail.com" style="color: var(--apple-gray); text-decoration: none;">📧 Email</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 Terry Wu. All rights reserved.</p>
-            <p style="margin-top: 12px;">Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></p>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>☀️ Solaripple</h3>
+                <p data-i18n="zh">专注工商业光储综合服务，覆盖中国、日本、东南亚市场。为客户提供开发、投资、运营、交易一站式解决方案。</p>
+                <p data-i18n="en">Leading C&I energy storage solutions provider across China, Japan & Southeast Asia. One-stop solutions for development, investment, operations & trading.</p>
+                <p data-i18n="ja">中国・日本・東南アジアにおける工商業用エネルギー貯蔵ソリューションのリーダー。開発・投資・運営・取引のワンストップソリューション。</p>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="zh">快速链接</h4>
+                <h4 data-i18n="en">Quick Links</h4>
+                <h4 data-i18n="ja">クイックリンク</h4>
+                <ul>
+                    <li><a href="#" data-i18n="zh">关于我们</a><a href="#" data-i18n="en">About Us</a><a href="#" data-i18n="ja">会社概要</a></li>
+                    <li><a href="#" data-i18n="zh">解决方案</a><a href="#" data-i18n="en">Solutions</a><a href="#" data-i18n="ja">ソリューション</a></li>
+                    <li><a href="#" data-i18n="zh">全球布局</a><a href="#" data-i18n="en">Global</a><a href="#" data-i18n="ja">グローバル</a></li>
+                    <li><a href="https://xuegangwu.github.io/guangchu" data-i18n="zh">光储龙虾</a><a href="https://xuegangwu.github.io/guangchu" data-i18n="en">Guangchu</a><a href="https://xuegangwu.github.io/guangchu" data-i18n="ja">光儲龙虾</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4 data-i18n="zh">联系我们</h4>
+                <h4 data-i18n="en">Contact</h4>
+                <h4 data-i18n="ja">お問い合わせ</h4>
+                <ul>
+                    <li><a href="mailto:info@solaripple.com">info@solaripple.com</a></li>
+                    <li><a href="#" data-i18n="zh">上海市</a><a href="#" data-i18n="en">Shanghai</a><a href="#" data-i18n="ja">上海</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Solaripple. All rights reserved.</span>
+            <span>沪ICP备2026009101号-1</span>
         </div>
     </footer>
-    
+
     <script>
-        const translations = {
-            en: {
-                heroTitle: "Software Developer · Solar-Storage Investment System Creator",
-                diaryTitle: "Development Diary",
-                diarySubtitle: "Reference to sanwan.ai design style",
-                diaryDesc: "Record daily work progress, witness project growth.<br>Minimalist · Professional · Authentic",
-                statPosts: "posts",
-                statDays: "days",
-                statCommits: "Git commits",
-                btnDiary: "Visit Diary Homepage",
-                btnList: "View Diary List",
-                projectsTitle: "💼 Featured Projects",
-                project1Desc: "Solar-Storage News Collection & Analysis System - Global photovoltaic + energy storage industry information collection and analysis system.",
-                project2Title: "🗺️ Solar-Storage Investment Map",
-                project2Desc: "Multi-Country Investment Evaluation Platform - Covering China, Vietnam, and Japan.",
-                project3Desc: "Industry Data Analysis and Visualization - Multi-dimensional data analysis and report generation tools.",
-                workTitle: "💼 Work Experience",
-                work1Desc: "Chief Information Officer, Vice President, and Chief Executive Officer. Participated in digital transformation and business operations in solar-storage industry.",
-                work2Desc: "Started as Programmer, promoted to Manager and Director. 17 years of experience in software development and team leadership.",
-                eduTitle: "🎓 Education",
-                edu1Desc: "Currently pursuing AI engineering master's degree, focusing on machine learning and deep learning applications.",
-                edu2Desc: "Executive Master of Business Administration at China Europe International Business School.",
-                edu3Desc: "Master's degree in related field.",
-                skillsTitle: "🌐 Language Skills",
-                skillCnLevel: "Native",
-                skillCnDesc: "Native speaker with excellent written and verbal communication skills. Professional business Chinese proficiency.",
-                skillEnLevel: "Professional",
-                skillEnDesc: "Professional working proficiency. Capable of technical documentation, business communication, and international collaboration.",
-                skillJaLevel: "Business",
-                skillJaDesc: "Business level proficiency. Experience working with Japanese companies and understanding of business etiquette."
-            },
-            zh: {
-                heroTitle: "软件开发工程师 · 光储投资系统创建者",
-                diaryTitle: "开发日记",
-                diarySubtitle: "参考 sanwan.ai (3 万点 AI) 设计风格",
-                diaryDesc: "记录每一天的工作进展，见证项目的成长历程。<br>极简 · 专业 · 真实",
-                statPosts: "篇日记",
-                statDays: "持续天数",
-                statCommits: "Git 提交",
-                btnDiary: "访问日记首页",
-                btnList: "查看日记列表",
-                projectsTitle: "💼 项目作品",
-                project1Desc: "Solar-Storage News Collection & Analysis System - 全球光伏 + 储能行业信息收集与分析系统。",
-                project2Title: "🗺️ 光储投资地图",
-                project2Desc: "Multi-Country Investment Evaluation Platform - 多国家光储电站投资评估平台，覆盖中国、越南、日本。",
-                project3Desc: "Industry Data Analysis and Visualization - 行业数据分析与可视化工具。",
-                workTitle: "💼 工作经历",
-                work1Desc: "首席信息官、副总裁、首席执行官。参与光储行业的数字化转型和商业运营。",
-                work2Desc: "从程序员做起，晋升为经理和总监。17 年软件开发和团队领导经验。",
-                eduTitle: "🎓 学习经历",
-                edu1Desc: "科罗拉多大学 - AI 工程硕士，专注于机器学习和深度学习应用。",
-                edu2Desc: "中欧国际工商学院 - EMBA 工商管理硕士。",
-                edu3Desc: "华东理工大学 - 硕士学位。",
-                skillsTitle: "🌐 语言能力",
-                skillCnLevel: "母语",
-                skillCnDesc: "母语水平，具备出色的书面和口头表达能力。精通商务中文。",
-                skillEnLevel: "专业",
-                skillEnDesc: "专业工作水平。能够进行技术文档编写、商务沟通和国际协作。",
-                skillJaLevel: "商务",
-                skillJaDesc: "商务水平。具有日企工作经验，熟悉商务礼仪。"
-            },
-            ja: {
-                heroTitle: "ソフトウェア開発者 · 太陽光・蓄電池投資システムクリエイター",
-                diaryTitle: "開発日記",
-                diarySubtitle: "sanwan.ai デザインスタイルを参考",
-                diaryDesc: "毎日の仕事の進捗を記録し、プロジェクトの成長を見守る。<br>ミニマリスト · プロフェッショナル · オーセンティック",
-                statPosts: "投稿",
-                statDays: "日間",
-                statCommits: "Git コミット",
-                btnDiary: "日記ホームページ",
-                btnList: "日記リスト",
-                projectsTitle: "💼 注目プロジェクト",
-                project1Desc: "太陽光・蓄電池ニュース収集・分析システム - 世界の太陽光発電 + エネルギー貯蔵業界の情報収集・分析システム。",
-                project2Title: "🗺️ 太陽光・蓄電池投資マップ",
-                project2Desc: "多国籍投資評価プラットフォーム - 中国、ベトナム、日本をカバー。",
-                project3Desc: "業界データ分析と可視化 - 多次元データ分析とレポート生成ツール。",
-                workTitle: "💼 職歴",
-                work1Desc: "最高情報責任者、副社長、最高経営責任者。太陽光・蓄電池業界のデジタル変革と商業運営に参加。",
-                work2Desc: "プログラマーから始まり、マネージャー、ディレクターに昇進。ソフトウェア開発とチームリーダーシップの 17 年の経験。",
-                eduTitle: "🎓 学歴",
-                edu1Desc: "AI エンジニアリング修士号、機械学習と深層学習の応用に焦点を当てています。",
-                edu2Desc: "中国中欧国際商学院でエグゼクティブ MBA。",
-                edu3Desc: "関連分野の修士号。",
-                skillsTitle: "🌐 言語スキル",
-                skillCnLevel: "ネイティブ",
-                skillCnDesc: "ネイティブレベル。優れた文章・会話能力を備え、ビジネス中国語に精通。",
-                skillEnLevel: "プロフェッショナル",
-                skillEnDesc: "プロフェッショナルな実務レベル。技術文書、ビジネスコミュニケーション、国際協力が可能。",
-                skillJaLevel: "ビジネス",
-                skillJaDesc: "ビジネスレベル。日本企業での勤務経験があり、ビジネスマナーを理解。"
-            },
-            fr: {
-                heroTitle: "Développeur Logiciel · Créateur du Système d'Investissement Solaire-Stockage",
-                diaryTitle: "Journal de Développement",
-                diarySubtitle: "Style de référence sanwan.ai",
-                diaryDesc: "Enregistrez les progrès quotidiens, témoignez de la croissance du projet.<br>Minimaliste · Professionnel · Authentique",
-                statPosts: "articles",
-                statDays: "jours",
-                statCommits: "Commits Git",
-                btnDiary: "Accueil du Journal",
-                btnList: "Voir la Liste",
-                projectsTitle: "💼 Projets en Vedette",
-                project1Desc: "Système de Collecte et d'Analyse de Nouvelles Solaire-Stockage - Collecte et analyse d'informations sur l'industrie photovoltaïque et de stockage d'énergie dans le monde entier.",
-                project2Title: "🗺️ Carte d'Investissement Solaire-Stockage",
-                project2Desc: "Plateforme d'Évaluation d'Investissement Multi-Pays - Couvrant la Chine, le Vietnam et le Japon.",
-                project3Desc: "Analyse et Visualisation de Données Industrielles - Outils d'analyse de données multidimensionnelles et de génération de rapports.",
-                workTitle: "💼 Expérience Professionnelle",
-                work1Desc: "Directeur de l'Information, Vice-Président et Directeur Général. A participé à la transformation numérique et aux opérations commerciales dans l'industrie solaire-stockage.",
-                work2Desc: "A commencé comme programmeur, promu chef de projet puis directeur. 17 ans d'expérience en développement logiciel et leadership d'équipe.",
-                eduTitle: "🎓 Formation",
-                edu1Desc: "Université du Colorado - Master en Ingénierie IA, spécialisé en apprentissage automatique et applications d'apprentissage profond.",
-                edu2Desc: "École Européenne de Commerce de Chine - MBA Exécutif en Administration des Affaires.",
-                edu3Desc: "Université des Sciences et Technologies de la Chine Orientale - Master."
-            },
-            es: {
-                heroTitle: "Desarrollador de Software · Creador del Sistema de Inversión Solar-Almacenamiento",
-                diaryTitle: "Diario de Desarrollo",
-                diarySubtitle: "Estilo de referencia sanwan.ai",
-                diaryDesc: "Registra el progreso diario, testigo del crecimiento del proyecto.<br>Minimalista · Profesional · Auténtico",
-                statPosts: "publicaciones",
-                statDays: "días",
-                statCommits: "Commits de Git",
-                btnDiary: "Inicio del Diario",
-                btnList: "Ver Lista",
-                projectsTitle: "💼 Proyectos Destacados",
-                project1Desc: "Sistema de Recopilación y Análisis de Noticias Solar-Almacenamiento - Recopilación y análisis de información de la industria fotovoltaica y de almacenamiento de energía a nivel mundial.",
-                project2Title: "🗺️ Mapa de Inversión Solar-Almacenamiento",
-                project2Desc: "Plataforma de Evaluación de Inversión Multi-País - Cubriendo China, Vietnam y Japón.",
-                project3Desc: "Análisis y Visualización de Datos Industriales - Herramientas de análisis de datos multidimensionales y generación de informes.",
-                workTitle: "💼 Experiencia Laboral",
-                work1Desc: "Director de Información, Vicepresidente y Director Ejecutivo. Participó en la transformación digital y operaciones comerciales en la industria solar-almacenamiento.",
-                work2Desc: "Comenzó como programador, ascendido a gerente y director. 17 años de experiencia en desarrollo de software y liderazgo de equipos.",
-                eduTitle: "🎓 Educación",
-                edu1Desc: "Universidad de Colorado - Maestría en Ingeniería de IA, enfocada en aprendizaje automático y aplicaciones de aprendizaje profundo.",
-                edu2Desc: "Escuela Europea de Negocios de China - MBA Ejecutivo en Administración de Empresas.",
-                edu3Desc: "Universidad de Ciencias y Tecnología del Este de China - Maestría."
-            }
-        };
-        
-        function switchLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(function(btn) {
-                btn.classList.remove('active');
-                if (btn.getAttribute('data-lang') === lang) {
-                    btn.classList.add('active');
+        // Language Switching - Pure CSS approach
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.targetLang;
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'zh-CN';
+                document.documentElement.dataset.lang = lang;
+                
+                // Update button states
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Save preference
+                localStorage.setItem('solaripple-lang', lang);
+            });
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('solaripple-lang');
+        if (savedLang) {
+            const btn = document.querySelector(`[data-target-lang="${savedLang}"]`);
+            if (btn) btn.click();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-            
-            const t = translations[lang];
-            
-            if (t) {
-                document.getElementById('hero-title-text').textContent = t.heroTitle;
-                document.getElementById('diary-title').textContent = t.diaryTitle;
-                document.getElementById('diary-subtitle').textContent = t.diarySubtitle;
-                document.getElementById('diary-desc').innerHTML = t.diaryDesc;
-                document.getElementById('stat-posts').textContent = t.statPosts;
-                document.getElementById('stat-days').textContent = t.statDays;
-                document.getElementById('stat-commits').textContent = t.statCommits;
-                document.getElementById('btn-diary').textContent = t.btnDiary;
-                document.getElementById('btn-list').textContent = t.btnList;
-                document.getElementById('projects-title').textContent = t.projectsTitle;
-                document.getElementById('project1-desc').textContent = t.project1Desc;
-                document.getElementById('project2-title').textContent = t.project2Title;
-                document.getElementById('project2-desc').textContent = t.project2Desc;
-                document.getElementById('project3-desc').textContent = t.project3Desc;
-                document.getElementById('work-title').textContent = t.workTitle;
-                document.getElementById('work1-desc').textContent = t.work1Desc;
-                document.getElementById('work2-desc').textContent = t.work2Desc;
-                document.getElementById('edu-title').textContent = t.eduTitle;
-                document.getElementById('edu1-desc').textContent = t.edu1Desc;
-                document.getElementById('edu2-desc').textContent = t.edu2Desc;
-                document.getElementById('edu3-desc').textContent = t.edu3Desc;
-                document.getElementById('skills-title').textContent = t.skillsTitle;
-                document.getElementById('skill-cn-level').textContent = t.skillCnLevel;
-                document.getElementById('skill-cn-desc').textContent = t.skillCnDesc;
-                document.getElementById('skill-en-level').textContent = t.skillEnLevel;
-                document.getElementById('skill-en-desc').textContent = t.skillEnDesc;
-                document.getElementById('skill-ja-level').textContent = t.skillJaLevel;
-                document.getElementById('skill-ja-desc').textContent = t.skillJaDesc;
-            }
-            
-            localStorage.setItem('preferredLang', lang);
-        }
-        
-        // Scroll Progress
-        window.onscroll = function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('scrollProgress').style.width = scrolled + '%';
-            
-            // Back to top button
-            const backToTop = document.getElementById('backToTop');
-            if (winScroll > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-            
-            // Section visibility
-            document.querySelectorAll('.section').forEach(function(section) {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.85) {
-                    section.classList.add('visible');
-                }
-            });
-        };
-        
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Initialize on page load
-        window.addEventListener('load', function() {
-            var savedLang = localStorage.getItem('preferredLang') || 'en';
-            switchLang(savedLang);
-            
-            // Trigger initial section check
-            setTimeout(function() {
-                window.onscroll();
-            }, 100);
         });
     </script>
 </body>

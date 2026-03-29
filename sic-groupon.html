@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工商业碳化硅光储团购 - Solaripple</title>
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-light: #3399FF;
+            --accent: #00D4AA;
+            --accent-light: #00FFD4;
+            --bg: #FAFBFC;
+            --bg-card: #FFFFFF;
+            --text: #1A1A2E;
+            --text-secondary: #666666;
+            --border: #E5E7EB;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Language Switcher */
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            display: flex;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 8px 12px;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Language System */
+        [data-i18n] { display: none; }
+        html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
+        html[data-lang="en"] [data-i18n="en"] { display: inline; }
+        html[data-lang="ja"] [data-i18n="ja"] { display: inline; }
+
+        [data-i18n-block] { display: none; }
+        html[data-lang="zh"] [data-i18n-block="zh"] { display: block; }
+        html[data-lang="en"] [data-i18n-block="en"] { display: block; }
+        html[data-lang="ja"] [data-i18n-block="ja"] { display: block; }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 5% 80px;
+            background: linear-gradient(135deg, #1A1A2E 0%, #2D2D44 50%, #0066FF 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #1A1A2E;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent-light);
+        }
+
+        .hero-stat-label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #1A1A2E;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,212,170,0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 16px;
+        }
+
+        /* Product Features */
+        .features {
+            background: white;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            padding: 40px 30px;
+            border-radius: 20px;
+            background: var(--bg);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* SiC Technology */
+        .tech-section {
+            background: linear-gradient(180deg, #f8f9fa 0%, white 100%);
+        }
+
+        .tech-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tech-info h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .tech-info p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .tech-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .tech-spec {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .tech-spec-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .tech-spec-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .tech-visual {
+            background: linear-gradient(135deg, #1A1A2E, #2D2D44);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+        }
+
+        .tech-visual-icon {
+            font-size: 100px;
+            margin-bottom: 20px;
+        }
+
+        .tech-visual-text {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        /* Packages */
+        .packages {
+            background: white;
+        }
+
+        .packages-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .package-card {
+            border-radius: 24px;
+            padding: 40px 30px;
+            background: var(--bg);
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .package-card.featured {
+            background: linear-gradient(135deg, #1A1A2E, #2D2D44);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .package-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #1A1A2E;
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .package-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .package-capacity {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .package-price {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .package-card.featured .package-price {
+            color: var(--accent-light);
+        }
+
+        .package-unit {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 24px;
+        }
+
+        .package-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .package-card:not(.featured) .package-features li {
+            border-bottom-color: var(--border);
+        }
+
+        /* Groupon Benefits */
+        .benefits {
+            background: linear-gradient(180deg, var(--bg) 0%, white 100%);
+        }
+
+        .benefits-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .benefit-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .benefit-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .benefit-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Process */
+        .process {
+            background: white;
+        }
+
+        .process-steps {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '→';
+            position: absolute;
+            right: -20px;
+            top: 40px;
+            font-size: 24px;
+            color: var(--primary);
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 auto 16px;
+        }
+
+        .process-step h4 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Contact */
+        .contact {
+            background: linear-gradient(135deg, #1A1A2E, #2D2D44);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .contact p {
+            opacity: 0.8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group.full {
+            grid-template-columns: 1fr;
+        }
+
+        .form-input {
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 2px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .form-input:focus {
+            border-color: var(--accent);
+        }
+
+        textarea.form-input {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: #1A1A2E;
+            border: none;
+            padding: 16px 40px;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #0A0A0F;
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .features-grid, .packages-grid, .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .tech-content {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .features-grid, .packages-grid, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="lang-switch">
+        <button class="lang-btn active" data-target-lang="zh">中文</button>
+        <button class="lang-btn" data-target-lang="en">EN</button>
+        <button class="lang-btn" data-target-lang="ja">日本語</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">
+            <span data-i18n="zh">🔥 限时团购</span>
+            <span data-i18n="en">🔥 Limited Groupon</span>
+            <span data-i18n="ja">🔥 期間限定团购</span>
+        </div>
+        
+        <h1>
+            <span data-i18n-block="zh">工商业堆叠式碳化硅光储一体机</span>
+            <span data-i18n-block="en">Commercial Stacked SiC Solar-Storage System</span>
+            <span data-i18n-block="ja">工商業用積層式SiC太陽光・蓄電一体機</span>
+        </h1>
+        
+        <p class="subtitle">
+            <span data-i18n="zh">第三代碳化硅功率器件 + 堆叠式模块化设计 = 更高效、更可靠、更灵活的光储解决方案</span>
+            <span data-i18n="en">3rd Gen SiC Power Devices + Modular Stacked Design = More Efficient, Reliable & Flexible</span>
+            <span data-i18n="ja">第3世代SiCパワー器件 + 積層モジュラー設計 = 更高効率・信頼性・柔軟性</span>
+        </p>
+
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-value">98.5%</div>
+                <div class="hero-stat-label">
+                    <span data-i18n="zh">转换效率</span>
+                    <span data-i18n="en">Efficiency</span>
+                    <span data-i18n="ja">変換効率</span>
+                </div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">15年</div>
+                <div class="hero-stat-label">
+                    <span data-i18n="zh">质保期</span>
+                    <span data-i18n="en">Warranty</span>
+                    <span data-i18n="ja">保証期間</span>
+                </div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">20%+</div>
+                <div class="hero-stat-label">
+                    <span data-i18n="zh">团购优惠</span>
+                    <span data-i18n="en">Groupon Discount</span>
+                    <span data-i18n="ja">团购割引</span>
+                </div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-value">50+</div>
+                <div class="hero-stat-label">
+                    <span data-i18n="zh">已交付项目</span>
+                    <span data-i18n="en">Projects Delivered</span>
+                    <span data-i18n="ja">納入済みプロジェクト</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-cta">
+            <a href="#contact" class="btn btn-primary" data-i18n="zh">获取团购报价</a>
+            <a href="#contact" class="btn btn-primary" data-i18n="en">Get Groupon Quote</a>
+            <a href="#contact" class="btn btn-primary" data-i18n="ja">团购見積もり依頼</a>
+            <a href="#packages" class="btn btn-secondary" data-i18n="zh">查看套餐</a>
+            <a href="#packages" class="btn btn-secondary" data-i18n="en">View Packages</a>
+            <a href="#packages" class="btn btn-secondary" data-i18n="ja">パッケージを見る</a>
+        </div>
+    </section>
+
+    <!-- Product Features -->
+    <section class="section features">
+        <div class="section-title">
+            <h2>
+                <span data-i18n="zh">🔧 核心产品特点</span>
+                <span data-i18n="en">🔧 Core Product Features</span>
+                <span data-i18n="ja">🔧 コア製品特徴</span>
+            </h2>
+            <p data-i18n="zh">专为工商业场景设计的堆叠式光储一体机</p>
+            <p data-i18n="en">Stacked Solar-Storage System Designed for C&I Applications</p>
+            <p data-i18n="ja">工商業用途设计的積層式光・蓄電一体機</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>
+                    <span data-i18n="zh">碳化硅功率器件</span>
+                    <span data-i18n="en">SiC Power Devices</span>
+                    <span data-i18n="ja">SiCパワー器件</span>
+                </h3>
+                <p data-i18n="zh">第三代SiC MOSFET，开关损耗降低70%，转换效率高达98.5%</p>
+                <p data-i18n="en">3rd Gen SiC MOSFET with 70% lower switching losses, 98.5% efficiency</p>
+                <p data-i18n="ja">第3世代SiC MOSFET、スイッチング損失70%低減、98.5%効率</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧱</div>
+                <h3>
+                    <span data-i18n="zh">堆叠式模块化</span>
+                    <span data-i18n="en">Stacked Modular</span>
+                    <span data-i18n="ja">積層モジュラー</span>
+                </h3>
+                <p data-i18n="zh">积木式扩容，100kWh-10MWh灵活配置，适配不同规模需求</p>
+                <p data-i18n="en">100kWh-10MWh scalable design for flexible capacity needs</p>
+                <p data-i18n="ja">100kWh-10MWh拡張可能、様々な容量ニーズに対応</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔋</div>
+                <h3>
+                    <span data-i18n="zh">长寿命储能</span>
+                    <span data-i18n="en">Long-life Storage</span>
+                    <span data-i18n="ja">長寿命蓄電</span>
+                </h3>
+                <p data-i18n="zh">磷酸铁锂电池，循环寿命>6000次，使用寿命15年+</p>
+                <p data-i18n="en">LFP battery, >6000 cycles, 15+ years lifespan</p>
+                <p data-i18n="ja">LFPバッテリー、6000回以上循環、15年寿命</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>
+                    <span data-i18n="zh">智能监控</span>
+                    <span data-i18n="en">Smart Monitoring</span>
+                    <span data-i18n="ja">スマート監視</span>
+                </h3>
+                <p data-i18n="zh">云端管理平台，实时监控、故障预警、远程运维</p>
+                <p data-i18n="en">Cloud platform with real-time monitoring & remote O&M</p>
+                <p data-i18n="ja">クラウド管理プラットフォーム、リアルタイム監視</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏭</div>
+                <h3>
+                    <span data-i18n="zh">工商业适配</span>
+                    <span data-i18n="en">C&I Compatible</span>
+                    <span data-i18n="ja">工商業対応</span>
+                </h3>
+                <p data-i18n="zh">IP54防护等级，-20°C~50°C宽温工作，室内外均可安装</p>
+                <p data-i18n="en">IP54 rated, -20°C~50°C, indoor/outdoor installation</p>
+                <p data-i18n="ja">IP54準拠、-20°C~50°C、屋内・屋外設置対応</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>
+                    <span data-i18n="zh">经济高效</span>
+                    <span data-i18n="en">Cost Effective</span>
+                    <span data-i18n="ja">コスト効率</span>
+                </h3>
+                <p data-i18n="zh">团购价格更优，3-5年投资回收期，综合成本降低30%</p>
+                <p data-i18n="en">Better groupon pricing, 3-5yr ROI, 30% lower TCO</p>
+                <p data-i18n="ja">团购料金でお得、3-5年投資回収、30%コスト削減</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SiC Technology -->
+    <section class="section tech-section">
+        <div class="tech-content">
+            <div class="tech-info">
+                <h2>
+                    <span data-i18n="zh">🔬 碳化硅技术优势</span>
+                    <span data-i18n="en">🔬 SiC Technology Advantages</span>
+                    <span data-i18n="ja">🔬 SiC技術優位性</span>
+                </h2>
+                <p data-i18n="zh">相比传统硅基IGBT，碳化硅功率器件在效率、散热、体积等方面具有全面领先优势，是光储系统进入工商业深水区的关键技术突破。</p>
+                <p data-i18n="en">Compared to traditional Si-based IGBT, SiC power devices offer comprehensive advantages in efficiency, heat dissipation, and size - a key breakthrough for solar-storage in C&I applications.</p>
+                <p data-i18n="ja">従来のSiベースIGBT相比、SiCパワー器件は効率・散热・体积などで全面的に優位性があり、光・蓄電システムの工商業本格展開の关键技术突破口です。</p>
+
+                <div class="tech-specs">
+                    <div class="tech-spec">
+                        <div class="tech-spec-value">98.5%</div>
+                        <div class="tech-spec-label">
+                            <span data-i18n="zh">系统效率</span>
+                            <span data-i18n="en">System Efficiency</span>
+                            <span data-i18n="ja">システム効率</span>
+                        </div>
+                    </div>
+                    <div class="tech-spec">
+                        <div class="tech-spec-value">70%</div>
+                        <div class="tech-spec-label">
+                            <span data-i18n="zh">开关损耗降低</span>
+                            <span data-i18n="en">Switching Loss ↓</span>
+                            <span data-i18n="ja">スイッチング損失↓</span>
+                        </div>
+                    </div>
+                    <div class="tech-spec">
+                        <div class="tech-spec-value">50%</div>
+                        <div class="tech-spec-label">
+                            <span data-i18n="zh">散热体积减少</span>
+                            <span data-i18n="en">Heat Sink Size ↓</span>
+                            <span data-i18n="ja">放熱器体积↓</span>
+                        </div>
+                    </div>
+                    <div class="tech-spec">
+                        <div class="tech-spec-value">30%</div>
+                        <div class="tech-spec-label">
+                            <span data-i18n="zh">功率密度提升</span>
+                            <span data-i18n="en">Power Density ↑</span>
+                            <span data-i18n="ja">電力密度↑</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-visual">
+                <div class="tech-visual-icon">💎</div>
+                <p class="tech-visual-text">
+                    <span data-i18n="zh">SiC = 碳化硅<br>第三代功率半导体</span>
+                    <span data-i18n="en">SiC = Silicon Carbide<br>3rd Generation Power Semiconductor</span>
+                    <span data-i18n="ja">SiC = 炭化ケイ素<br>第3世代パワー半导体</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages -->
+    <section class="section packages" id="packages">
+        <div class="section-title">
+            <h2>
+                <span data-i18n="zh">📦 团购套餐方案</span>
+                <span data-i18n="en">📦 Groupon Packages</span>
+                <span data-i18n="ja">📦 团购パッケージ</span>
+            </h2>
+            <p data-i18n="zh">根据不同规模设计的标准化套餐，团购享额外优惠</p>
+            <p data-i18n="en">Standardized packages for different scales with extra groupon discounts</p>
+            <p data-i18n="ja">様々な規模向けの標準化パッケージ、团购でさらにお得</p>
+        </div>
+
+        <div class="packages-grid">
+            <!-- Small Package -->
+            <div class="package-card">
+                <div class="package-name">
+                    <span data-i18n="zh">基础版</span>
+                    <span data-i18n="en">Basic</span>
+                    <span data-i18n="ja"> 베이シック</span>
+                </div>
+                <div class="package-capacity">
+                    <span data-i18n="zh">100kWh + 50kW</span>
+                    <span data-i18n="en">100kWh + 50kW</span>
+                    <span data-i18n="ja">100kWh + 50kW</span>
+                </div>
+                <div class="package-price">¥45万</div>
+                <div class="package-unit">
+                    <span data-i18n="zh">起/套</span>
+                    <span data-i18n="en">Starting/unit</span>
+                    <span data-i18n="ja">~/セット</span>
+                </div>
+                <ul class="package-features">
+                    <li>✓ <span data-i18n="zh">100kWh磷酸铁锂</span><span data-i18n="en">100kWh LFP</span><span data-i18n="ja">100kWh LFP</span></li>
+                    <li>✓ <span data-i18n="zh">50kW光伏逆变</span><span data-i18n="en">50kW PV Inverter</span><span data-i18n="ja">50kW PV インバーター</span></li>
+                    <li>✓ <span data-i18n="zh">EMS能量管理</span><span data-i18n="en">EMS Management</span><span data-i18n="ja">EMS 管理</span></li>
+                    <li>✓ <span data-i18n="zh">1年质保</span><span data-i18n="en">1 Year Warranty</span><span data-i18n="ja">1年保証</span></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" data-i18n="zh">咨询报价</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="en">Get Quote</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="ja">見積もり</a>
+            </div>
+
+            <!-- Medium Package - Featured -->
+            <div class="package-card featured">
+                <div class="package-badge">
+                    <span data-i18n="zh">推荐</span>
+                    <span data-i18n="en">Recommended</span>
+                    <span data-i18n="ja">おすすめ</span>
+                </div>
+                <div class="package-name">
+                    <span data-i18n="zh">标准版</span>
+                    <span data-i18n="en">Standard</span>
+                    <span data-i18n="ja">スタンダード</span>
+                </div>
+                <div class="package-capacity">
+                    <span data-i18n="zh">500kWh + 200kW</span>
+                    <span data-i18n="en">500kWh + 200kW</span>
+                    <span data-i18n="ja">500kWh + 200kW</span>
+                </div>
+                <div class="package-price">¥168万</div>
+                <div class="package-unit">
+                    <span data-i18n="zh">起/套</span>
+                    <span data-i18n="en">Starting/unit</span>
+                    <span data-i18n="ja">~/セット</span>
+                </div>
+                <ul class="package-features">
+                    <li>✓ <span data-i18n="zh">500kWh磷酸铁锂</span><span data-i18n="en">500kWh LFP</span><span data-i18n="ja">500kWh LFP</span></li>
+                    <li>✓ <span data-i18n="zh">200kW光伏逆变</span><span data-i18n="en">200kW PV Inverter</span><span data-i18n="ja">200kW PV インバーター</span></li>
+                    <li>✓ <span data-i18n="zh">SiC双向变流器</span><span data-i18n="en">SiC Bi-directional Converter</span><span data-i18n="ja">SiC 双方向コンバーター</span></li>
+                    <li>✓ <span data-i18n="zh">5年质保</span><span data-i18n="en">5 Year Warranty</span><span data-i18n="ja">5年保証</span></li>
+                    <li>✓ <span data-i18n="zh">免费云平台</span><span data-i18n="en">Free Cloud Platform</span><span data-i18n="ja">無料クラウドプラットフォーム</span></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" data-i18n="zh">咨询报价</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="en">Get Quote</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="ja">見積もり</a>
+            </div>
+
+            <!-- Large Package -->
+            <div class="package-card">
+                <div class="package-name">
+                    <span data-i18n="zh">企业版</span>
+                    <span data-i18n="en">Enterprise</span>
+                    <span data-i18n="ja">エンタープライズ</span>
+                </div>
+                <div class="package-capacity">
+                    <span data-i18n="zh">1MWh + 400kW</span>
+                    <span data-i18n="en">1MWh + 400kW</span>
+                    <span data-i18n="ja">1MWh + 400kW</span>
+                </div>
+                <div class="package-price">¥298万</div>
+                <div class="package-unit">
+                    <span data-i18n="zh">起/套</span>
+                    <span data-i18n="en">Starting/unit</span>
+                    <span data-i18n="ja">~/セット</span>
+                </div>
+                <ul class="package-features">
+                    <li>✓ <span data-i18n="zh">1MWh磷酸铁锂</span><span data-i18n="en">1MWh LFP</span><span data-i18n="ja">1MWh LFP</span></li>
+                    <li>✓ <span data-i18n="zh">400kW光伏逆变</span><span data-i18n="en">400kW PV Inverter</span><span data-i18n="ja">400kW PV インバーター</span></li>
+                    <li>✓ <span data-i18n="zh">SiC高效变流器</span><span data-i18n="en">SiC High-Efficiency Converter</span><span data-i18n="ja">SiC 高効率コンバーター</span></li>
+                    <li>✓ <span data-i18n="zh">15年质保</span><span data-i18n="en">15 Year Warranty</span><span data-i18n="ja">15年保証</span></li>
+                    <li>✓ <span data-i18n="zh">专属运维服务</span><span data-i18n="en">Dedicated O&M Service</span><span data-i18n="ja">専用O&Mサービス</span></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" data-i18n="zh">咨询报价</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="en">Get Quote</a>
+                <a href="#contact" class="btn btn-primary" data-i18n="ja">見積もり</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Groupon Benefits -->
+    <section class="section benefits">
+        <div class="section-title">
+            <h2>
+                <span data-i18n="zh">🎁 团购优势</span>
+                <span data-i18n="en">🎁 Groupon Benefits</span>
+                <span data-i18n="ja">🎁 团购メリット</span>
+            </h2>
+        </div>
+
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-value">20%+</div>
+                <div class="benefit-label">
+                    <span data-i18n="zh">价格优惠</span>
+                    <span data-i18n="en">Price Discount</span>
+                    <span data-i18n="ja">価格割引</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🚚</div>
+                <div class="benefit-value">
+                    <span data-i18n="zh">统一配送</span>
+                    <span data-i18n="en">Unified Delivery</span>
+                    <span data-i18n="ja">一括配送</span>
+                </div>
+                <div class="benefit-label">
+                    <span data-i18n="zh">降低物流成本</span>
+                    <span data-i18n="en">Lower Logistics Cost</span>
+                    <span data-i18n="ja">物流コスト削減</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">🔧</div>
+                <div class="benefit-value">
+                    <span data-i18n="zh">批量安装</span>
+                    <span data-i18n="en">Batch Installation</span>
+                    <span data-i18n="ja">一括設置</span>
+                </div>
+                <div class="benefit-label">
+                    <span data-i18n="zh">缩短工期</span>
+                    <span data-i18n="en">Faster Completion</span>
+                    <span data-i18n="ja">工期短縮</span>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon">👨‍💻</div>
+                <div class="benefit-value">
+                    <span data-i18n="zh">技术共享</span>
+                    <span data-i18n="en">Tech Sharing</span>
+                    <span data-i18n="ja">技術共有</span>
+                </div>
+                <div class="benefit-label">
+                    <span data-i18n="zh">经验交流社群</span>
+                    <span data-i18n="en">Experience Exchange</span>
+                    <span data-i18n="ja">経験交流コミュニティ</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process -->
+    <section class="section process">
+        <div class="section-title">
+            <h2>
+                <span data-i18n="zh">📋 合作流程</span>
+                <span data-i18n="en">📋 Cooperation Process</span>
+                <span data-i18n="ja">📋 協力フロー</span>
+            </h2>
+        </div>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>
+                    <span data-i18n="zh">提交意向</span>
+                    <span data-i18n="en">Submit Interest</span>
+                    <span data-i18n="ja">意向提出</span>
+                </h4>
+                <p>
+                    <span data-i18n="zh">填写需求表单</span>
+                    <span data-i18n="en">Fill inquiry form</span>
+                    <span data-i18n="ja">需求フォーム記入</span>
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>
+                    <span data-i18n="zh">方案设计</span>
+                    <span data-i18n="en">Design</span>
+                    <span data-i18n="ja">プラン設計</span>
+                </h4>
+                <p>
+                    <span data-i18n="zh">定制化方案</span>
+                    <span data-i18n="en">Customized plan</span>
+                    <span data-i18n="ja">カスタマイズプラン</span>
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>
+                    <span data-i18n="zh">签订合同</span>
+                    <span data-i18n="en">Sign Contract</span>
+                    <span data-i18n="ja">契約締結</span>
+                </h4>
+                <p>
+                    <span data-i18n="zh">团购协议签订</span>
+                    <span data-i18n="en">Groupon agreement</span>
+                    <span data-i18n="ja">团购協定締結</span>
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h4>
+                    <span data-i18n="zh">生产交付</span>
+                    <span data-i18n="en">Deliver</span>
+                    <span data-i18n="ja">生産・納入</span>
+                </h4>
+                <p>
+                    <span data-i18n="zh">批量生产发货</span>
+                    <span data-i18n="en">Batch production</span>
+                    <span data-i18n="ja">一括生産配送</span>
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">5</div>
+                <h4>
+                    <span data-i18n="zh">安装运维</span>
+                    <span data-i18n="en">Install & O&M</span>
+                    <span data-i18n="ja">設置・運用</span>
+                </h4>
+                <p>
+                    <span data-i18n="zh">一站式服务</span>
+                    <span data-i18n="en">One-stop service</span>
+                    <span data-i18n="ja">ワンストップサービス</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <h2>
+            <span data-i18n="zh">📞 获取团购报价</span>
+            <span data-i18n="en">📞 Get Groupon Quote</span>
+            <span data-i18n="ja">📞 团购見積もり依頼</span>
+        </h2>
+        <p>
+            <span data-i18n="zh">留下您的联系方式，我们会尽快与您联系，提供定制化方案和团购报价</span>
+            <span data-i18n="en">Leave your contact, we'll respond promptly with customized solutions and groupon pricing</span>
+            <span data-i18n="ja">連絡先をご記入ください，折り返しご連絡いたします</span>
+        </p>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('感谢提交！我们会尽快联系您。');">
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="姓名 / Name / 氏名" required>
+                <input type="tel" class="form-input" placeholder="电话 / Phone / 電話" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-input" placeholder="公司 / Company / 会社名" required>
+                <input type="text" class="form-input" placeholder="职位 / Position / 役職">
+            </div>
+            <div class="form-group full">
+                <input type="text" class="form-input" placeholder="项目规模需求 / Project Scale / プロジェクト規模">
+            </div>
+            <div class="form-group full">
+                <textarea class="form-input" placeholder="其他需求 / Other Requirements / その他の需求"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" data-i18n="zh">提交咨询</button>
+            <button type="submit" class="btn btn-primary" data-i18n="en">Submit Inquiry</button>
+            <button type="submit" class="btn btn-primary" data-i18n="ja">見積もり依頼</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Solaripple. All rights reserved. | 沪ICP备2026009101号-1</p>
+    </footer>
+
+    <script>
+        // Language Switching
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.targetLang;
+                document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'zh-CN';
+                document.documentElement.dataset.lang = lang;
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                localStorage.setItem('solaripple-lang', lang);
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Load saved language
+        const savedLang = localStorage.getItem('solaripple-lang');
+        if (savedLang) {
+            const btn = document.querySelector(`[data-target-lang="${savedLang}"]`);
+            if (btn) btn.click();
+        }
+    </script>
+</body>
+</html>
