@@ -60,15 +60,17 @@
         }
 
         /* Language System */
-        [data-i18n] { display: none; }
-        html[data-lang="zh"] [data-i18n="zh"] { display: inline; }
-        html[data-lang="en"] [data-i18n="en"] { display: inline; }
-        html[data-lang="ja"] [data-i18n="ja"] { display: inline; }
-
-        [data-i18n-block] { display: none; }
-        html[data-lang="zh"] [data-i18n-block="zh"] { display: block; }
-        html[data-lang="en"] [data-i18n-block="en"] { display: block; }
-        html[data-lang="ja"] [data-i18n-block="ja"] { display: block; }
+        [data-i18n] { display: none !important; }
+        [data-i18n-block] { display: none !important; }
+        
+        html[data-lang="zh"] [data-i18n="zh"] { display: inline !important; }
+        html[data-lang="zh"] [data-i18n-block="zh"] { display: block !important; }
+        
+        html[data-lang="en"] [data-i18n="en"] { display: inline !important; }
+        html[data-lang="en"] [data-i18n-block="en"] { display: block !important; }
+        
+        html[data-lang="ja"] [data-i18n="ja"] { display: inline !important; }
+        html[data-lang="ja"] [data-i18n-block="ja"] { display: block !important; }
 
         /* Hero Section */
         .hero {
