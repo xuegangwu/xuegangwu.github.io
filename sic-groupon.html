@@ -60,39 +60,78 @@
         }
 
         /* Language System */
-        /* Hide all i18n elements by default */
-        [data-i18n] { display: none !important; }
-        [data-i18n-block] { display: none !important; }
+        /* ========================================
+           LANGUAGE SWITCHING - AGGRESSIVE
+           ======================================== */
         
-        /* Show selected language - use attribute presence, not descendant */
+        /* HIDE ALL LANGUAGES BY DEFAULT */
+        span[data-i18n="zh"],
+        span[data-i18n="en"],
+        span[data-i18n="ja"],
+        p[data-i18n="zh"],
+        p[data-i18n="en"],
+        p[data-i18n="ja"],
+        li[data-i18n="zh"],
+        li[data-i18n="en"],
+        li[data-i18n="ja"],
+        a[data-i18n="zh"],
+        a[data-i18n="en"],
+        a[data-i18n="ja"],
+        button[data-i18n="zh"],
+        button[data-i18n="en"],
+        button[data-i18n="ja"],
+        h1[data-i18n-block="zh"],
+        h1[data-i18n-block="en"],
+        h1[data-i18n-block="ja"],
+        h2[data-i18n-block="zh"],
+        h2[data-i18n-block="en"],
+        h2[data-i18n-block="ja"],
+        h3[data-i18n-block="zh"],
+        h3[data-i18n-block="en"],
+        h3[data-i18n-block="ja"],
+        div[data-i18n-block="zh"],
+        div[data-i18n-block="en"],
+        div[data-i18n-block="ja"] {
+            display: none !important;
+        }
+        
+        /* SHOW ONLY SELECTED LANGUAGE */
+        html[data-lang="zh"] span[data-i18n="zh"],
+        html[data-lang="zh"] p[data-i18n="zh"],
+        html[data-lang="zh"] li[data-i18n="zh"],
         html[data-lang="zh"] a[data-i18n="zh"],
         html[data-lang="zh"] button[data-i18n="zh"],
         html[data-lang="zh"] h1[data-i18n-block="zh"],
         html[data-lang="zh"] h2[data-i18n-block="zh"],
         html[data-lang="zh"] h3[data-i18n-block="zh"],
-        html[data-lang="zh"] p[data-i18n="zh"],
-        html[data-lang="zh"] li[data-i18n="zh"],
-        html[data-lang="zh"] span[data-i18n="zh"] { display: inline !important; }
+        html[data-lang="zh"] div[data-i18n-block="zh"] {
+            display: inline !important;
+        }
         
+        html[data-lang="en"] span[data-i18n="en"],
+        html[data-lang="en"] p[data-i18n="en"],
+        html[data-lang="en"] li[data-i18n="en"],
         html[data-lang="en"] a[data-i18n="en"],
         html[data-lang="en"] button[data-i18n="en"],
         html[data-lang="en"] h1[data-i18n-block="en"],
         html[data-lang="en"] h2[data-i18n-block="en"],
         html[data-lang="en"] h3[data-i18n-block="en"],
-        html[data-lang="en"] p[data-i18n="en"],
-        html[data-lang="en"] li[data-i18n="en"],
-        html[data-lang="en"] span[data-i18n="en"] { display: inline !important; }
+        html[data-lang="en"] div[data-i18n-block="en"] {
+            display: inline !important;
+        }
         
+        html[data-lang="ja"] span[data-i18n="ja"],
+        html[data-lang="ja"] p[data-i18n="ja"],
+        html[data-lang="ja"] li[data-i18n="ja"],
         html[data-lang="ja"] a[data-i18n="ja"],
         html[data-lang="ja"] button[data-i18n="ja"],
         html[data-lang="ja"] h1[data-i18n-block="ja"],
         html[data-lang="ja"] h2[data-i18n-block="ja"],
         html[data-lang="ja"] h3[data-i18n-block="ja"],
-        html[data-lang="ja"] p[data-i18n="ja"],
-        html[data-lang="ja"] li[data-i18n="ja"],
-        html[data-lang="ja"] span[data-i18n="ja"] { display: inline !important; }
-        
-        /* Block elements */
+        html[data-lang="ja"] div[data-i18n-block="ja"] {
+            display: inline !important;
+        }
+
         html[data-lang="zh"] div[data-i18n-block="zh"] { display: block !important; }
         html[data-lang="en"] div[data-i18n-block="en"] { display: block !important; }
         html[data-lang="ja"] div[data-i18n-block="ja"] { display: block !important; }
