@@ -1,1028 +1,1010 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaripple - 工商业光储综合服务商 | 中国·日本·东南亚</title>
-    <meta name="description" content="专注中国、日本、东南亚工商业光储综合服务 - 开发、投资、运营、交易">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☀️</text></svg>">
+    <meta name="description" content="Terry Wu - Software-Defined Hardware, AI-Reimagined Solar-Storage">
+    <meta name="keywords" content="Terry Wu, Solar, Energy Storage, Investment, GitHub, Developer">
+    <meta name="author" content="Terry Wu">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Terry Wu</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⭐</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         :root {
-            --primary: #0066FF;
-            --primary-light: #3399FF;
-            --accent: #00D4AA;
-            --accent-light: #00FFD4;
-            --gold: #FFD700;
-            --bg: #FAFBFC;
-            --bg-card: #FFFFFF;
-            --text: #1A1A2E;
-            --text-secondary: #666666;
-            --border: #E5E7EB;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+            --apple-black: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-blue: #0071e3;
+            --apple-white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.5;
+            color: var(--apple-black);
+            background: var(--apple-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Language Switcher */
-        .lang-switch {
+        
+        /* Navigation */
+        .nav {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            display: flex;
-            gap: 8px;
-            background: var(--bg-card);
-            padding: 8px 12px;
-            border-radius: 30px;
-            box-shadow: var(--shadow);
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            z-index: 1000;
         }
-
+        
+        .nav-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 48px;
+        }
+        
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: var(--apple-black);
+            text-decoration: none;
+        }
+        
+        .language-switcher {
+            display: flex;
+            gap: 6px;
+        }
+        
         .lang-btn {
             padding: 6px 14px;
-            border: none;
             background: transparent;
+            color: var(--apple-black);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 980px;
             cursor: pointer;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            transition: all 0.3s;
+            font-size: 12px;
+            transition: all 0.2s;
         }
-
+        
+        .lang-btn:hover {
+            background: var(--apple-light-gray);
+        }
+        
         .lang-btn.active {
-            background: var(--primary);
-            color: white;
+            background: var(--apple-black);
+            color: var(--apple-white);
+            border-color: var(--apple-black);
         }
-
-        .lang-btn:hover:not(.active) {
-            background: var(--border);
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            padding: 0 5%;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 70px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover { color: var(--primary); }
-
-        /* Multi-language Content System - Hide all first */
-        [data-i18n] { display: none !important; }
-        [data-i18n-block] { display: none !important; }
         
-        /* Then show only the selected language */
-        html[data-lang="zh"] [data-i18n="zh"] { display: inline !important; }
-        html[data-lang="zh"] [data-i18n-block="zh"] { display: block !important; }
-        
-        html[data-lang="en"] [data-i18n="en"] { display: inline !important; }
-        html[data-lang="en"] [data-i18n-block="en"] { display: block !important; }
-        
-        html[data-lang="ja"] [data-i18n="ja"] { display: inline !important; }
-        html[data-lang="ja"] [data-i18n-block="ja"] { display: block !important; }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            padding: 180px 5% 100px;
+            padding: 100px 22px 60px;
             text-align: center;
-            background: linear-gradient(180deg, #F0F7FF 0%, var(--bg) 100%);
-            min-height: 80vh;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+        
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #da251d, #ffcd3c);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
-
-        .hero-icon {
-            font-size: 80px;
-            margin-bottom: 30px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 5vw, 56px);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--text) 0%, var(--primary) 50%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(18px, 2.5vw, 22px);
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 600px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: 30px;
-            font-size: 16px;
+            font-size: 40px;
             font-weight: 600;
+            color: white;
+            margin: 0 auto 24px;
+            box-shadow: var(--shadow-md);
             cursor: pointer;
             transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
         }
-
+        
+        .avatar:hover {
+            transform: scale(1.05);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+        
+        .hero-title {
+            font-size: 21px;
+            font-weight: 400;
+            color: var(--apple-gray);
+            margin-bottom: 32px;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 12px 24px;
+            background: var(--apple-blue);
             color: white;
             border: none;
-            box-shadow: 0 4px 15px rgba(0,102,255,0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,102,255,0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Stats Section */
-        .stats { padding: 60px 5%; background: white; }
-
-        .stats-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 16px;
-            background: var(--bg);
-            transition: all 0.3s;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
+            border-radius: 980px;
             font-size: 14px;
-            margin-top: 8px;
-        }
-
-        /* Business Section */
-        .business { padding: 80px 5%; background: var(--bg); }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-
-        .section-title p {
-            color: var(--text-secondary);
-            font-size: 16px;
-        }
-
-        .business-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .business-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
+            font-weight: 500;
             cursor: pointer;
-        }
-
-        .business-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .business-icon { font-size: 50px; margin-bottom: 20px; }
-
-        .business-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 12px;
-        }
-
-        .business-card p {
-            color: var(--text-secondary);
-            font-size: 14px;
-            margin-bottom: 20px;
-            min-height: 44px;
-        }
-
-        .business-link {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 14px;
+            transition: all 0.2s;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
-
-        /* Global Section */
-        .global {
-            padding: 80px 5%;
-            background: linear-gradient(180deg, white 0%, #F0F7FF 100%);
+        
+        .btn-primary:hover {
+            background: #0077ed;
         }
-
-        .global-grid {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+        
+        .btn-secondary {
+            padding: 12px 24px;
+            background: transparent;
+            color: var(--apple-blue);
+            border: 1px solid var(--apple-blue);
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-
-        .global-item {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 30px;
+        
+        .btn-secondary:hover {
+            background: rgba(0,113,227,0.05);
+        }
+        
+        /* About */
+        .about {
+            background: var(--apple-light-gray);
+            border-radius: var(--radius-xl);
+            padding: 48px;
+            margin: 40px 22px;
+            max-width: 980px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .about-text {
+            font-size: 19px;
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--apple-black);
             text-align: center;
-            box-shadow: var(--shadow);
+        }
+        
+        /* Section */
+        .section {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 80px 22px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+        
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--apple-gray);
+            font-weight: 400;
+        }
+        
+        /* Projects - Featured */
+        .projects-grid {
+            display: grid;
+            gap: 32px;
+        }
+        
+        .project-card {
+            background: var(--apple-light-gray);
+            border-radius: var(--radius-lg);
+            padding: 40px;
             transition: all 0.3s;
         }
-
-        .global-item:hover {
-            transform: scale(1.03);
-            box-shadow: var(--shadow-hover);
+        
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
-
-        .global-flag { font-size: 40px; margin-bottom: 15px; }
-
-        .global-item h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-
-        .global-item p { color: var(--text-secondary); font-size: 14px; }
-
-        /* Guangchu Section */
-        .guangchu { padding: 80px 5%; background: var(--bg-card); }
-
-        .guangchu-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .guangchu-info h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 16px;
+        
+        .project-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .project-icon {
+            font-size: 48px;
+            flex-shrink: 0;
+        }
+        
+        .project-info h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--apple-black);
+        }
+        
+        .project-info p {
+            font-size: 16px;
+            color: var(--apple-gray);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .tag {
+            padding: 6px 14px;
+            background: rgba(0,113,227,0.1);
+            color: var(--apple-blue);
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .project-links {
+            display: flex;
             gap: 12px;
         }
-
-        .guangchu-info > p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
-
-        .guangchu-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .guangchu-feature {
-            background: var(--bg);
-            padding: 20px;
-            border-radius: 12px;
+        
+        .project-links a {
+            flex: 1;
             text-align: center;
-        }
-
-        .guangchu-feature-icon { font-size: 28px; margin-bottom: 10px; }
-
-        .guangchu-feature h4 {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .guangchu-cta {
-            background: linear-gradient(135deg, #1A1A2E 0%, #2D2D44 100%);
-            border-radius: 20px;
-            padding: 50px;
-            text-align: center;
+            padding: 12px;
+            background: var(--apple-blue);
             color: white;
-        }
-
-        .guangchu-cta h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .guangchu-cta > p {
-            opacity: 0.8;
-            margin-bottom: 30px;
-        }
-
-        .btn-guangchu {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            color: #1A1A2E;
-            padding: 16px 40px;
-            border-radius: 30px;
-            font-weight: 700;
             text-decoration: none;
-            display: inline-block;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        
+        .project-links a:hover {
+            background: #0077ed;
+        }
+        
+        /* Experience & Education with Logo */
+        .timeline {
+            display: grid;
+            gap: 24px;
+        }
+        
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 24px;
+            padding: 32px;
+            background: var(--apple-light-gray);
+            border-radius: var(--radius-lg);
             transition: all 0.3s;
         }
-
-        .btn-guangchu:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0,212,170,0.4);
+        
+        .timeline-item:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
         }
-
-        /* Footer */
-        footer {
-            background: #1A1A2E;
-            color: white;
-            padding: 60px 5% 30px;
+        
+        .timeline-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: var(--shadow-sm);
+            flex-shrink: 0;
         }
-
-        .footer-content {
-            max-width: 1000px;
-            margin: 0 auto;
+        
+        .timeline-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 40px;
+            grid-template-columns: 140px 1fr;
+            gap: 24px;
+            align-items: start;
         }
-
-        .footer-brand h3 {
-            font-size: 24px;
+        
+        .timeline-period {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-gray);
+            padding-top: 4px;
+        }
+        
+        .timeline-details h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--apple-black);
+        }
+        
+        .timeline-details .company {
+            font-size: 16px;
+            color: var(--apple-gray);
+        }
+        
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-card {
+            background: var(--apple-light-gray);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .skill-card:hover {
+            background: white;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .skill-icon {
+            font-size: 36px;
             margin-bottom: 16px;
         }
-
-        .footer-brand p {
-            opacity: 0.7;
-            font-size: 14px;
-            line-height: 1.8;
+        
+        .skill-name {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--apple-black);
         }
-
-        .footer-links h4 {
+        
+        .skill-desc {
             font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-            opacity: 0.5;
+            color: var(--apple-gray);
+            line-height: 1.5;
         }
-
-        .footer-links ul { list-style: none; }
-
-        .footer-links li { margin-bottom: 12px; }
-
-        .footer-links a {
-            color: white;
+        
+        /* Footer */
+        .footer {
+            background: var(--apple-light-gray);
+            padding: 40px 22px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        .footer p {
+            font-size: 12px;
+            color: var(--apple-gray);
+        }
+        
+        .footer a {
+            color: var(--apple-blue);
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s;
         }
-
-        .footer-links a:hover { opacity: 1; }
-
-        .footer-bottom {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            opacity: 0.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .stats-grid, .business-grid, .global-grid {
-                grid-template-columns: repeat(2, 1fr);
+        
+        /* 响应式 - 移动端优化 */
+        @media (max-width: 768px) {
+            /* Hero 区域更紧凑 */
+            .hero {
+                padding: 60px 16px 32px;
             }
-            .guangchu-content { grid-template-columns: 1fr; }
-            .footer-content { grid-template-columns: 1fr; gap: 40px; }
-            .nav-links { display: none; }
-        }
-
-        @media (max-width: 600px) {
-            .stats-grid, .business-grid, .global-grid { grid-template-columns: 1fr; }
+            
+            .avatar {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+                margin-bottom: 16px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+                margin-bottom: 6px;
+            }
+            
+            .hero-title {
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .hero-actions {
+                gap: 8px;
+            }
+            
+            .btn-primary,
+            .btn-secondary {
+                padding: 10px 18px;
+                font-size: 13px;
+            }
+            
+            /* About 更紧凑 */
+            .about {
+                margin: 24px 16px;
+                padding: 24px;
+            }
+            
+            .about-text {
+                font-size: 15px;
+            }
+            
+            /* Section 间距减小 */
+            .section {
+                padding: 40px 16px;
+            }
+            
+            .section-header {
+                margin-bottom: 32px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 6px;
+            }
+            
+            .section-subtitle {
+                font-size: 14px;
+            }
+            
+            /* 项目卡片更紧凑 */
+            .project-card {
+                padding: 20px;
+                margin-bottom: 16px;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+            
+            .project-icon {
+                font-size: 36px;
+            }
+            
+            .project-info h3 {
+                font-size: 18px;
+                margin-bottom: 6px;
+            }
+            
+            .project-info p {
+                font-size: 14px;
+                margin-bottom: 16px;
+            }
+            
+            .project-tags {
+                gap: 6px;
+                margin-bottom: 16px;
+            }
+            
+            .tag {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+            
+            .project-links {
+                gap: 8px;
+            }
+            
+            .project-links a {
+                padding: 10px;
+                font-size: 13px;
+            }
+            
+            /* 技能卡片更紧凑 */
+            .skills-grid {
+                gap: 12px;
+            }
+            
+            .skill-card {
+                padding: 16px;
+            }
+            
+            .skill-icon {
+                font-size: 28px;
+                margin-bottom: 12px;
+            }
+            
+            .skill-name {
+                font-size: 15px;
+                margin-bottom: 6px;
+            }
+            
+            .skill-desc {
+                font-size: 13px;
+            }
+            
+            /* 经历卡片更紧凑 */
+            .timeline {
+                gap: 16px;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 16px;
+            }
+            
+            .timeline-logo {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .timeline-content {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .timeline-period {
+                font-size: 13px;
+            }
+            
+            .timeline-details h3 {
+                font-size: 17px;
+                margin-bottom: 4px;
+            }
+            
+            .timeline-details .company {
+                font-size: 14px;
+            }
+            
+            /* Footer 更紧凑 */
+            .footer {
+                padding: 24px 16px;
+                margin-top: 40px;
+            }
+            
+            .footer p {
+                font-size: 11px;
+            }
         }
     </style>
-    <!-- Google Analytics placeholder - replace G-XXXXXXXXXX with your ID -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    -->
-    
-    <!-- Twitter Widget placeholder -->
-    <script async src="https://platform.twitter.com/widgets.js"></script>
 </head>
 <body>
-    <!-- Language Switcher -->
-    <div class="lang-switch">
-        <button class="lang-btn active" data-target-lang="zh">中文</button>
-        <button class="lang-btn" data-target-lang="en">EN</button>
-        <button class="lang-btn" data-target-lang="ja">日本語</button>
-    </div>
-
     <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <span>☀️ Solaripple</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home" data-i18n="zh">首页</a><a href="#home" data-i18n="en">Home</a><a href="#home" data-i18n="ja">ホーム</a></li>
-                <li><a href="#about" data-i18n="zh">关于我们</a><a href="#about" data-i18n="en">About</a><a href="#about" data-i18n="ja">会社概要</a></li>
-                <li><a href="#solutions" data-i18n="zh">解决方案</a><a href="#solutions" data-i18n="en">Solutions</a><a href="#solutions" data-i18n="ja">ソリューション</a></li>
-                <li><a href="#global" data-i18n="zh">全球布局</a><a href="#global" data-i18n="en">Global</a><a href="#global" data-i18n="ja">グローバル</a></li>
-                <li><a href="https://lab.solaripple.com" target="_blank" data-i18n="zh">Lab</a><a href="https://lab.solaripple.com" target="_blank" data-i18n="en">Lab</a><a href="https://lab.solaripple.com" target="_blank" data-i18n="ja">Lab</a></li>
-                <li><a href="#guangchu" data-i18n="zh">光储龙虾</a><a href="#guangchu" data-i18n="en">Guangchu</a><a href="#guangchu" data-i18n="ja">光儲龙虾</a></li>
-                <li><a href="#contact" data-i18n="zh">联系我们</a><a href="#contact" data-i18n="en">Contact</a><a href="#contact" data-i18n="ja">お問い合わせ</a></li>
-            </ul>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="nav-logo">Terry Wu</a>
+            <div class="language-switcher">
+                <button class="lang-btn" onclick="switchLang('zh')" data-lang="zh">中文</button>
+                <button class="lang-btn active" onclick="switchLang('en')" data-lang="en">EN</button>
+                <button class="lang-btn" onclick="switchLang('ja')" data-lang="ja">日本語</button>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-icon">☀️</div>
-        <h1>
-            <span data-i18n-block="zh">清洁能源，驱动可持续未来</span>
-            <span data-i18n-block="en">Clean Energy for a Sustainable Future</span>
-            <span data-i18n-block="ja">クリーンエネルギーで持続可能な未来を</span>
-        </h1>
-        <p class="subtitle">
-            <span data-i18n="zh">专注中国、日本、东南亚工商业光储综合服务</span>
-            <span data-i18n="en">Leading C&I Energy Storage Solutions in China, Japan & Southeast Asia</span>
-            <span data-i18n="ja">中国・日本・東南アジアの工商業用エネルギー貯蔵ソリューション</span>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="avatar" onclick="celebrate()">TW</div>
+        <h1 data-i18n="name">Terry Wu</h1>
+        <p class="hero-title" data-i18n="title">Software-Defined Hardware, AI-Reimagined Solar-Storage</p>
+        <div class="hero-actions">
+            <a href="mailto:wuxuegang@gmail.com" class="btn-primary">
+                📧 <span data-i18n="contact">Contact</span>
+            </a>
+            <a href="https://github.com/xuegangwu" target="_blank" class="btn-secondary">
+                🔗 <span data-i18n="github">GitHub</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <div class="about">
+        <p class="about-text" data-i18n="about-text">
+            Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.
         </p>
-        <div class="hero-buttons">
-            <a href="#solutions" class="btn btn-primary" data-i18n="zh">探索解决方案</a>
-            <a href="#solutions" class="btn btn-primary" data-i18n="en">Explore Solutions</a>
-            <a href="#solutions" class="btn btn-primary" data-i18n="ja">ソリューションを見る</a>
-            <a href="#contact" class="btn btn-secondary" data-i18n="zh">了解更多</a>
-            <a href="#contact" class="btn btn-secondary" data-i18n="en">Learn More</a>
-            <a href="#contact" class="btn btn-secondary" data-i18n="ja">詳細を見る</a>
-        </div>
-    </section>
+    </div>
 
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-value">500+</div>
-                <div class="stat-label" data-i18n="zh">MW 开发规模 *</div>
-                <div class="stat-label" data-i18n="en">MW Deployed</div>
-                <div class="stat-label" data-i18n="ja">MW 開発規模</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">¥50億+</div>
-                <div class="stat-label" data-i18n="zh">人民币 投资总额</div>
-                <div class="stat-label" data-i18n="en">CNY Total Investment</div>
-                <div class="stat-label" data-i18n="ja">元 投資総額</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">10+</div>
-                <div class="stat-label" data-i18n="zh">覆盖国家</div>
-                <div class="stat-label" data-i18n="en">Countries</div>
-                <div class="stat-label" data-i18n="ja">進出国</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-value">5</div>
-                <div class="stat-label" data-i18n="zh">运营中项目</div>
-                <div class="stat-label" data-i18n="en">Projects Online</div>
-                <div class="stat-label" data-i18n="ja">稼働中プロジェクト</div>
-            </div>
+    <!-- Projects - Featured First -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="projects">Featured Projects</h2>
+            <p class="section-subtitle" data-i18n="projects-subtitle">Showcasing innovation in solar-storage technology</p>
         </div>
-    </section>
-
-    <!-- Business Section -->
-    <section class="business" id="solutions">
-        <div class="section-title">
-            <h2>
-                <span data-i18n="zh">核心业务</span>
-                <span data-i18n="en">Our Solutions</span>
-                <span data-i18n="ja">コアビジネス</span>
-            </h2>
-            <p>
-                <span data-i18n="zh">开发 · 投资 · 运营 · 交易</span>
-                <span data-i18n="en">Development · Investment · Operations · Trading</span>
-                <span data-i18n="ja">開発・投資・運営・取引</span>
-            </p>
-        </div>
-        <div class="business-grid">
-            <div class="business-card">
-                <div class="business-icon">🔧</div>
-                <h3>
-                    <span data-i18n="zh">开发</span>
-                    <span data-i18n="en">Development</span>
-                    <span data-i18n="ja">開発</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">工商业分布式光伏+储能EPC</span>
-                    <span data-i18n="en">C&I Distributed PV + Storage EPC</span>
-                    <span data-i18n="ja">工商業用分散型太陽光+蓄電EPC</span>
-                </p>
-                <a href="#" class="business-link">
-                    <span data-i18n="zh">了解更多 →</span>
-                    <span data-i18n="en">Learn More →</span>
-                    <span data-i18n="ja">詳細を見る →</span>
-                </a>
-            </div>
-            <div class="business-card">
-                <div class="business-icon">💰</div>
-                <h3>
-                    <span data-i18n="zh">投资</span>
-                    <span data-i18n="en">Investment</span>
-                    <span data-i18n="ja">投資</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">光储项目投资与融资服务</span>
-                    <span data-i18n="en">Project Investment & Financing</span>
-                    <span data-i18n="ja">プロジェクト投資・金融サービス</span>
-                </p>
-                <a href="#" class="business-link">
-                    <span data-i18n="zh">了解更多 →</span>
-                    <span data-i18n="en">Learn More →</span>
-                    <span data-i18n="ja">詳細を見る →</span>
-                </a>
-            </div>
-            <div class="business-card">
-                <div class="business-icon">⚡</div>
-                <h3>
-                    <span data-i18n="zh">运营</span>
-                    <span data-i18n="en">Operations</span>
-                    <span data-i18n="ja">運営</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">智能运维与资产管理</span>
-                    <span data-i18n="en">Smart O&M & Asset Management</span>
-                    <span data-i18n="ja">スマート運用・資産管理</span>
-                </p>
-                <a href="#" class="business-link">
-                    <span data-i18n="zh">了解更多 →</span>
-                    <span data-i18n="en">Learn More →</span>
-                    <span data-i18n="ja">詳細を見る →</span>
-                </a>
-            </div>
-            <div class="business-card">
-                <div class="business-icon">🔄</div>
-                <h3>
-                    <span data-i18n="zh">交易</span>
-                    <span data-i18n="en">Trading</span>
-                    <span data-i18n="ja">取引</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">电力交易与碳资产管理</span>
-                    <span data-i18n="en">Power Trading & Carbon Assets</span>
-                    <span data-i18n="ja">電力取引・炭素資産管理</span>
-                </p>
-                <a href="#" class="business-link">
-                    <span data-i18n="zh">了解更多 →</span>
-                    <span data-i18n="en">Learn More →</span>
-                    <span data-i18n="ja">詳細を見る →</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Global Section -->
-    <section class="global" id="global">
-        <div class="section-title">
-            <h2>
-                <span data-i18n="zh">全球布局</span>
-                <span data-i18n="en">Global Presence</span>
-                <span data-i18n="ja">グローバル展開</span>
-            </h2>
-        </div>
-        <div class="global-grid">
-            <div class="global-item">
-                <div class="global-flag">🇨🇳</div>
-                <h3>
-                    <span data-i18n="zh">中国</span>
-                    <span data-i18n="en">China</span>
-                    <span data-i18n="ja">中国</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">15+ 省份覆盖</span>
-                    <span data-i18n="en">15+ Provinces</span>
-                    <span data-i18n="ja">15+ 省進出</span>
-                </p>
-            </div>
-            <div class="global-item">
-                <div class="global-flag">🇯🇵</div>
-                <h3>
-                    <span data-i18n="zh">日本</span>
-                    <span data-i18n="en">Japan</span>
-                    <span data-i18n="ja">日本</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">10+ 项目投资</span>
-                    <span data-i18n="en">10+ Projects</span>
-                    <span data-i18n="ja">10+ プロジェクト</span>
-                </p>
-            </div>
-            <div class="global-item">
-                <div class="global-flag">🇲🇾</div>
-                <h3>
-                    <span data-i18n="zh">马来西亚</span>
-                    <span data-i18n="en">Malaysia</span>
-                    <span data-i18n="ja">マレーシア</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">5+ 项目开发</span>
-                    <span data-i18n="en">5+ Projects</span>
-                    <span data-i18n="ja">5+ プロジェクト</span>
-                </p>
-            </div>
-            <div class="global-item">
-                <div class="global-flag">🌏</div>
-                <h3>
-                    <span data-i18n="zh">东南亚/欧洲</span>
-                    <span data-i18n="en">SEA / Europe</span>
-                    <span data-i18n="ja">東南アジア・欧州</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">市场开发中</span>
-                    <span data-i18n="en">Expanding</span>
-                    <span data-i18n="ja">市場開拓中</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solaripple Lab Section -->
-    <section class="guangchu" id="lab" style="background: linear-gradient(180deg, #F0F7FF 0%, #fff 100%);">
-        <div class="guangchu-content">
-            <div class="guangchu-info">
-                <h2>🔬</h2>
-                <h2>
-                    <span data-i18n="zh">Solaripple Lab</span>
-                    <span data-i18n="en">Solaripple Lab</span>
-                    <span data-i18n="ja">Solaripple Lab</span>
-                </h2>
-                <p data-i18n="zh">工商业光储实验室 - 专注技术研发、项目验证、解决方案测试。为中国、日本、东南亚市场提供最前沿的光储技术支持。</p>
-                <p data-i18n="en">C&I Energy Storage Lab - Focus on R&D, project verification & solution testing. Providing cutting-edge solar-storage tech for China, Japan & SEA markets.</p>
-                <p data-i18n="ja">工商業用エネルギー貯蔵ラボ - R&D、プロジェクト検証、ソリューション試験に特化。中国・日本・東南アジア市場向け先進的な光・蓄電技術を提供。</p>
-                <div class="guangchu-features">
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">🏢</div>
-                        <h4>
-                            <span data-i18n="zh">项目案例</span>
-                            <span data-i18n="en">Projects</span>
-                            <span data-i18n="ja">プロジェクト</span>
-                        </h4>
-                    </div>
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">💡</div>
-                        <h4>
-                            <span data-i18n="zh">解决方案</span>
-                            <span data-i18n="en">Solutions</span>
-                            <span data-i18n="ja">ソリューション</span>
-                        </h4>
-                    </div>
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">⚙️</div>
-                        <h4>
-                            <span data-i18n="zh">技术研发</span>
-                            <span data-i18n="en">R&D</span>
-                            <span data-i18n="ja">技術開発</span>
-                        </h4>
-                    </div>
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">🔧</div>
-                        <h4>
-                            <span data-i18n="zh">工具箱</span>
-                            <span data-i18n="en">Tools</span>
-                            <span data-i18n="ja">ツール</span>
-                        </h4>
+        
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🗺️</div>
+                    <div class="project-info">
+                        <h3 data-i18n="project1-title">Solar-Storage Investment Map System</h3>
+                        <p data-i18n="project1-desc">Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.</p>
                     </div>
                 </div>
-            </div>
-            <div class="guangchu-cta" style="background: linear-gradient(135deg, #0066FF, #00D4AA);">
-                <h3>
-                    <span data-i18n="zh">进入 Solaripple Lab</span>
-                    <span data-i18n="en">Enter Solaripple Lab</span>
-                    <span data-i18n="ja">Solaripple Labへ</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">探索更多工商业光储技术</span>
-                    <span data-i18n="en">Explore More C&I Storage Tech</span>
-                    <span data-i18n="ja">工商業用貯蔵技術更多信息</span>
-                </p>
-                <a href="https://lab.solaripple.com" target="_blank" class="btn-guangchu" style="background: white; color: #0066FF;">
-                    <span data-i18n="zh">访问 Lab →</span>
-                    <span data-i18n="en">Visit Lab →</span>
-                    <span data-i18n="ja">Labを見る →</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guangchu Section -->
-    <section class="guangchu" id="guangchu">
-        <div class="guangchu-content">
-            <div class="guangchu-info">
-                <h2>🦞</h2>
-                <h2>
-                    <span data-i18n="zh">光储龙虾社区</span>
-                    <span data-i18n="en">Guangchu Community</span>
-                    <span data-i18n="ja">光儲龙虾コミュニティ</span>
-                </h2>
-                <p data-i18n="zh">光储行业信息收集与分析系统，开源社区项目。实时追踪全球光伏+储能行业动态，为投资决策提供数据支持。</p>
-                <p data-i18n="en">Open-source solar-storage industry news collection & analysis system. Real-time tracking of global PV & storage industry trends.</p>
-                <p data-i18n="ja">开源の太陽光・蓄電業界ニュース収集・分析システム。グローバルPV・貯蔵業界の動向をリアルタイム追跡。</p>
-                <div class="guangchu-features">
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">📰</div>
-                        <h4>
-                            <span data-i18n="zh">行业新闻</span>
-                            <span data-i18n="en">Industry News</span>
-                            <span data-i18n="ja">業界ニュース</span>
-                        </h4>
-                    </div>
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">📊</div>
-                        <h4>
-                            <span data-i18n="zh">数据分析</span>
-                            <span data-i18n="en">Data Analysis</span>
-                            <span data-i18n="ja">データ分析</span>
-                        </h4>
-                    </div>
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">🔍</div>
-                        <h4>
-                            <span data-i18n="zh">搜索引擎</span>
-                            <span data-i18n="en">Search Engine</span>
-                            <span data-i18n="ja">検索エンジン</span>
-                        </h4>
-                    </div>
-                    <div class="guangchu-feature">
-                        <div class="guangchu-feature-icon">📔</div>
-                        <h4>
-                            <span data-i18n="zh">研发日记</span>
-                            <span data-i18n="en">Dev Diary</span>
-                            <span data-i18n="ja">開発日記</span>
-                        </h4>
-                    </div>
+                <div class="project-tags">
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Leaflet</span>
+                    <span class="tag">Three.js</span>
+                    <span class="tag">SQLite</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">🔗 GitHub</a>
+                    <a href="http://localhost:3000" target="_blank">🌐 Live Demo</a>
                 </div>
             </div>
-            <div class="guangchu-cta">
-                <h3>
-                    <span data-i18n="zh">加入光储龙虾社区</span>
-                    <span data-i18n="en">Join Guangchu Community</span>
-                    <span data-i18n="ja">光儲龙虾コミュニティに参加</span>
-                </h3>
-                <p>
-                    <span data-i18n="zh">开源、共享、协作</span>
-                    <span data-i18n="en">Open Source · Share · Collaborate</span>
-                    <span data-i18n="ja">オープンソース・共有・協働</span>
-                </p>
-                <a href="https://xuegangwu.github.io/guangchu" target="_blank" class="btn-guangchu">
-                    <span data-i18n="zh">访问光储龙虾 →</span>
-                    <span data-i18n="en">Visit Guangchu →</span>
-                    <span data-i18n="ja">光儲龙虾を見る →</span>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- News Section -->
-    <section class="section" id="news" style="background: white;">
-        <div class="section-title">
-            <h2>
-                <span data-i18n="zh">最新动态</span>
-                <span data-i18n="en">Latest News</span>
-                <span data-i18n="ja">最新ニュース</span>
-            </h2>
-        </div>
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-                <div style="padding: 20px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #0066FF;">
-                    <div style="font-size: 12px; color: #666; margin-bottom: 8px;">
-                        <span data-i18n="zh">2026-03-29</span>
-                        <span data-i18n="en">2026-03-29</span>
-                        <span data-i18n="ja">2026-03-29</span>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon">🦞</div>
+                    <div class="project-info">
+                        <h3 data-i18n="project2-title">Guangchu - Industry News Collection</h3>
+                        <p data-i18n="project2-desc">Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.</p>
                     </div>
-                    <h3 style="margin-bottom: 8px;">
-                        <span data-i18n="zh">Solaripple Lab 正式上线</span>
-                        <span data-i18n="en">Solaripple Lab Launched</span>
-                        <span data-i18n="ja">Solaripple Lab 正式ローンチ</span>
-                    </h3>
-                    <p style="color: #666; font-size: 14px;">
-                        <span data-i18n="zh">专注工商业光储技术研发与项目验证的平台正式发布</span>
-                        <span data-i18n="en">C&I energy storage R&D and project verification platform officially launched</span>
-                        <span data-i18n="ja">工商業用エネルギー貯蔵技術R&Dとプロジェクト検証プラットフォームが正式にローンチ</span>
-                    </p>
                 </div>
-                <div style="padding: 20px; background: #f8f9fa; border-radius: 12px; border-left: 4px solid #00D4AA;">
-                    <div style="font-size: 12px; color: #666; margin-bottom: 8px;">
-                        <span data-i18n="zh">2026-03-20</span>
-                        <span data-i18n="en">2026-03-20</span>
-                        <span data-i18n="ja">2026-03-20</span>
-                    </div>
-                    <h3 style="margin-bottom: 8px;">
-                        <span data-i18n="zh">SiC碳化硅光储产品团购开启</span>
-                        <span data-i18n="en">SiC Solar-Storage Groupon Started</span>
-                        <span data-i18n="ja">SiC炭化ケイ素光・蓄電团购開始</span>
-                    </h3>
-                    <p style="color: #666; font-size: 14px;">
-                        <span data-i18n="zh">高效可靠的工商业堆叠式碳化硅光储一体机团购优惠进行中</span>
-                        <span data-i18n="en">High-efficiency stacked SiC solar-storage system groupon in progress</span>
-                        <span data-i18n="ja">高効率な工商業用積層式SiC光・蓄電一体機の团购割引進行中</span>
-                    </p>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Flask</span>
+                    <span class="tag">SQLite FTS5</span>
+                    <span class="tag">Web Scraping</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/xuegangwu/guangchu" target="_blank">🔗 GitHub</a>
+                    <a href="http://localhost:5000" target="_blank">🌐 Live Demo</a>
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- Footer -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <h3>☀️ Solaripple</h3>
-                <p data-i18n="zh">专注工商业光储综合服务，覆盖中国、日本、东南亚市场。为客户提供开发、投资、运营、交易一站式解决方案。</p>
-                <p data-i18n="en">Leading C&I energy storage solutions provider across China, Japan & Southeast Asia. One-stop solutions for development, investment, operations & trading.</p>
-                <p data-i18n="ja">中国・日本・東南アジアにおける工商業用エネルギー貯蔵ソリューションのリーダー。開発・投資・運営・取引のワンストップソリューション。</p>
+    <!-- Skills -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="skills">Skills & Expertise</h2>
+            <p class="section-subtitle" data-i18n="skills-subtitle">Technical capabilities and competencies</p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <div class="skill-name" data-i18n="skill1-name">Frontend Development</div>
+                <div class="skill-desc" data-i18n="skill1-desc">HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations</div>
             </div>
-            <div class="footer-links">
-                <h4 data-i18n="zh">快速链接</h4>
-                <h4 data-i18n="en">Quick Links</h4>
-                <h4 data-i18n="ja">クイックリンク</h4>
-                <ul>
-                    <li><a href="#" data-i18n="zh">关于我们</a><a href="#" data-i18n="en">About Us</a><a href="#" data-i18n="ja">会社概要</a></li>
-                    <li><a href="#" data-i18n="zh">解决方案</a><a href="#" data-i18n="en">Solutions</a><a href="#" data-i18n="ja">ソリューション</a></li>
-                    <li><a href="#" data-i18n="zh">全球布局</a><a href="#" data-i18n="en">Global</a><a href="#" data-i18n="ja">グローバル</a></li>
-                    <li><a href="https://xuegangwu.github.io/guangchu" data-i18n="zh">光储龙虾</a><a href="https://xuegangwu.github.io/guangchu" data-i18n="en">Guangchu</a><a href="https://xuegangwu.github.io/guangchu" data-i18n="ja">光儲龙虾</a></li>
-                </ul>
+
+            <div class="skill-card">
+                <div class="skill-icon">🗺️</div>
+                <div class="skill-name" data-i18n="skill2-name">Map Visualization</div>
+                <div class="skill-desc" data-i18n="skill2-desc">Leaflet, Three.js<br>Interactive maps, 3D rendering</div>
             </div>
-            <div class="footer-links">
-                <h4 data-i18n="zh">联系我们</h4>
-                <h4 data-i18n="en">Contact</h4>
-                <h4 data-i18n="ja">お問い合わせ</h4>
-                <ul>
-                    <li><a href="mailto:info@solaripple.com">info@solaripple.com</a></li>
-                    <li><a href="#" data-i18n="zh">上海市</a><a href="#" data-i18n="en">Shanghai</a><a href="#" data-i18n="ja">上海</a></li>
-                </ul>
+
+            <div class="skill-card">
+                <div class="skill-icon">🔧</div>
+                <div class="skill-name" data-i18n="skill3-name">Backend Development</div>
+                <div class="skill-desc" data-i18n="skill3-desc">Node.js, Express<br>Python, Flask</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">💾</div>
+                <div class="skill-name" data-i18n="skill4-name">Database</div>
+                <div class="skill-desc" data-i18n="skill4-desc">SQLite, FTS5<br>Full-text search, data modeling</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🤖</div>
+                <div class="skill-name" data-i18n="skill5-name">Automation</div>
+                <div class="skill-desc" data-i18n="skill5-desc">Web scraping, scheduled tasks<br>Data extraction, report generation</div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <div class="skill-name" data-i18n="skill6-name">Data Analysis</div>
+                <div class="skill-desc" data-i18n="skill6-desc">Information collection, trend analysis<br>Investment evaluation, decision support</div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <span>© 2026 Solaripple. All rights reserved.</span>
-            <span style="font-size: 11px;">* 数据为占位符，实际数据请联系我们</span>
-            <span>沪ICP备2026009101号-1</span>
+    </section>
+
+    <!-- Experience -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="experience">Work Experience</h2>
+            <p class="section-subtitle" data-i18n="experience-subtitle">Professional journey and career path</p>
         </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-logo">🏢</div>
+                <div class="timeline-content">
+                    <div class="timeline-period" data-i18n="period2">2019 ~ 2026</div>
+                    <div class="timeline-details">
+                        <h3 data-i18n="role2">CIO, VP, CEO</h3>
+                        <div class="company" data-i18n="company2">@ Risen</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-logo">🖨️</div>
+                <div class="timeline-content">
+                    <div class="timeline-period" data-i18n="period1">2002 ~ 2019</div>
+                    <div class="timeline-details">
+                        <h3 data-i18n="role1">Programmer, Manager</h3>
+                        <div class="company" data-i18n="company1">@ Ricoh</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+        <div class="section-header">
+            <h2 class="section-title" data-i18n="education">Education</h2>
+            <p class="section-subtitle" data-i18n="education-subtitle">Academic background and qualifications</p>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-logo">🎓</div>
+                <div class="timeline-content">
+                    <div class="timeline-period" data-i18n="edu3-period">2025</div>
+                    <div class="timeline-details">
+                        <h3 data-i18n="edu3-degree">AI Master (In Progress)</h3>
+                        <div class="company" data-i18n="edu3-school">@ University of Colorado</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-logo">📚</div>
+                <div class="timeline-content">
+                    <div class="timeline-period" data-i18n="edu2-period">2023 ~ 2025</div>
+                    <div class="timeline-details">
+                        <h3 data-i18n="edu2-degree">EMBA</h3>
+                        <div class="company" data-i18n="edu2-school">@ CEIBS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-logo">🎓</div>
+                <div class="timeline-content">
+                    <div class="timeline-period" data-i18n="edu1-period">1999 ~ 2002</div>
+                    <div class="timeline-details">
+                        <h3 data-i18n="edu1-degree">Master's Degree</h3>
+                        <div class="company" data-i18n="edu1-school">@ East China University of Science and Technology</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 Terry Wu. All rights reserved.</p>
+        <p>Powered by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> ❤️</p>
     </footer>
 
     <script>
-        // Language Switching - Pure CSS approach
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const lang = btn.dataset.targetLang;
-                
-                // Update HTML lang attribute
-                document.documentElement.lang = lang === 'ja' ? 'ja' : lang === 'en' ? 'en' : 'zh-CN';
-                document.documentElement.dataset.lang = lang;
-                
-                // Update button states
-                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Save preference
-                localStorage.setItem('solaripple-lang', lang);
-            });
-        });
+        const translations = {
+            zh: {
+                name: 'Terry Wu',
+                title: '软件定义硬件，AI 重构光储',
+                'about-text': '专注于太阳能 + 储能领域的投资评估系统开发，帮助您识别优质投资机会，让数据驱动决策',
+                projects: '精选项目',
+                'projects-subtitle': '展示光储技术创新成果',
+                'project1-title': '光储电站投资地图系统',
+                'project1-desc': '多国家光储电站投资评估平台，覆盖中国 30 省份、越南 15 省份、日本 47 都道府县。基于资源禀赋、电价政策、市场条件、电网条件四大维度，提供科学的投资决策支持。',
+                'project2-title': '光储龙虾 - 行业信息收集',
+                'project2-desc': '自动化光伏 + 储能行业信息收集与分析系统。支持多语言新闻抓取、FTS5 全文搜索、定时任务、报告生成等功能。信息源包括 PV Magazine、Energy Storage News 等 6 个主流媒体。',
+                contact: '联系我',
+                github: 'GitHub',
+                skills: '专业技能',
+                'skills-subtitle': '技术能力与专业素养',
+                'skill1-name': '前端开发',
+                'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>响应式设计，动画效果',
+                'skill2-name': '地图可视化',
+                'skill2-desc': 'Leaflet, Three.js<br>交互式地图，3D 渲染',
+                'skill3-name': '后端开发',
+                'skill3-desc': 'Node.js, Express<br>Python, Flask',
+                'skill4-name': '数据库',
+                'skill4-desc': 'SQLite, FTS5<br>全文搜索，数据建模',
+                'skill5-name': '自动化',
+                'skill5-desc': '网络爬虫，定时任务<br>数据抓取，报告生成',
+                'skill6-name': '数据分析',
+                'skill6-desc': '信息收集，趋势分析<br>投资评估，决策支持',
+                experience: '工作经历',
+                'experience-subtitle': '职业发展历程',
+                period1: '2002 ~ 2019',
+                role1: 'Programmer, Manager',
+                company1: '@ 理光 (Ricoh)',
+                period2: '2019 ~ 2026',
+                role2: 'CIO, VP, CEO',
+                company2: '@ 日升 (Risen)',
+                education: '教育背景',
+                'education-subtitle': '学术背景与资质',
+                'edu1-period': '1999 ~ 2002',
+                'edu1-degree': '硕士',
+                'edu1-school': '@ 华东理工大学',
+                'edu2-period': '2023 ~ 2025',
+                'edu2-degree': 'EMBA',
+                'edu2-school': '@ 中欧国际工商学院',
+                'edu3-period': '2025',
+                'edu3-degree': 'AI 硕士 在读',
+                'edu3-school': '@ 美国科罗拉多大学'
+            },
+            en: {
+                name: 'Terry Wu',
+                title: 'Software-Defined Hardware, AI-Reimagined Solar-Storage',
+                'about-text': 'Specializing in investment evaluation system development for solar + energy storage, helping you identify quality investment opportunities with data-driven decisions.',
+                projects: 'Featured Projects',
+                'projects-subtitle': 'Showcasing innovation in solar-storage technology',
+                'project1-title': 'Solar-Storage Investment Map System',
+                'project1-desc': 'Multi-country solar-storage investment evaluation platform covering 30 provinces in China, 15 provinces in Vietnam, and 47 prefectures in Japan. Provides scientific investment decision support based on four dimensions: resource endowment, electricity price policy, market conditions, and grid conditions.',
+                'project2-title': 'Guangchu - Industry News Collection',
+                'project2-desc': 'Automated photovoltaic + energy storage industry information collection and analysis system. Supports multi-language news scraping, FTS5 full-text search, scheduled tasks, report generation. Information sources include PV Magazine, Energy Storage News, and 6 other mainstream media.',
+                contact: 'Contact',
+                github: 'GitHub',
+                skills: 'Skills & Expertise',
+                'skills-subtitle': 'Technical capabilities and competencies',
+                'skill1-name': 'Frontend Development',
+                'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>Responsive design, animations',
+                'skill2-name': 'Map Visualization',
+                'skill2-desc': 'Leaflet, Three.js<br>Interactive maps, 3D rendering',
+                'skill3-name': 'Backend Development',
+                'skill3-desc': 'Node.js, Express<br>Python, Flask',
+                'skill4-name': 'Database',
+                'skill4-desc': 'SQLite, FTS5<br>Full-text search, data modeling',
+                'skill5-name': 'Automation',
+                'skill5-desc': 'Web scraping, scheduled tasks<br>Data extraction, report generation',
+                'skill6-name': 'Data Analysis',
+                'skill6-desc': 'Information collection, trend analysis<br>Investment evaluation, decision support',
+                experience: 'Work Experience',
+                'experience-subtitle': 'Professional journey and career path',
+                period1: '2002 ~ 2019',
+                role1: 'Programmer, Manager',
+                company1: '@ Ricoh',
+                period2: '2019 ~ 2026',
+                role2: 'CIO, VP, CEO',
+                company2: '@ Risen',
+                education: 'Education',
+                'education-subtitle': 'Academic background and qualifications',
+                'edu1-period': '1999 ~ 2002',
+                'edu1-degree': "Master's Degree",
+                'edu1-school': '@ East China University of Science and Technology',
+                'edu2-period': '2023 ~ 2025',
+                'edu2-degree': 'EMBA',
+                'edu2-school': '@ CEIBS',
+                'edu3-period': '2025',
+                'edu3-degree': 'AI Master (In Progress)',
+                'edu3-school': '@ University of Colorado'
+            },
+            ja: {
+                name: 'Terry Wu',
+                title: 'ソフトウェア定義ハードウェア、AI 再構築太陽光・蓄電池',
+                'about-text': '太陽光＋蓄電池分野の評価システム開発に専念し、データ駆動型の意思決定で質の高い投資機会を特定します',
+                projects: '主要プロジェクト',
+                'projects-subtitle': '太陽光・蓄電池技術のイノベーション',
+                'project1-title': '太陽光・蓄電池投資マップシステム',
+                'project1-desc': '中国 30 省、ベトナム 15 省、日本 47 都道府県をカバーする多国籍太陽光・蓄電池投資評価プラットフォーム。資源賦存、電力価格政策、市場状況、グリッド状況の 4 つの次元に基づき、科学的な投資判断をサポートします。',
+                'project2-title': '光儲龙虾 - 業界ニュース収集',
+                'project2-desc': '自動化された太陽光・蓄電池業界の情報収集・分析システム。多言語ニューススクレイピング、FTS5 全文検索、定期タスク、レポート生成などをサポート。情報源には PV Magazine、Energy Storage News など 6 つの主要メディアを含む。',
+                contact: 'お問い合わせ',
+                github: 'GitHub',
+                skills: 'スキル',
+                'skills-subtitle': '技術能力と専門知識',
+                'skill1-name': 'フロントエンド開発',
+                'skill1-desc': 'HTML5, CSS3, JavaScript (ES6+)<br>レスポンシブデザイン、アニメーション',
+                'skill2-name': 'マップ可視化',
+                'skill2-desc': 'Leaflet, Three.js<br>インタラクティブマップ、3D レンダリング',
+                'skill3-name': 'バックエンド開発',
+                'skill3-desc': 'Node.js, Express<br>Python, Flask',
+                'skill4-name': 'データベース',
+                'skill4-desc': 'SQLite, FTS5<br>全文検索、データモデリング',
+                'skill5-name': '自動化',
+                'skill5-desc': 'Web スクレイピング、定期タスク<br>データ抽出、レポート生成',
+                'skill6-name': 'データ分析',
+                'skill6-desc': '情報収集、トレンド分析<br>投資評価、意思決定サポート',
+                experience: '職歴',
+                'experience-subtitle': 'キャリアパス',
+                period1: '2002 〜 2019',
+                role1: 'プログラマー、マネージャー',
+                company1: '@ リコー (Ricoh)',
+                period2: '2019 〜 2026',
+                role2: 'CIO, VP, CEO',
+                company2: '@ 日升 (Risen)',
+                education: '学歴',
+                'education-subtitle': '学術的背景',
+                'edu1-period': '1999 〜 2002',
+                'edu1-degree': '修士号',
+                'edu1-school': '@ 華東理工大学',
+                'edu2-period': '2023 〜 2025',
+                'edu2-degree': 'EMBA',
+                'edu2-school': '@ 中欧国際工商学院',
+                'edu3-period': '2025',
+                'edu3-degree': 'AI 修士課程（在学中）',
+                'edu3-school': '@ コロラド大学'
+            }
+        };
 
-        // Load saved language preference
-        const savedLang = localStorage.getItem('solaripple-lang');
-        if (savedLang) {
-            const btn = document.querySelector(`[data-target-lang="${savedLang}"]`);
-            if (btn) btn.click();
-        }
+        let currentLang = 'en';
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        function switchLang(lang) {
+            currentLang = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
                 }
             });
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            localStorage.setItem('preferredLang', lang);
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : (lang === 'en' ? 'en' : 'ja');
+        }
+
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('preferredLang') || 'en';
+            switchLang(savedLang);
         });
+
+        function celebrate() {
+            const colors = ['#1d1d1f', '#86868b', '#0071e3', '#f5f5f7'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `position:fixed;width:8px;height:8px;background:${colors[Math.floor(Math.random()*colors.length)]};left:${Math.random()*100}vw;top:-10px;border-radius:50%;pointer-events:none;z-index:9999;`;
+                document.body.appendChild(confetti);
+                confetti.animate([{transform:'translateY(0)',opacity:1},{transform:`translateY(${window.innerHeight+10}px)`,opacity:0}],{duration:2000+Math.random()*2000,easing:'cubic-bezier(0.25,0.46,0.45,0.94)'});
+                setTimeout(()=>confetti.remove(),4000);
+            }
+        }
     </script>
 </body>
 </html>
