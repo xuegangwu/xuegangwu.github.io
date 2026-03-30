@@ -314,6 +314,14 @@
             transition: all 0.2s;
         }
         
+                /* Grayed out demo link */
+        .project-links a.demo {
+            background: var(--apple-light-gray);
+            color: var(--apple-gray);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
         .project-links a:hover {
             background: #0077ed;
         }
@@ -671,7 +679,7 @@
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/xuegangwu/china-solar-storage" target="_blank">🔗 GitHub</a>
-                    <a href="http://localhost:3000" target="_blank">🌐 Live Demo</a>
+                    <a href="#" class="demo">🌐 Live Demo</a>
                 </div>
             </div>
 
@@ -692,7 +700,7 @@
                 </div>
                 <div class="project-links">
                     <a href="https://github.com/xuegangwu/guangchu" target="_blank">🔗 GitHub</a>
-                    <a href="http://localhost:5000" target="_blank">🌐 Live Demo</a>
+                    <a href="#" class="demo">🌐 Live Demo</a>
                 </div>
             </div>
         </div>
