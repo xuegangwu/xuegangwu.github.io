@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://solaripple.com/sitemap.xml
+Sitemap: https://xuegangwu.github.io/sitemap.xml
