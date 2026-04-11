@@ -1,6 +1,18 @@
-import { useState } from 'react';
-import { Layout, Tabs, Typography, Space, Card } from 'antd';
-import { ThunderboltOutlined, AppstoreOutlined, FileTextOutlined, AimOutlined, ApartmentOutlined, LayoutOutlined, ClusterOutlined } from '@ant-design/icons';
+import { useState, useEffect } from 'react';
+import { Layout, Menu, Typography, Space, Dropdown, Button, Tag, Card } from 'antd';
+import {
+  AppstoreOutlined,
+  ClusterOutlined,
+  ApartmentOutlined,
+  LayoutOutlined,
+  AimOutlined,
+  ThunderboltOutlined,
+  FileTextOutlined,
+  RobotOutlined,
+  SaveOutlined,
+  ExportOutlined,
+  CheckCircleOutlined,
+} from '@ant-design/icons';
 import ComponentLibrary from './pages/ComponentLibrary';
 import AISizing from './pages/AISizing';
 import Designs from './pages/Designs';
@@ -9,149 +21,268 @@ import SystemTopology from './pages/SystemTopology';
 import HierarchicalBOM from './pages/HierarchicalBOM';
 import InternalLayout from './pages/InternalLayout';
 import Container3D from './pages/Container3D';
+import { designsApi } from './services/api';
 
-const { Header, Content, Footer } = Layout;
-const { Title, Text } = Typography;
+const { Header, Sider, Content } = Layout;
+const { Text } = Typography;
+
+const { SubMenu } = Menu;
+
+// Current design context
+interface DesignContext {
+  id: string;
+  name: string;
+  status: string;
+}
+
+const workflowItems = [
+  { key: 'hbom', icon: <ApartmentOutlined />, label: '层级BOM' },
+  { key: 'layout', icon: <LayoutOutlined />, label: '内部布局' },
+  { key: 'container3d', icon: <ClusterOutlined />, label: '3D外观' },
+  { key: 'topology', icon: <AimOutlined />, label: '系统拓扑' },
+  { key: 'canvas', icon: <ThunderboltOutlined />, label: '设计画布' },
+];
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('hbom');
+  const [selectedKey, setSelectedKey] = useState('component-library');
+  const [design, setDesign] = useState<DesignContext | null>(null);
+  const [designs, setDesigns] = useState<any[]>([]);
+  const [collapsed, setCollapsed] = useState(false);
 
-  const items = [
-    {
-      key: 'hbom',
-      label: (
-        <Space>
-          <ApartmentOutlined />
-          层级BOM
-        </Space>
-      ),
-      children: <HierarchicalBOM />,
-    },
-    {
-      key: 'layout',
-      label: (
-        <Space>
-          <LayoutOutlined />
-          内部布局
-        </Space>
-      ),
-      children: <InternalLayout />,
-    },
-    {
-      key: 'container3d',
-      label: (
-        <Space>
-          <ClusterOutlined />
-          3D外观
-        </Space>
-      ),
-      children: <Container3D />,
-    },
-    {
-      key: 'canvas',
-      label: (
-        <Space>
-          <ThunderboltOutlined />
-          设计画布
-        </Space>
-      ),
-      children: <DesignCanvas />,
-    },
-    {
-      key: 'topology',
-      label: (
-        <Space>
-          <AimOutlined />
-          系统拓扑
-        </Space>
-      ),
-      children: <SystemTopology />,
-    },
-    {
-      key: 'library',
-      label: (
-        <Space>
-          <AppstoreOutlined />
-          组件库
-        </Space>
-      ),
-      children: <ComponentLibrary />,
-    },
-    {
-      key: 'sizing',
-      label: (
-        <Space>
-          <ThunderboltOutlined />
-          AI 选型
-        </Space>
-      ),
-      children: <AISizing />,
-    },
-    {
-      key: 'designs',
-      label: (
-        <Space>
-          <FileTextOutlined />
-          设计方案
-        </Space>
-      ),
-      children: <Designs />,
-    },
-  ];
+  useEffect(() => {
+    loadDesigns();
+  }, []);
+
+  const loadDesigns = async () => {
+    try {
+      const res = await designsApi.list();
+      setDesigns(res.data.data || []);
+      if (res.data.data?.length > 0 && !design) {
+        setDesign({
+          id: res.data.data[0].id,
+          name: res.data.data[0].name,
+          status: res.data.data[0].status,
+        });
+      }
+    } catch (err) {
+      console.error('Failed to load designs', err);
+    }
+  };
+
+  const handleDesignChange = ({ key }: { key: string }) => {
+    const d = designs.find((x: any) => x.id === key);
+    if (d) {
+      setDesign({ id: d.id, name: d.name, status: d.status });
+    }
+  };
+
+  const renderContent = () => {
+    switch (selectedKey) {
+      case 'component-library':
+        return <ComponentLibrary />;
+      case 'designs':
+        return <Designs onSelectDesign={(d) => setDesign(d ? { id: d.id, name: d.name, status: d.status } : null)} />;
+      case 'hbom':
+      case 'layout':
+      case 'container3d':
+      case 'topology':
+      case 'canvas':
+        if (!design) {
+          return (
+            <Card style={{ textAlign: 'center', padding: 60 }}>
+              <Text type="secondary" style={{ fontSize: 16 }}>
+                请先在「设计方案」中选择一个设计方案
+              </Text>
+            </Card>
+          );
+        }
+        switch (selectedKey) {
+          case 'hbom': return <HierarchicalBOM />;
+          case 'layout': return <InternalLayout />;
+          case 'container3d': return <Container3D />;
+          case 'topology': return <SystemTopology />;
+          case 'canvas': return <DesignCanvas />;
+        }
+      case 'sizing':
+        return <AISizing />;
+      default:
+        return <ComponentLibrary />;
+    }
+  };
+
+  const getPageTitle = () => {
+    const titles: Record<string, string> = {
+      'component-library': '📚 组件库',
+      'designs': '📋 设计方案',
+      'hbom': '🏗️ 层级BOM',
+      'layout': '📐 内部布局',
+      'container3d': '🏭 3D外观',
+      'topology': '⚡ 系统拓扑',
+      'canvas': '🎨 设计画布',
+      'sizing': '🤖 AI选型',
+    };
+    return titles[selectedKey] || 'Design Platform';
+  };
 
   return (
-    <Layout style={{ minHeight: '100vh', background: '#f5f5f5' }}>
-      <Header style={{
-        background: '#001529',
-        padding: '0 24px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
-        <Space>
+    <Layout style={{ minHeight: '100vh', background: '#0f0f1a' }}>
+      {/* Sidebar */}
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={setCollapsed}
+        width={220}
+        style={{
+          background: '#001529',
+          borderRight: '1px solid #333',
+        }}
+        theme="dark"
+      >
+        {/* Logo */}
+        <div style={{
+          height: 64,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: collapsed ? 'center' : 'flex-start',
+          padding: collapsed ? 0 : '0 20px',
+          borderBottom: '1px solid #333',
+        }}>
           <div style={{
-            width: 36,
-            height: 36,
-            borderRadius: 8,
+            width: 32,
+            height: 32,
+            borderRadius: 6,
             background: 'linear-gradient(135deg, #00D4AA, #00A080)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: 20,
+            fontSize: 18,
+            flexShrink: 0,
           }}>
             ⚡
           </div>
-          <Title level={4} style={{ color: '#fff', margin: 0 }}>
-            Design<span style={{ color: '#00D4AA' }}>.solaripple</span>
-          </Title>
-        </Space>
-        <Space>
-          <Text type="secondary" style={{ color: 'rgba(255,255,255,0.65)' }}>
-            工商业储能产品设计平台
-          </Text>
-        </Space>
-      </Header>
+          {!collapsed && (
+            <Text strong style={{ color: '#fff', marginLeft: 12, fontSize: 15 }}>
+              Design<span style={{ color: '#00D4AA' }}>.solaripple</span>
+            </Text>
+          )}
+        </div>
 
-      <Content style={{ padding: '24px' }}>
-        <Card>
-          <Tabs
-            activeKey={activeTab}
-            onChange={setActiveTab}
-            items={items}
-            size="large"
-          />
-        </Card>
-      </Content>
+        {/* Menu */}
+        <Menu
+          mode="inline"
+          theme="dark"
+          selectedKeys={[selectedKey]}
+          onClick={({ key }) => setSelectedKey(key)}
+          style={{ background: 'transparent', borderRight: 0, marginTop: 8 }}
+        >
+          {/* Component Library */}
+          <Menu.Item key="component-library" icon={<AppstoreOutlined />}>
+            组件库
+          </Menu.Item>
 
-      <Footer style={{
-        textAlign: 'center',
-        background: '#f5f5f5',
-        padding: '16px',
-        color: '#999',
-        fontSize: 12,
-      }}>
-        Design Platform · Solaripple Energy Technology · 2026
-      </Footer>
+          {/* AI Sizing */}
+          <Menu.Item key="sizing" icon={<RobotOutlined />}>
+            AI 选型
+          </Menu.Item>
+
+          {/* Designs */}
+          <Menu.Item key="designs" icon={<FileTextOutlined />}>
+            设计方案
+          </Menu.Item>
+
+          {/* Workflow Submenu */}
+          <SubMenu
+            key="workflow"
+            icon={<ClusterOutlined />}
+            title={collapsed ? '工作流' : '🎯 设计工作流'}
+          >
+            {workflowItems.map(item => (
+              <Menu.Item key={item.key} icon={item.icon}>
+                {item.label}
+              </Menu.Item>
+            ))}
+          </SubMenu>
+        </Menu>
+
+        {/* Bottom: collapse button */}
+        {!collapsed && (
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            padding: '16px',
+            borderTop: '1px solid #333',
+            textAlign: 'center',
+          }}>
+            <Text type="secondary" style={{ fontSize: 11 }}>
+              工商业储能设计平台 · 2026
+            </Text>
+          </div>
+        )}
+      </Sider>
+
+      <Layout>
+        {/* Header */}
+        <Header style={{
+          background: '#0a0a14',
+          padding: '0 24px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          borderBottom: '1px solid #222',
+          height: 64,
+        }}>
+          {/* Page Title */}
+          <Space size="middle">
+            <Text strong style={{ fontSize: 18, color: '#fff' }}>
+              {getPageTitle()}
+            </Text>
+            {design && (
+              <Tag icon={<CheckCircleOutlined />} color="success">
+                {design.name}
+              </Tag>
+            )}
+          </Space>
+
+          {/* Right actions */}
+          <Space>
+            {design && selectedKey !== 'designs' && selectedKey !== 'component-library' && (
+              <>
+                <Button icon={<SaveOutlined />} size="small">
+                  保存
+                </Button>
+                <Button icon={<ExportOutlined />} size="small">
+                  导出
+                </Button>
+              </>
+            )}
+            <Dropdown
+              menu={{
+                items: designs.map((d: any) => ({
+                  key: d.id,
+                  label: d.name,
+                })),
+                onClick: handleDesignChange,
+              }}
+              placement="bottomRight"
+            >
+              <Button size="small">
+                切换方案 ▾
+              </Button>
+            </Dropdown>
+          </Space>
+        </Header>
+
+        {/* Content */}
+        <Content style={{
+          padding: 24,
+          overflow: 'auto',
+          background: '#0f0f1a',
+        }}>
+          {renderContent()}
+        </Content>
+      </Layout>
     </Layout>
   );
 }

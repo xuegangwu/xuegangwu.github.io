@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Table, Tag, Space, Button, Typography, Empty, Popconfirm, message, Row, Col, Statistic, Modal } from 'antd';
-import { DeleteOutlined, EyeOutlined } from '@ant-design/icons';
+import { DeleteOutlined, EyeOutlined, FilePdfOutlined, FileExcelOutlined } from '@ant-design/icons';
 import { designsApi, type Design } from '../services/api';
+import { downloadDesignPDF } from '../services/pdf';
 
 const { Title, Text } = Typography;
 
@@ -23,10 +24,15 @@ const typeColors: Record<string, string> = {
   cabinet: '#8c8c8c',
 };
 
-export default function Designs() {
+interface DesignsProps {
+  onSelectDesign?: (design: Design | null) => void;
+}
+
+export default function Designs({ onSelectDesign }: DesignsProps) {
   const [designs, setDesigns] = useState<Design[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedDesign, setSelectedDesign] = useState<Design | null>(null);
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     loadDesigns();
@@ -47,11 +53,49 @@ export default function Designs() {
   const handleDelete = async (id: string) => {
     try {
       await designsApi.delete(id);
-      message.success('删除成功');
+      messageApi.success('删除成功');
       loadDesigns();
     } catch (err) {
-      message.error('删除失败');
+      messageApi.error('删除失败');
     }
+  };
+
+  const handleExportPDF = (design: Design) => {
+    try {
+      downloadDesignPDF({
+        name: design.name,
+        description: design.description,
+        requirements: design.requirements,
+        components: design.bom,
+        totalCost: design.totalCost,
+        createdAt: design.createdAt,
+      });
+      messageApi.success('PDF 导出成功');
+    } catch (err) {
+      messageApi.error('PDF 导出失败');
+    }
+  };
+
+  const handleExportCSV = (design: Design) => {
+    const headers = ['类型', '品牌', '型号', '数量', '单价', '小计'];
+    const rows = design.bom.map((b: any) => [
+      b.type,
+      b.brand,
+      b.model,
+      b.quantity,
+      b.unitPrice || 0,
+      b.totalPrice || 0,
+    ]);
+    const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+    const BOM = '\uFEFF';
+    const blob = new Blob([BOM + csv], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${design.name.replace(/[^a-zA-Z0-9\u4e00-\u9fa5]/g, '_')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+    messageApi.success('CSV 导出成功');
   };
 
   const columns = [
@@ -101,7 +145,7 @@ export default function Designs() {
       key: 'action',
       render: (_: any, record: Design) => (
         <Space>
-          <Button size="small" icon={<EyeOutlined />} onClick={() => setSelectedDesign(record)}>
+          <Button size="small" icon={<EyeOutlined />} onClick={() => { setSelectedDesign(record); onSelectDesign?.(record); }}>
             查看
           </Button>
           <Popconfirm title="确认删除？" onConfirm={() => handleDelete(record.id)}>
@@ -116,6 +160,7 @@ export default function Designs() {
 
   return (
     <div>
+      {contextHolder}
       <Table
         dataSource={designs}
         columns={columns}
@@ -123,6 +168,20 @@ export default function Designs() {
         loading={loading}
         locale={{ emptyText: <Empty description="暂无设计方案" /> }}
       />
+
+      {/* Export buttons for selected design */}
+      {selectedDesign && (
+        <div style={{ marginBottom: 16 }}>
+          <Space>
+            <Button icon={<FilePdfOutlined />} onClick={() => handleExportPDF(selectedDesign)}>
+              导出 PDF
+            </Button>
+            <Button icon={<FileExcelOutlined />} onClick={() => handleExportCSV(selectedDesign)}>
+              导出 CSV
+            </Button>
+          </Space>
+        </div>
+      )}
 
       {/* Design Detail Modal */}
       <Modal
