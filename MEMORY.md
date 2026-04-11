@@ -27,13 +27,19 @@
 - **Products:** 光储充一体化, 数字孪生平台, 虚拟电厂(VPP), AI调度引擎
 - **Stats:** 500+ MW capacity, 50+ parks, 15-25% electricity savings
 
-### 3. 光储龙虾 (Guangchu - Solar-Storage News)
+### 3. SmartSolar (光储电站运维平台)
+- **Dir:** `/workspace/smartsolar/`
+- **Repo:** (待建)
+- **Focus:** 面向运维服务商和电站业主的智能运维平台
+- **Core:** 设备台账 + 工单管理 + 巡检计划 + KPI统计 + AI分析
+- **Tech:** React + Vite + TS + Ant Design + Express + MongoDB
+
+### 4. 光储龙虾 (Guangchu - Solar-Storage News)
 - **IP:** 47.90.138.136 (domain pending)
 - **Repo:** https://github.com/xuegangwu/guangchu
 - **Also served at:** xuegangwu.github.io/guangchu/ (from separate repo)
 - **Focus:** 光储行业信息聚合 - solar + storage industry news/policy/project aggregation
 - **Stats:** 128 today, 3,856 total, 9 published
-- What else is in development?
 
 ## Site Maintenance (xuegangwu.github.io)
 - **Repo:** https://github.com/xuegangwu/xuegangwu.github.io
