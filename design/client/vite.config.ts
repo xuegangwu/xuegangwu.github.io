@@ -12,4 +12,19 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/three') || id.includes('@react-three')) {
+            return 'three';
+          }
+          if (id.includes('node_modules/antd') || id.includes('@ant-design/icons')) {
+            return 'antd';
+          }
+        },
+      },
+    },
+  },
 })
