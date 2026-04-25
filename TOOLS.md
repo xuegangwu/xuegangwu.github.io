@@ -37,4 +37,17 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
+## SSH 服务器 (Alibaba Cloud)
+
+### 47.100.20.52 (solaripple.com 生产服务器)
+- **Key:** `~/.ssh/solaripple.pem`
+- **User:** root
+- **用法:** `ssh -i ~/.ssh/solaripple.pem root@47.100.20.52`
+- **服务:**
+  - `pm2 list` → smartsolar-server (3003), enos-api, design-api (3013)
+  - 部署路径: `/opt/design-server/`
+  - Web root: `/var/www/design.solaripple.com/`
+
+---
+
 Add whatever helps you do your job. This is your cheat sheet.
