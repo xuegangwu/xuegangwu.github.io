@@ -28,11 +28,21 @@
 - **Stats:** 500+ MW capacity, 50+ parks, 15-25% electricity savings
 
 ### 3. SmartSolar (光储电站运维平台)
-- **Dir:** `/workspace/smartsolar/`
-- **Repo:** (待建)
+- **Dir:** `/Users/terry/.openclaw/workspace/smartsolar/`
+- **Repo:** https://github.com/xuegangwu/smartsolar
+- **Deploy:** https://smartsolar.solaripple.com（服务器 47.100.20.52，端口 3003）
 - **Focus:** 面向运维服务商和电站业主的智能运维平台
-- **Core:** 设备台账 + 工单管理 + 巡检计划 + KPI统计 + AI分析
+- **Core:** 设备台账 + 工单管理 + 巡检计划 + KPI统计 + AI分析 + **渠道商积分体系**
 - **Tech:** React + Vite + TS + Ant Design + Express + MongoDB
+- **渠道体系新增（ITER-11）：**
+  - `Partner` / `PartnerUser` / `PointRule` / `PointTransaction` / `PointRedemption` 模型
+  - `/api/partners/*` 路由：登录、仪表盘、积分流水、兑换
+  - 工单关联 `partnerId`，关闭时触发积分赚取
+  - 演示账号：`dist_admin / partner123`（华东新能源分销，金牌）
+  - 等级：铜牌→银牌(5000分)→金牌(20000分)→钻牌(50000分)，积分倍数 1.0~2.0
+  - 前端页面：/partner-login, /partner-dashboard, /partner-transactions, /partner-mall, /partner-admin
+  - AI 故障分析：接入 Kimi API（需配置 KIMI_API_KEY），工单详情页可直接分析
+  - Markdown 渲染：react-markdown + remark-gfm
 
 ### 4. 光储龙虾 (Guangchu - Solar-Storage News)
 - **IP:** 47.90.138.136 (domain pending)
