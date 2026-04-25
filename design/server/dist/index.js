@@ -159,7 +159,7 @@ app.post('/api/designs', (req, res) => {
     db.prepare(`
     INSERT INTO designs (id, name, description, requirements, components, bom, totalCost, aiSuggestion, createdAt, updatedAt)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-  `).run(id, name || '未命名设计方案', description || '', JSON.stringify(requirements), JSON.stringify(components || []), JSON.stringify(bom || []), totalCost || 0, aiSuggestion || '', now, now);
+  `).run(id, name || '未命名设计方案', description || '', JSON.stringify(requirements || {}), JSON.stringify(components || []), JSON.stringify(bom || []), totalCost || 0, aiSuggestion || '', now, now);
     const row = db.prepare('SELECT * FROM designs WHERE id = ?').get(id);
     res.json({
         success: true,

@@ -184,7 +184,7 @@ app.post('/api/designs', (req, res) => {
     id,
     name || '未命名设计方案',
     description || '',
-    JSON.stringify(requirements),
+    JSON.stringify(requirements || {}),
     JSON.stringify(components || []),
     JSON.stringify(bom || []),
     totalCost || 0,

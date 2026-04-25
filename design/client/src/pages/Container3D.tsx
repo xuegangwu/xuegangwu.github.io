@@ -248,14 +248,14 @@ export default function Container3D() {
   };
 
   return (
-    <div style={{ padding: 24, background: '#0f0f1a', minHeight: '100vh' }}>
+    <div style={{ padding: 20, background: '#f5f6f8', minHeight: 'calc(100vh - 96px)' }}>
       {contextHolder}
 
       {/* Header */}
-      <Row gutter={16} style={{ marginBottom: 24 }}>
+      <Row gutter={16} style={{ marginBottom: 20 }}>
         <Col span={16}>
           <Space direction="vertical" size={4}>
-            <AntText strong style={{ fontSize: 20, color: '#fff' }}>🏭 储能集装箱 3D 外观渲染</AntText>
+            <AntText strong style={{ fontSize: 18, color: '#1a1a2e' }}>🏭 储能集装箱 3D 外观渲染</AntText>
             <AntText type="secondary">拖拽旋转 · 滚轮缩放 · 右键平移</AntText>
           </Space>
         </Col>
@@ -281,10 +281,10 @@ export default function Container3D() {
 
       {/* Stats */}
       {selectedDesign && (
-        <Row gutter={16} style={{ marginBottom: 24 }}>
+        <Row gutter={16} style={{ marginBottom: 20 }}>
           {selectedDesign.bom.slice(0, 6).map((item: any, idx: number) => (
             <Col key={idx} span={4}>
-              <Card size="small" style={{ background: '#1a1a2e', border: '1px solid #333' }}>
+              <Card size="small" style={{ background: '#fff', border: '1px solid #e8eaed' }}>
                 <Statistic
                   title={<AntText style={{ color: '#888' }}>{typeConfig[item.type]?.label || item.type}</AntText>}
                   value={item.quantity || 1}
@@ -301,12 +301,12 @@ export default function Container3D() {
       {/* 3D Canvas */}
       <Card
         style={{
-          background: '#0a0a14',
-          border: '1px solid #222',
+          background: '#1a1a2e',
+          border: '1px solid #333',
           borderRadius: 12,
           overflow: 'hidden',
-          height: 'calc(100vh - 280px)',
-          minHeight: 500,
+          height: 'calc(100vh - 220px)',
+          minHeight: 400,
         }}
         bodyStyle={{ height: '100%', padding: 0 }}
       >

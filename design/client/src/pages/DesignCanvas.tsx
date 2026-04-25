@@ -242,7 +242,7 @@ export default function DesignCanvas() {
   };
 
   return (
-    <div style={{ display: 'flex', gap: 16, height: 'calc(100vh - 180px)' }}>
+    <div style={{ display: 'flex', gap: 16, minHeight: 'calc(100vh - 96px)', height: 'calc(100vh - 96px)' }}>
       {/* Left Sidebar - Component Library */}
       <div style={{
         width: 300,
@@ -310,7 +310,7 @@ export default function DesignCanvas() {
 
         {/* Type Filters */}
         <div style={{ padding: '8px 12px', borderBottom: '1px solid #e8eaed', display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-          <Tag onClick={() => setSelectedType('')} style={{ cursor: 'pointer', margin: 0 }} color={!selectedType ? '#00D4AA' : '#999'}>全部</Tag>
+          <Tag onClick={() => setSelectedType('')} style={{ cursor: 'pointer', margin: 0 }} color={!selectedType ? '#e6342a' : '#999'}>全部</Tag>
           {types.map(t => (
             <Tag key={t.type} onClick={() => setSelectedType(t.type)} style={{ cursor: 'pointer', margin: 0 }} color={selectedType === t.type ? typeColors[t.type] : '#999'}>
               {typeIcons[t.type]} {t.count}
@@ -335,10 +335,10 @@ export default function DesignCanvas() {
                     style={{
                       padding: '8px 10px',
                       marginBottom: 6,
-                      background: selectedItems.some(i => i.component.id === comp.id) ? '#00D4AA15' : '#f5f5f5',
+                      background: selectedItems.some(i => i.component.id === comp.id) ? '#e6342a15' : '#f5f5f5',
                       borderRadius: 6,
                       cursor: 'pointer',
-                      border: selectedItems.some(i => i.component.id === comp.id) ? '1px solid #00D4AA' : '1px solid transparent',
+                      border: selectedItems.some(i => i.component.id === comp.id) ? '1px solid #e6342a' : '1px solid transparent',
                     }}
                   >
                     <Space style={{ width: '100%', justifyContent: 'space-between' }}>
@@ -375,9 +375,9 @@ export default function DesignCanvas() {
         {/* Header */}
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #e8eaed', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Space>
-            <ThunderboltOutlined style={{ color: '#00D4AA' }} />
+            <ThunderboltOutlined style={{ color: '#e6342a' }} />
             <Title level={5} style={{ margin: 0 }}>设计方案</Title>
-            <Badge count={selectedItems.length} style={{ backgroundColor: '#00D4AA' }} />
+            <Badge count={selectedItems.length} style={{ backgroundColor: '#e6342a' }} />
           </Space>
           <Space>
             <Button icon={<AimOutlined />} onClick={() => setSaveModalOpen(true)} disabled={selectedItems.length === 0}>

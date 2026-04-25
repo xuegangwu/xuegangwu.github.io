@@ -160,12 +160,12 @@ export default function HierarchicalBOM() {
   const treeData = buildTree(hierarchicalData);
 
   return (
-    <div style={{ display: 'flex', gap: 16, height: 'calc(100vh - 180px)' }}>
+    <div style={{ display: 'flex', gap: 16, minHeight: 'calc(100vh - 96px)', height: 'calc(100vh - 96px)' }}>
       {/* Left: Hierarchical Tree */}
       <div style={{ flex: 1, background: '#fff', borderRadius: 8, border: '1px solid #e8eaed', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #e8eaed', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Space>
-            <ApartmentOutlined style={{ color: '#00D4AA' }} />
+            <ApartmentOutlined style={{ color: '#e6342a' }} />
             <Title level={5} style={{ margin: 0 }}>层级 BOM 结构</Title>
           </Space>
           <Button type="primary" icon={<SaveOutlined />} onClick={() => setSaveModalOpen(true)} disabled={selectedItems.length === 0}>
@@ -198,8 +198,8 @@ export default function HierarchicalBOM() {
                         alignItems: 'center',
                         padding: '4px 8px',
                         borderRadius: 6,
-                        background: isSelected ? '#00D4AA15' : 'transparent',
-                        border: isSelected ? '1px solid #00D4AA' : '1px solid transparent',
+                        background: isSelected ? '#e6342a15' : 'transparent',
+                        border: isSelected ? '1px solid #e6342a' : '1px solid transparent',
                         cursor: 'pointer',
                         marginBottom: 4,
                       }}
@@ -221,7 +221,7 @@ export default function HierarchicalBOM() {
       <div style={{ width: 400, background: '#fff', borderRadius: 8, border: '1px solid #e8eaed', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <div style={{ padding: '12px 16px', borderBottom: '1px solid #e8eaed' }}>
           <Space>
-            <AppstoreOutlined style={{ color: '#00D4AA' }} />
+            <AppstoreOutlined style={{ color: '#e6342a' }} />
             <Title level={5} style={{ margin: 0 }}>已选组件</Title>
             <Tag>{selectedItems.length}</Tag>
           </Space>
@@ -274,7 +274,7 @@ export default function HierarchicalBOM() {
 
                 {/* Children */}
                 {item.children && item.children.length > 0 && (
-                  <div style={{ marginTop: 8, paddingLeft: 16, borderLeft: '2px solid #00D4AA' }}>
+                  <div style={{ marginTop: 8, paddingLeft: 16, borderLeft: '2px solid #e6342a' }}>
                     <Text type="secondary" style={{ fontSize: 11 }}>子模块:</Text>
                     {item.children.map((child, idx) => (
                       <div key={idx} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 0' }}>

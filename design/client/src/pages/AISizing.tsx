@@ -152,13 +152,13 @@ export default function AISizing() {
                   marginBottom: 12
                 }}>
                   {msg.role === 'assistant' && (
-                    <Avatar icon={<RobotOutlined />} style={{ marginRight: 8, backgroundColor: '#00D4AA' }} />
+                    <Avatar icon={<RobotOutlined />} style={{ marginRight: 8, backgroundColor: '#e6342a' }} />
                   )}
                   <div style={{
                     maxWidth: '70%',
                     padding: '10px 14px',
                     borderRadius: msg.role === 'user' ? '16px 16px 0 16px' : '16px 16px 16px 0',
-                    background: msg.role === 'user' ? '#00D4AA' : '#fff',
+                    background: msg.role === 'user' ? '#e6342a' : '#fff',
                     color: msg.role === 'user' ? '#fff' : '#333',
                     boxShadow: '0 1px 2px rgba(0,0,0,0.1)',
                     whiteSpace: 'pre-wrap',

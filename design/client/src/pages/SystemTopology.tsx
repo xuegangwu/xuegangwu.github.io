@@ -74,7 +74,7 @@ export default function SystemTopology() {
                 <Text type="secondary">暂无设计数据，请先在"设计画布"中添加组件并保存</Text>
               </div>
             ) : (
-              <svg width="750" height="450" viewBox="0 0 750 450" style={{ display: 'block', margin: '0 auto' }}>
+              <svg width="100%" height="auto" viewBox="0 0 750 450" style={{ display: 'block', margin: '0 auto' }}>
                 {/* Background */}
                 <defs>
                   <pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse">
